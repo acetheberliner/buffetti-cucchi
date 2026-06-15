@@ -1,0 +1,140 @@
+:root {
+  --color-primary: #003b7a;
+  --color-primary-dark: #001f45;
+  --color-accent: #00a6e8;
+  --color-bg: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-text: #14213d;
+  --color-muted: #5f6f89;
+  --color-border: rgba(0, 59, 122, 0.14);
+
+  --container: 1180px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+
+  --shadow-soft: 0 20px 60px rgba(0, 31, 69, 0.12);
+  --shadow-card: 0 14px 35px rgba(0, 31, 69, 0.1);
+
+  --font-main: "Plus Jakarta Sans", system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
+
+  --weight-regular: 430;
+  --weight-medium: 560;
+  --weight-semibold: 650;
+  --weight-bold: 760;
+  --weight-heavy: 800;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  font-weight: var(--weight-regular);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+strong {
+  font-weight: var(--weight-bold);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-main);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-dark);
+  letter-spacing: -0.045em;
+}
+
+p {
+  font-weight: var(--weight-regular);
+}
+
+.container {
+  width: min(var(--container), calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.section {
+  padding: 88px 0;
+}
+
+.section--white {
+  background: var(--color-surface);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: var(--weight-bold);
+  font-size: 0.9rem;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: 0 14px 30px rgba(0, 59, 122, 0.25);
+}
+
+.btn--ghost {
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(0, 59, 122, 0.16);
+  backdrop-filter: blur(14px);
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .container {
+    width: min(var(--container), calc(100% - 24px));
+  }
+}

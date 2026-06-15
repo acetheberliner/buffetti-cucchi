@@ -1,0 +1,264 @@
+---
+import { site } from '../data/site';
+import { navItems } from '../data/nav';
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-row">
+        <img src="/images/logo-buffetti.png" alt="Logo Buffetti Cucchi" width="104" height="66" />
+        <div>
+          <strong>Buffetti Cucchi</strong>
+          <span>Cartoleria e servizi a Cesena</span>
+        </div>
+      </div>
+
+      <p>
+        Prodotti per scuola, ufficio e lavoro quotidiano. Cancelleria, servizi digitali,
+        fotocopie, spedizioni e forniture per aziende.
+      </p>
+
+      <small>
+        {site.fullName}<br />
+        {site.vat}<br />
+        {site.address}
+      </small>
+    </div>
+
+    <div class="footer-col">
+      <h2>Navigazione</h2>
+      <nav aria-label="Navigazione footer">
+        {navItems.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="footer-col">
+      <h2>Contatti</h2>
+      <nav aria-label="Contatti footer">
+        <a href={site.phoneHref}>Telefono</a>
+        <a href={site.emailHref}>Email</a>
+        <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">Indicazioni stradali</a>
+        <a href={site.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+      </nav>
+    </div>
+
+    <div class="footer-cta">
+      <span>Hai bisogno di informazioni?</span>
+      <h2>Chiama il negozio o passa nella sede di Cesena.</h2>
+      <a href={site.phoneHref}>Chiama ora →</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© 2026 Buffetti Cucchi s.a.s. Tutti i diritti riservati.</span>
+
+    <a href={site.developerUrl} target="_blank" rel="noopener noreferrer">
+      Sito realizzato da Tommaso Bagnolini ↑
+    </a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    overflow: hidden;
+    padding: 92px 0 34px;
+    color: rgba(255, 255, 255, 0.78);
+    background:
+      radial-gradient(circle at 14% 0%, rgba(0, 166, 232, 0.14), transparent 30%),
+      radial-gradient(circle at 84% 8%, rgba(0, 59, 122, 0.34), transparent 34%),
+      linear-gradient(135deg, #05070b, #0a111c 52%, #020409);
+  }
+
+  .footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
+  }
+
+  .footer-inner,
+  .footer-bottom {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.35fr 0.75fr 0.75fr 1fr;
+    gap: 64px;
+    padding-bottom: 70px;
+  }
+
+  .footer-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-logo-row img {
+    width: 96px;
+    height: auto;
+    filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35));
+  }
+
+  .footer-logo-row div {
+    display: grid;
+    gap: 2px;
+  }
+
+  .footer-logo-row strong,
+  .footer-col h2 {
+    color: #fff;
+    font-size: 1.02rem;
+    font-weight: var(--weight-heavy);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-logo-row span {
+    color: var(--color-accent);
+    font-size: 0.82rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-brand p {
+    max-width: 420px;
+    margin: 34px 0 26px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 1.03rem;
+    line-height: 1.75;
+  }
+
+  .footer-brand small {
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .footer-col h2 {
+    margin: 0 0 24px;
+  }
+
+  .footer-col nav {
+    display: grid;
+    gap: 14px;
+  }
+
+  .footer-col a {
+    width: fit-content;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 1rem;
+    font-weight: var(--weight-bold);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .footer-col a:hover {
+    color: #fff;
+    transform: translateX(4px);
+  }
+
+  .footer-cta {
+    align-self: start;
+    padding: 30px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  }
+
+  .footer-cta span {
+    color: var(--color-accent);
+    font-size: 0.82rem;
+    font-weight: var(--weight-heavy);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-cta h2 {
+    margin: 20px 0 28px;
+    color: #fff;
+    font-size: 1.65rem;
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+
+  .footer-cta a {
+    min-height: 48px;
+    padding: 0 22px;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    color: #001f45;
+    background: #fff;
+    font-weight: var(--weight-heavy);
+    box-shadow: 0 18px 38px rgba(255, 255, 255, 0.12);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .footer-cta a:hover {
+    transform: translateY(-2px);
+    background: #dff5ff;
+  }
+
+  .footer-bottom {
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .footer-bottom span,
+  .footer-bottom a {
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.92rem;
+  }
+
+  .footer-bottom a {
+    font-weight: var(--weight-semibold);
+  }
+
+  .footer-bottom a:hover {
+    color: #fff;
+  }
+
+  @media (max-width: 1050px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .footer {
+      padding-top: 68px;
+    }
+
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding-bottom: 48px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+    }
+
+    .footer-cta {
+      border-radius: 24px;
+    }
+  }
+</style>

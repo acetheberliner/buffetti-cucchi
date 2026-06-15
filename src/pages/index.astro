@@ -1,17 +1,420 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Buffetti Cucchi Cesena | Cartoleria, ufficio e servizi digitali"
+  description="Buffetti Cucchi a Cesena: cancelleria, articoli per scuola e ufficio, servizi digitali, fotocopie, spedizioni e forniture per aziende."
+>
+  <section class="hero">
+	<div class="hero__media">
+	  <img src="/images/hero-home.webp" alt="Interno della cartoleria Buffetti Cucchi a Cesena" />
+	</div>
+
+	<div class="container hero__inner">
+	  <div class="hero__content">
+		<span class="eyebrow">Buffetti Cucchi a Cesena</span>
+
+		<h1>Cartoleria, articoli per ufficio e servizi digitali a Cesena</h1>
+
+		<p>
+		  Dal 1996 un punto di riferimento per scuola, professionisti e aziende:
+		  cancelleria, forniture per ufficio, fotocopie, spedizioni, PEC, firma digitale
+		  e servizi pratici per il lavoro di ogni giorno.
+		</p>
+
+		<div class="hero__actions">
+		  <a class="btn btn--primary" href="tel:+390547334488">Chiama ora</a>
+		  <a class="btn btn--ghost" href="/contatti.html">Indicazioni stradali</a>
+		</div>
+	  </div>
+
+	  <aside class="hero__panel" aria-label="Informazioni rapide">
+		<div>
+		  <strong>Orari</strong>
+		  <span>Lun - Ven: 8:30 - 12:30 / 15:30 - 19:00</span>
+		</div>
+
+		<div>
+		  <strong>Indirizzo</strong>
+		  <span>Viale Matteotti, 593 - Cesena</span>
+		</div>
+
+		<div>
+		  <strong>Per aziende</strong>
+		  <span>Forniture, consegne e prodotti per ufficio</span>
+		</div>
+	  </aside>
+	</div>
+  </section>
+
+  <section class="section section--white">
+	<div class="container intro">
+	  <span class="eyebrow">Negozio locale, servizio vero</span>
+	  <h2>Tutto quello che serve per scuola, ufficio e lavoro quotidiano</h2>
+	  <p>
+		Buffetti Cucchi unisce l’assortimento di una cartoleria specializzata con servizi utili
+		per cittadini, professionisti e aziende: stampa documenti, rilegature, spedizioni,
+		forniture per uffici, prodotti Buffetti e marchi selezionati.
+	  </p>
+	</div>
+  </section>
+
+  <section class="section categories-section">
+	<div class="container">
+	  <div class="section-head">
+		<span class="eyebrow">Cosa trovi in negozio</span>
+		<h2>Prodotti e servizi principali</h2>
+	  </div>
+
+	  <div class="categories">
+		<article>
+		  <span>01</span>
+		  <h3>Articoli per la scuola</h3>
+		  <p>Zaini, astucci, quaderni, penne, diari e prodotti per affrontare l’anno scolastico.</p>
+		  <a href="/articoli-per-la-scuola.html">Scopri articoli scuola</a>
+		</article>
+
+		<article>
+		  <span>02</span>
+		  <h3>Forniture per ufficio</h3>
+		  <p>Carta, raccoglitori, toner, cartucce, macchine per ufficio e materiali professionali.</p>
+		  <a href="/articoli-per-l-ufficio.html">Scopri articoli ufficio</a>
+		</article>
+
+		<article>
+		  <span>03</span>
+		  <h3>Servizi Buffetti</h3>
+		  <p>Fotocopie, rilegature, timbri, spedizioni, PEC, smart card e firma digitale.</p>
+		  <a href="/servizi.html">Scopri i servizi</a>
+		</article>
+	  </div>
+	</div>
+  </section>
+
+  <section class="section section--white">
+	<div class="container split">
+	  <div class="split__content">
+		<span class="eyebrow">Per privati e aziende</span>
+		<h2>Un punto unico per acquisti, documenti e servizi</h2>
+		<p>
+		  Che tu debba acquistare materiale scolastico, ordinare prodotti per l’ufficio,
+		  stampare documenti o richiedere servizi digitali, trovi assistenza diretta in negozio.
+		</p>
+
+		<ul>
+		  <li>Cancelleria e prodotti Buffetti</li>
+		  <li>Servizi di stampa, fotocopia e rilegatura</li>
+		  <li>Spedizioni e ritiro merce con corrieri convenzionati</li>
+		  <li>Forniture per uffici, studi professionali e aziende</li>
+		</ul>
+
+		<a class="btn btn--primary" href="/servizi.html">Vedi tutti i servizi</a>
+	  </div>
+
+	  <div class="split__image">
+		<img src="/images/hero-servizi.webp" alt="Servizi di fotocopia e stampa documenti" loading="lazy" />
+	  </div>
+	</div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+	position: relative;
+	min-height: 680px;
+	display: grid;
+	align-items: center;
+	overflow: hidden;
+	background: var(--color-primary-dark);
+  }
+
+  .hero__media {
+	position: absolute;
+	inset: 0;
+  }
+
+  .hero__media::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+	  linear-gradient(90deg, rgba(0, 31, 69, 0.9), rgba(0, 31, 69, 0.5), rgba(0, 31, 69, 0.14)),
+	  linear-gradient(0deg, rgba(0, 31, 69, 0.5), transparent 50%);
+  }
+
+  .hero__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+  }
+
+  .hero__inner {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) 360px;
+	gap: 28px;
+	align-items: end;
+  }
+
+  .hero__content {
+	max-width: 760px;
+	padding: 44px;
+	border-radius: 34px;
+	color: #fff;
+	background: rgba(255, 255, 255, 0.13);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	backdrop-filter: blur(18px);
+	box-shadow: var(--shadow-soft);
+  }
+
+  .eyebrow {
+	display: inline-flex;
+	margin-bottom: 16px;
+	color: var(--color-accent);
+	font-weight: var(--weight-bold);
+	font-size: 0.78rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+  }
+
+  .hero .eyebrow {
+	color: #dff5ff;
+	padding: 8px 12px;
+	border-radius: 999px;
+	background: rgba(0, 166, 232, 0.22);
+  }
+
+  .hero h1 {
+	margin: 0;
+	max-width: 720px;
+	font-size: clamp(2.7rem, 5.8vw, 5.6rem);
+	line-height: 0.92;
+	letter-spacing: -0.055em;
+  }
+
+  .hero p {
+	max-width: 620px;
+	margin: 24px 0 0;
+	color: rgba(255, 255, 255, 0.86);
+	font-size: 1.08rem;
+	line-height: 1.75;
+  }
+
+  .hero__actions {
+	margin-top: 32px;
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+  }
+
+  .hero__panel {
+	display: grid;
+	gap: 12px;
+	padding: 20px;
+	border-radius: 26px;
+	background: rgba(255, 255, 255, 0.92);
+	box-shadow: var(--shadow-soft);
+  }
+
+  .hero__panel div {
+	padding: 16px;
+	border-radius: 18px;
+	background: rgba(0, 59, 122, 0.06);
+  }
+
+  .hero__panel strong,
+  .hero__panel span {
+	display: block;
+  }
+
+  .hero__panel strong {
+	color: var(--color-primary-dark);
+	font-size: 0.95rem;
+  }
+
+  .hero__panel span {
+	margin-top: 4px;
+	color: var(--color-muted);
+	font-size: 0.92rem;
+	line-height: 1.5;
+  }
+
+  .intro {
+	max-width: 880px;
+	text-align: center;
+  }
+
+  .intro h2,
+  .section-head h2,
+  .split h2 {
+	margin: 0;
+	color: var(--color-primary-dark);
+	font-size: clamp(2rem, 4vw, 3.5rem);
+	line-height: 1;
+	letter-spacing: -0.045em;
+  }
+
+  .intro p {
+	margin: 22px auto 0;
+	color: var(--color-muted);
+	font-size: 1.06rem;
+	line-height: 1.8;
+  }
+
+  .section-head {
+	max-width: 760px;
+	margin-bottom: 30px;
+  }
+
+  .categories {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 22px;
+  }
+
+  .categories article {
+	position: relative;
+	overflow: hidden;
+	padding: 30px;
+	min-height: 245px;
+	border-radius: var(--radius-md);
+	background: #fff;
+	box-shadow: var(--shadow-card);
+	border: 1px solid var(--color-border);
+  }
+
+  .categories article::after {
+	content: "";
+	position: absolute;
+	right: -40px;
+	bottom: -40px;
+	width: 140px;
+	height: 140px;
+	border-radius: 999px;
+	background: rgba(0, 166, 232, 0.12);
+  }
+
+  .categories span {
+	display: inline-flex;
+	margin-bottom: 34px;
+	color: var(--color-accent);
+	font-weight: var(--weight-bold);
+  }
+
+  .categories h3 {
+	margin: 0;
+	color: var(--color-primary);
+	font-size: 1.45rem;
+	letter-spacing: -0.025em;
+  }
+
+  .categories p {
+	margin: 14px 0 22px;
+	color: var(--color-muted);
+	line-height: 1.7;
+  }
+
+  .categories a {
+	color: var(--color-primary);
+	font-weight: var(--weight-bold);
+  }
+
+  .split {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	gap: 42px;
+	align-items: center;
+  }
+
+  .split__content p {
+	color: var(--color-muted);
+	line-height: 1.8;
+	font-size: 1.04rem;
+  }
+
+  .split__content ul {
+	margin: 26px 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 12px;
+  }
+
+  .split__content li {
+	position: relative;
+	padding-left: 28px;
+	color: var(--color-text);
+	font-weight: 700;
+  }
+
+  .split__content li::before {
+	content: "✓";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: var(--color-accent);
+	font-weight: var(--weight-bold);
+  }
+
+  .split__image {
+	overflow: hidden;
+	border-radius: 34px;
+	box-shadow: var(--shadow-soft);
+	min-height: 440px;
+	background: #dce8f5;
+  }
+
+  .split__image img {
+	width: 100%;
+	height: 100%;
+	min-height: 440px;
+	object-fit: cover;
+  }
+
+  @media (max-width: 960px) {
+	.hero {
+	  min-height: auto;
+	  padding: 150px 0 42px;
+	  align-items: end;
+	}
+
+	.hero__inner,
+	.split {
+	  grid-template-columns: 1fr;
+	}
+
+	.hero__panel {
+	  grid-template-columns: repeat(3, 1fr);
+	}
+
+	.categories {
+	  grid-template-columns: 1fr;
+	}
+  }
+
+  @media (max-width: 680px) {
+	.hero {
+	  padding-top: 120px;
+	}
+
+	.hero__content {
+	  padding: 28px;
+	  border-radius: 26px;
+	}
+
+	.hero h1 {
+	  font-size: clamp(2.3rem, 14vw, 4rem);
+	}
+
+	.hero__panel {
+	  grid-template-columns: 1fr;
+	}
+
+	.split__image,
+	.split__image img {
+	  min-height: 300px;
+	}
+  }
+</style>

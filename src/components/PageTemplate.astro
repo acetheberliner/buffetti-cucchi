@@ -1,0 +1,375 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={page.title} description={page.description}>
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src={page.heroImage} alt={page.heroTitle} />
+    </div>
+
+    <div class="container page-hero__inner">
+      <div class="page-hero__content">
+        <span class="eyebrow">{page.eyebrow}</span>
+        <h1>{page.heroTitle}</h1>
+        <p>{page.heroText}</p>
+
+        <div class="page-hero__actions">
+          <a class="btn btn--primary" href={site.phoneHref}>Chiama ora</a>
+          <a class="btn btn--ghost" href="/contatti.html">Vieni in negozio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container intro">
+      <span class="eyebrow">Cosa trovi</span>
+      <h2>{page.introTitle}</h2>
+      <p>{page.introText}</p>
+    </div>
+  </section>
+
+  <section class="section cards-section">
+    <div class="container cards">
+      {page.cards.map((card, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <h3>{card.title}</h3>
+          <p>{card.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container split">
+      <div class="split__content">
+        <span class="eyebrow">Perché scegliere Buffetti Cucchi</span>
+        <h2>{page.focusTitle}</h2>
+        <p>{page.focusText}</p>
+
+        <ul>
+          {page.focusList.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="split__image">
+        <img src={page.focusImage} alt={page.focusTitle} loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-band">
+    <div class="container contact-band__inner">
+      <div>
+        <span class="eyebrow">Contatto rapido</span>
+        <h2>{page.ctaText}</h2>
+        <p>
+          Passa in negozio in Viale Matteotti, 593 a Cesena oppure contattaci per informazioni
+          su disponibilità, servizi e forniture.
+        </p>
+      </div>
+
+      <div class="contact-band__actions">
+        <a class="btn btn--primary" href={site.phoneHref}>{page.ctaButton}</a>
+        <a class="btn btn--ghost" href={site.emailHref}>Invia una email</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 560px;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    background: var(--color-primary-dark);
+  }
+
+  .page-hero__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .page-hero__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(0, 31, 69, 0.9), rgba(0, 31, 69, 0.52), rgba(0, 31, 69, 0.18)),
+      linear-gradient(0deg, rgba(0, 31, 69, 0.52), transparent 52%);
+  }
+
+  .page-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .page-hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-hero__content {
+    max-width: 760px;
+    padding: 42px;
+    border-radius: 34px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    margin-bottom: 16px;
+    color: var(--color-accent);
+    font-weight: var(--weight-bold);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .page-hero .eyebrow {
+    color: #dff5ff;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(0, 166, 232, 0.22);
+  }
+
+  .page-hero h1 {
+    margin: 0;
+    max-width: 720px;
+    font-size: clamp(2.4rem, 5vw, 4.7rem);
+    line-height: 0.94;
+    letter-spacing: -0.052em;
+  }
+
+  .page-hero p {
+    max-width: 620px;
+    margin: 22px 0 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 1.06rem;
+    line-height: 1.75;
+  }
+
+  .page-hero__actions {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .intro {
+    max-width: 860px;
+    text-align: center;
+  }
+
+  .intro h2,
+  .split h2,
+  .contact-band h2 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .intro p {
+    margin: 22px auto 0;
+    color: var(--color-muted);
+    font-size: 1.06rem;
+    line-height: 1.8;
+  }
+
+  .cards-section {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(0, 166, 232, 0.11), transparent 26%),
+      var(--color-bg);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .cards article {
+    position: relative;
+    overflow: hidden;
+    min-height: 240px;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .cards article::after {
+    content: "";
+    position: absolute;
+    right: -44px;
+    bottom: -44px;
+    width: 145px;
+    height: 145px;
+    border-radius: 999px;
+    background: rgba(0, 166, 232, 0.12);
+  }
+
+  .cards span {
+    display: inline-flex;
+    margin-bottom: 36px;
+    color: var(--color-accent);
+    font-weight: var(--weight-bold);
+  }
+
+  .cards h3 {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: 1.45rem;
+    letter-spacing: -0.025em;
+  }
+
+  .cards p {
+    margin: 14px 0 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 42px;
+    align-items: center;
+  }
+
+  .split__content p {
+    color: var(--color-muted);
+    line-height: 1.8;
+    font-size: 1.04rem;
+  }
+
+  .split__content ul {
+    margin: 26px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+
+  .split__content li {
+    position: relative;
+    padding-left: 28px;
+    color: var(--color-text);
+    font-weight: 750;
+  }
+
+  .split__content li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: var(--weight-bold);
+  }
+
+  .split__image {
+    min-height: 430px;
+    overflow: hidden;
+    border-radius: 34px;
+    background: #dce8f5;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .split__image img {
+    width: 100%;
+    height: 100%;
+    min-height: 430px;
+    object-fit: cover;
+  }
+
+  .contact-band {
+    padding: 74px 0;
+    color: #fff;
+    background:
+      radial-gradient(circle at 90% 20%, rgba(0, 166, 232, 0.32), transparent 28%),
+      linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  }
+
+  .contact-band__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .contact-band .eyebrow,
+  .contact-band h2,
+  .contact-band p {
+    color: #fff;
+  }
+
+  .contact-band p {
+    max-width: 680px;
+    margin: 16px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.75;
+  }
+
+  .contact-band__actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 920px) {
+    .page-hero {
+      min-height: auto;
+      padding: 140px 0 46px;
+    }
+
+    .cards,
+    .split {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-band__inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .contact-band__actions {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .page-hero {
+      padding-top: 118px;
+    }
+
+    .page-hero__content {
+      padding: 28px;
+      border-radius: 26px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.25rem, 13vw, 3.8rem);
+    }
+
+    .split__image,
+    .split__image img {
+      min-height: 300px;
+    }
+  }
+</style>

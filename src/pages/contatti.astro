@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contatti Buffetti Cucchi Cesena | Telefono, email e indicazioni"
+  description="Contatta Buffetti Cucchi a Cesena: telefono, email, indirizzo, orari di apertura e indicazioni stradali per raggiungere il negozio."
+>
+  <section class="contact-hero">
+    <div class="container contact-hero__inner">
+      <span class="eyebrow">Contatti</span>
+      <h1>Vieni a trovarci nella sede di Cesena</h1>
+      <p>
+        La cartoleria si trova in Viale Matteotti, 593, in zona Ippodromo.
+        Puoi chiamare, inviare una email oppure aprire direttamente le indicazioni su Google Maps.
+      </p>
+
+      <div class="contact-hero__actions">
+        <a class="btn btn--primary" href={site.phoneHref}>Chiama ora</a>
+        <a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+          Apri Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container contact-grid">
+      <article>
+        <span>Telefono</span>
+        <h2>{site.phone}</h2>
+        <p>Per informazioni su prodotti, disponibilità, servizi e forniture.</p>
+        <a href={site.phoneHref}>Chiama il negozio</a>
+      </article>
+
+      <article>
+        <span>Email</span>
+        <h2>{site.email}</h2>
+        <p>Per richieste, preventivi e informazioni più dettagliate.</p>
+        <a href={site.emailHref}>Invia una email</a>
+      </article>
+
+      <article>
+        <span>Indirizzo</span>
+        <h2>Viale Matteotti, 593</h2>
+        <p>Zona Ippodromo, 47522 Cesena (FC).</p>
+        <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">Indicazioni stradali</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container visit">
+      <div>
+        <span class="eyebrow">Orari di apertura</span>
+        <h2>Passa in negozio negli orari di apertura</h2>
+
+        <div class="hours">
+          <p><strong>Lunedì - Venerdì</strong><span>8:30 - 12:30 / 15:30 - 19:00</span></p>
+          <p><strong>Sabato</strong><span>09:00 - 12:30</span></p>
+          <p><strong>Domenica</strong><span>Chiuso</span></p>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <span>Google Maps</span>
+        <h3>Buffetti Cucchi s.a.s.</h3>
+        <p>Apri le indicazioni stradali per raggiungere rapidamente la sede di Cesena.</p>
+        <a class="btn btn--primary" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+          Apri indicazioni
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-hero {
+    padding: 150px 0 90px;
+    color: #fff;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(0, 166, 232, 0.28), transparent 30%),
+      linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  }
+
+  .contact-hero__inner {
+    max-width: 900px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    margin-bottom: 16px;
+    color: var(--color-accent);
+    font-weight: var(--weight-bold);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .contact-hero .eyebrow {
+    color: #dff5ff;
+  }
+
+  .contact-hero h1 {
+    margin: 0;
+    max-width: 840px;
+    font-size: clamp(2.8rem, 6vw, 5.6rem);
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+  }
+
+  .contact-hero p {
+    max-width: 720px;
+    margin: 24px 0 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .contact-hero__actions {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .contact-grid article {
+    padding: 30px;
+    border-radius: var(--radius-md);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .contact-grid span {
+    color: var(--color-accent);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .contact-grid h2 {
+    margin: 18px 0 12px;
+    color: var(--color-primary-dark);
+    font-size: 1.35rem;
+    letter-spacing: -0.025em;
+  }
+
+  .contact-grid p {
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
+  .contact-grid a {
+    color: var(--color-primary);
+    font-weight: var(--weight-bold);
+  }
+
+  .visit {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 36px;
+    align-items: stretch;
+  }
+
+  .visit h2 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .hours {
+    margin-top: 30px;
+    display: grid;
+    gap: 14px;
+  }
+
+  .hours p {
+    margin: 0;
+    padding: 18px;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+  }
+
+  .hours strong,
+  .hours span {
+    display: block;
+  }
+
+  .hours strong {
+    color: var(--color-primary);
+  }
+
+  .hours span {
+    margin-top: 4px;
+    color: var(--color-muted);
+  }
+
+  .map-card {
+    padding: 34px;
+    border-radius: 34px;
+    color: #fff;
+    background:
+      radial-gradient(circle at 90% 20%, rgba(0, 166, 232, 0.35), transparent 30%),
+      linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: var(--shadow-soft);
+  }
+
+  .map-card span {
+    color: #dff5ff;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .map-card h3 {
+    margin: 20px 0 12px;
+    font-size: 2rem;
+    letter-spacing: -0.05em;
+  }
+
+  .map-card p {
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 920px) {
+    .contact-grid,
+    .visit {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-hero {
+      padding-top: 125px;
+    }
+  }
+</style>

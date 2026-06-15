@@ -1,0 +1,298 @@
+---
+import { navItems } from '../data/nav';
+import { site } from '../data/site';
+
+const currentPath = Astro.url.pathname;
+
+const normalizePath = (path: string) =>
+  path.replace('/index.html', '/').replace('.html', '');
+
+const isActive = (href: string) => {
+  const cleanHref = normalizePath(href);
+  const cleanPath = normalizePath(currentPath);
+
+  if (href === '/index.html') return cleanPath === '/';
+  return cleanPath === cleanHref;
+};
+---
+
+<header class="site-header">
+  <div class="container header-top">
+    <a class="brand" href="/index.html" aria-label="Torna alla home">
+      <img src="/images/logo-buffetti.png" alt="Logo Buffetti Cucchi" width="120" height="76" />
+      <span>Buffetti Cucchi s.a.s. di Cucchi Elisabetta & C.</span>
+    </a>
+
+    <div class="header-actions" aria-label="Contatti rapidi">
+      <a class="header-action" href={site.phoneHref} aria-label="Chiama Buffetti Cucchi">
+        <span>☎</span>
+        <strong>Chiama</strong>
+      </a>
+
+      <a class="header-action" href={site.emailHref} aria-label="Invia email a Buffetti Cucchi">
+        <span>@</span>
+        <strong>Email</strong>
+      </a>
+
+      <a class="header-social" href={site.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        f
+      </a>
+    </div>
+
+    <input class="nav-toggle" type="checkbox" id="menu-toggle" />
+    <label class="menu-button" for="menu-toggle" aria-label="Apri menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+
+  <nav class="site-nav" aria-label="Navigazione principale">
+    <div class="container nav-inner">
+      {navItems.map((item) => (
+        <a
+          class:list={[
+            'nav-link',
+            isActive(item.href) && 'nav-link--active',
+          ]}
+          href={item.href}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid rgba(0, 31, 69, 0.1);
+    box-shadow: 0 10px 34px rgba(0, 31, 69, 0.06);
+    backdrop-filter: blur(16px);
+  }
+
+  .header-top {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .brand img {
+    width: 112px;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
+  .brand span {
+    color: var(--color-primary-dark);
+    font-size: 1.16rem;
+    font-weight: var(--weight-heavy);
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-action {
+    min-height: 42px;
+    padding: 0 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-primary-dark);
+    background: rgba(0, 59, 122, 0.055);
+    border-radius: 999px;
+    font-size: 0.86rem;
+    font-weight: var(--weight-bold);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .header-action:hover,
+  .header-social:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 59, 122, 0.11);
+  }
+
+  .header-action span {
+    color: var(--color-primary);
+    font-weight: var(--weight-heavy);
+  }
+
+  .header-social {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    color: var(--color-primary);
+    background: rgba(0, 59, 122, 0.055);
+    border-radius: 999px;
+    font-weight: var(--weight-heavy);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .site-nav {
+    border-top: 1px solid rgba(0, 31, 69, 0.075);
+  }
+
+  .nav-inner {
+    min-height: 54px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-link {
+    position: relative;
+    min-height: 54px;
+    padding: 0 15px;
+    display: inline-flex;
+    align-items: center;
+    color: #202f46;
+    font-size: 0.95rem;
+    font-weight: var(--weight-semibold);
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 999px 999px 0 0;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link--active {
+    color: var(--color-primary);
+  }
+
+  .nav-link:hover::after,
+  .nav-link--active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-toggle,
+  .menu-button {
+    display: none;
+  }
+
+  @media (max-width: 1120px) {
+    .brand span {
+      font-size: 1rem;
+      white-space: normal;
+      line-height: 1.15;
+    }
+
+    .nav-inner {
+      justify-content: flex-start;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .header-top {
+      min-height: 72px;
+    }
+
+    .brand img {
+      width: 82px;
+    }
+
+    .brand span {
+      max-width: 190px;
+      font-size: 0.9rem;
+    }
+
+    .header-actions {
+      display: none;
+    }
+
+    .menu-button {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-content: center;
+      gap: 5px;
+      border-radius: 999px;
+      background: rgba(0, 59, 122, 0.08);
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      width: 23px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--color-primary);
+    }
+
+    .site-nav {
+      display: none;
+      border-top: 1px solid rgba(0, 31, 69, 0.08);
+      background: #fff;
+    }
+
+    .site-header:has(.nav-toggle:checked) .site-nav {
+      display: block;
+    }
+
+    .nav-inner {
+      padding: 10px 0 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      overflow: visible;
+    }
+
+    .nav-link {
+      min-height: 46px;
+      padding: 0 14px;
+      border-radius: 12px;
+      background: rgba(0, 59, 122, 0.045);
+    }
+
+    .nav-link::after {
+      left: auto;
+      right: 14px;
+      bottom: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      transform: translateY(50%) scale(0);
+    }
+
+    .nav-link:hover::after,
+    .nav-link--active::after {
+      transform: translateY(50%) scale(1);
+    }
+  }
+</style>
