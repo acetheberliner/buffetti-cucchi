@@ -1,0 +1,122 @@
+---
+const { brands } = Astro.props;
+const items = brands?.items ?? [];
+---
+
+{items.length > 0 && (
+  <section class="brand-showcase">
+    <div class="container brand-showcase__inner">
+      <div class="brand-showcase__head">
+        <span class="eyebrow">{brands.label}</span>
+        <h2>{brands.title}</h2>
+        <p>{brands.text}</p>
+      </div>
+
+      <div class="brand-showcase__list" aria-label={brands.title}>
+        {items.map((brand: { logo: string | null | undefined; name: string; }) => (
+          <div class="brand-showcase__item">
+            {brand.logo ? (
+              <img src={brand.logo} alt={brand.name} loading="lazy" />
+            ) : (
+              <span>{brand.name}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .brand-showcase {
+    padding: 84px 0;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(0, 166, 232, 0.11), transparent 28%),
+      linear-gradient(180deg, #ffffff, #f7fbff);
+  }
+
+  .brand-showcase__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 56px;
+    align-items: center;
+  }
+
+  .brand-showcase__head {
+    max-width: 560px;
+  }
+
+  .brand-showcase h2 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2rem, 4vw, 3.45rem);
+    line-height: 0.98;
+    letter-spacing: -0.052em;
+  }
+
+  .brand-showcase p {
+    margin: 20px 0 0;
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .brand-showcase__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    align-items: center;
+  }
+
+  .brand-showcase__item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 54px;
+    color: var(--color-primary);
+    font-size: clamp(1.15rem, 2vw, 1.8rem);
+    font-weight: 850;
+    letter-spacing: -0.045em;
+  }
+
+  .brand-showcase__item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(0, 166, 232, 0.16);
+    z-index: 0;
+  }
+
+  .brand-showcase__item span,
+  .brand-showcase__item img {
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand-showcase__item img {
+    max-width: 150px;
+    max-height: 52px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 920px) {
+    .brand-showcase__inner {
+      grid-template-columns: 1fr;
+      gap: 34px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .brand-showcase {
+      padding: 64px 0;
+    }
+
+    .brand-showcase__list {
+      gap: 14px 22px;
+    }
+  }
+</style>

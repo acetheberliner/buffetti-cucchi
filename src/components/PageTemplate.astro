@@ -1,8 +1,58 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import BrandShowcase from './BrandShowcase.astro';
+import ProductShowcase from './ProductShowcase.astro';
+
+import {
+  Archive,
+  Armchair,
+  ArrowRight,
+  BadgeCheck,
+  BookOpen,
+  Box,
+  Briefcase,
+  Check,
+  Copy,
+  FileText,
+  Gift,
+  Lightbulb,
+  Package,
+  PenLine,
+  Printer,
+  Ruler,
+  Scissors,
+  ShieldCheck,
+  Stamp,
+  Truck,
+  Wallet,
+} from '@lucide/astro';
 
 const { page } = Astro.props;
+
+const groups = page.productGroups ?? page.cards ?? [];
+
+const icons = {
+  archive: Archive,
+  book: BookOpen,
+  box: Box,
+  chair: Armchair,
+  copy: Copy,
+  desk: Lightbulb,
+  digital: ShieldCheck,
+  gift: Gift,
+  machines: Package,
+  office: Briefcase,
+  paper: FileText,
+  pen: PenLine,
+  printer: Printer,
+  ruler: Ruler,
+  school: BookOpen,
+  shipping: Truck,
+  stamp: Stamp,
+  tools: Scissors,
+  wallet: Wallet,
+};
 ---
 
 <BaseLayout title={page.title} description={page.description}>
@@ -14,12 +64,20 @@ const { page } = Astro.props;
     <div class="container page-hero__inner">
       <div class="page-hero__content">
         <span class="eyebrow">{page.eyebrow}</span>
+
         <h1>{page.heroTitle}</h1>
+
         <p>{page.heroText}</p>
 
         <div class="page-hero__actions">
-          <a class="btn btn--primary" href={site.phoneHref}>Chiama ora</a>
-          <a class="btn btn--ghost" href="/contatti.html">Vieni in negozio</a>
+          <a class="btn btn--primary" href={site.phoneHref}>
+            Chiama ora
+            <ArrowRight />
+          </a>
+
+          <a class="btn btn--ghost" href="/contatti.html">
+            Vieni in negozio
+          </a>
         </div>
       </div>
     </div>
@@ -27,34 +85,62 @@ const { page } = Astro.props;
 
   <section class="section section--white">
     <div class="container intro">
-      <span class="eyebrow">Cosa trovi</span>
+      <span class="eyebrow">{page.introLabel ?? 'Cosa trovi'}</span>
       <h2>{page.introTitle}</h2>
       <p>{page.introText}</p>
     </div>
   </section>
 
-  <section class="section cards-section">
-    <div class="container cards">
-      {page.cards.map((card, index) => (
-        <article>
-          <span>{String(index + 1).padStart(2, '0')}</span>
-          <h3>{card.title}</h3>
-          <p>{card.text}</p>
-        </article>
-      ))}
+  <section class="section products-section">
+    <div class="container products-grid">
+      {groups.map((group, index) => {
+        const Icon = icons[group.icon] ?? BadgeCheck;
+
+        return (
+          <article class="product-card">
+            <div class="product-card__top">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+
+              <div class="product-card__icon-wrap">
+                <Icon />
+              </div>
+            </div>
+
+            <h3>{group.title}</h3>
+            <p>{group.text}</p>
+
+            {group.items?.length ? (
+              <ul>
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            ) : null}
+          </article>
+        );
+      })}
     </div>
   </section>
+
+  <ProductShowcase showcase={page.showcase} />
+
+  <BrandShowcase brands={page.brands} />
 
   <section class="section section--white">
     <div class="container split">
       <div class="split__content">
         <span class="eyebrow">Perché scegliere Buffetti Cucchi</span>
+
         <h2>{page.focusTitle}</h2>
+
         <p>{page.focusText}</p>
 
         <ul>
           {page.focusList.map((item) => (
-            <li>{item}</li>
+            <li>
+              <Check />
+              {item}
+            </li>
           ))}
         </ul>
       </div>
@@ -62,6 +148,20 @@ const { page } = Astro.props;
       <div class="split__image">
         <img src={page.focusImage} alt={page.focusTitle} loading="lazy" />
       </div>
+    </div>
+  </section>
+
+  <section class="feature-strip">
+    <div class="container feature-strip__inner">
+      <div>
+        <span class="eyebrow">{page.featureLabel ?? 'In negozio'}</span>
+        <h2>{page.featureTitle ?? 'Un punto vendita pratico, vicino e completo'}</h2>
+      </div>
+
+      <p>
+        {page.featureText ??
+          'Passa in negozio per vedere i prodotti dal vivo, chiedere informazioni e scegliere la soluzione più adatta alle tue esigenze.'}
+      </p>
     </div>
   </section>
 
@@ -87,7 +187,7 @@ const { page } = Astro.props;
 <style>
   .page-hero {
     position: relative;
-    min-height: 560px;
+    min-height: 540px;
     display: grid;
     align-items: center;
     overflow: hidden;
@@ -104,8 +204,9 @@ const { page } = Astro.props;
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(0, 31, 69, 0.9), rgba(0, 31, 69, 0.52), rgba(0, 31, 69, 0.18)),
-      linear-gradient(0deg, rgba(0, 31, 69, 0.52), transparent 52%);
+      radial-gradient(circle at 26% 24%, rgba(0, 166, 232, 0.24), transparent 28%),
+      linear-gradient(90deg, rgba(0, 25, 58, 0.94), rgba(0, 38, 80, 0.72) 48%, rgba(0, 31, 69, 0.18)),
+      linear-gradient(0deg, rgba(0, 24, 54, 0.58), transparent 58%);
   }
 
   .page-hero__media img {
@@ -120,14 +221,8 @@ const { page } = Astro.props;
   }
 
   .page-hero__content {
-    max-width: 760px;
-    padding: 42px;
-    border-radius: 34px;
+    max-width: 720px;
     color: #fff;
-    background: rgba(255, 255, 255, 0.13);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(18px);
-    box-shadow: var(--shadow-soft);
   }
 
   .eyebrow {
@@ -135,155 +230,237 @@ const { page } = Astro.props;
     margin-bottom: 16px;
     color: var(--color-accent);
     font-weight: var(--weight-bold);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
   }
 
   .page-hero .eyebrow {
-    color: #dff5ff;
+    color: #e5f7ff;
     padding: 8px 12px;
     border-radius: 999px;
-    background: rgba(0, 166, 232, 0.22);
+    background: rgba(0, 166, 232, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(10px);
   }
 
   .page-hero h1 {
-    margin: 0;
     max-width: 720px;
-    font-size: clamp(2.4rem, 5vw, 4.7rem);
-    line-height: 0.94;
-    letter-spacing: -0.052em;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.55rem, 5vw, 5rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
   }
 
   .page-hero p {
-    max-width: 620px;
-    margin: 22px 0 0;
+    max-width: 610px;
+    margin: 24px 0 0;
     color: rgba(255, 255, 255, 0.86);
-    font-size: 1.06rem;
+    font-size: 1.08rem;
     line-height: 1.75;
   }
 
   .page-hero__actions {
-    margin-top: 30px;
+    margin-top: 32px;
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
   }
 
+  .page-hero__actions svg {
+    width: 16px;
+    height: 16px;
+  }
+
   .intro {
-    max-width: 860px;
+    max-width: 850px;
     text-align: center;
   }
 
   .intro h2,
   .split h2,
+  .feature-strip h2,
   .contact-band h2 {
     margin: 0;
     color: var(--color-primary-dark);
-    font-size: clamp(2rem, 4vw, 3.35rem);
-    line-height: 1;
-    letter-spacing: -0.045em;
+    font-size: clamp(2rem, 4vw, 3.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.052em;
   }
 
   .intro p {
+    max-width: 720px;
     margin: 22px auto 0;
     color: var(--color-muted);
     font-size: 1.06rem;
     line-height: 1.8;
   }
 
-  .cards-section {
+  .products-section {
     background:
-      radial-gradient(circle at 15% 10%, rgba(0, 166, 232, 0.11), transparent 26%),
-      var(--color-bg);
+      radial-gradient(circle at 8% 0%, rgba(0, 166, 232, 0.14), transparent 30%),
+      linear-gradient(180deg, #f6fbff, #ffffff);
   }
 
-  .cards {
+  .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
   }
 
-  .cards article {
+  .product-card {
     position: relative;
     overflow: hidden;
-    min-height: 240px;
-    padding: 30px;
-    border-radius: var(--radius-md);
-    background: #fff;
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-card);
+    min-height: 370px;
+    padding: 28px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(204, 221, 237, 0.9);
+    box-shadow: 0 22px 65px rgba(15, 38, 67, 0.08);
+    transition:
+      transform 0.24s ease,
+      box-shadow 0.24s ease,
+      border-color 0.24s ease;
   }
 
-  .cards article::after {
+  .product-card::after {
     content: "";
     position: absolute;
-    right: -44px;
-    bottom: -44px;
-    width: 145px;
-    height: 145px;
+    right: -58px;
+    bottom: -58px;
+    width: 150px;
+    height: 150px;
     border-radius: 999px;
-    background: rgba(0, 166, 232, 0.12);
+    background: rgba(0, 166, 232, 0.11);
   }
 
-  .cards span {
-    display: inline-flex;
-    margin-bottom: 36px;
+  .product-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 166, 232, 0.35);
+    box-shadow: 0 32px 90px rgba(15, 38, 67, 0.13);
+  }
+
+  .product-card__top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 34px;
+  }
+
+  .product-card__top > span {
     color: var(--color-accent);
     font-weight: var(--weight-bold);
   }
 
-  .cards h3 {
+  .product-card__icon-wrap {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    color: var(--color-primary);
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.82), transparent 32%),
+      linear-gradient(135deg, rgba(0, 166, 232, 0.24), rgba(0, 75, 141, 0.1));
+  }
+
+  .product-card__icon-wrap svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .product-card h3 {
+    position: relative;
+    z-index: 1;
     margin: 0;
     color: var(--color-primary);
     font-size: 1.45rem;
-    letter-spacing: -0.025em;
+    line-height: 1.08;
+    letter-spacing: -0.032em;
   }
 
-  .cards p {
+  .product-card p {
+    position: relative;
+    z-index: 1;
     margin: 14px 0 0;
     color: var(--color-muted);
     line-height: 1.7;
   }
 
+  .product-card ul {
+    position: relative;
+    z-index: 1;
+    margin: 22px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .product-card li {
+    position: relative;
+    padding-left: 24px;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 720;
+    line-height: 1.45;
+  }
+
+  .product-card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.52em;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+
   .split {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 42px;
+    gap: 56px;
     align-items: center;
   }
 
   .split__content p {
+    margin: 20px 0 0;
     color: var(--color-muted);
     line-height: 1.8;
     font-size: 1.04rem;
   }
 
   .split__content ul {
-    margin: 26px 0 0;
+    margin: 28px 0 0;
     padding: 0;
     list-style: none;
     display: grid;
-    gap: 12px;
+    gap: 14px;
   }
 
   .split__content li {
-    position: relative;
-    padding-left: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
     color: var(--color-text);
-    font-weight: 750;
+    font-weight: 760;
+    line-height: 1.45;
   }
 
-  .split__content li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
+  .split__content li svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    margin-top: 2px;
     color: var(--color-accent);
-    font-weight: var(--weight-bold);
   }
 
   .split__image {
-    min-height: 430px;
+    min-height: 440px;
     overflow: hidden;
     border-radius: 34px;
     background: #dce8f5;
@@ -293,15 +470,41 @@ const { page } = Astro.props;
   .split__image img {
     width: 100%;
     height: 100%;
-    min-height: 430px;
+    min-height: 440px;
     object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .split__image:hover img {
+    transform: scale(1.035);
+  }
+
+  .feature-strip {
+    padding: 78px 0;
+    background:
+      radial-gradient(circle at 82% 20%, rgba(0, 166, 232, 0.24), transparent 30%),
+      linear-gradient(135deg, #eef8ff, #ffffff);
+  }
+
+  .feature-strip__inner {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+    gap: 52px;
+  }
+
+  .feature-strip p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 1.08rem;
+    line-height: 1.85;
   }
 
   .contact-band {
-    padding: 74px 0;
+    padding: 78px 0;
     color: #fff;
     background:
-      radial-gradient(circle at 90% 20%, rgba(0, 166, 232, 0.32), transparent 28%),
+      radial-gradient(circle at 88% 18%, rgba(0, 166, 232, 0.34), transparent 30%),
       linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   }
 
@@ -309,7 +512,7 @@ const { page } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    gap: 34px;
   }
 
   .contact-band .eyebrow,
@@ -320,7 +523,7 @@ const { page } = Astro.props;
 
   .contact-band p {
     max-width: 680px;
-    margin: 16px 0 0;
+    margin: 18px 0 0;
     color: rgba(255, 255, 255, 0.78);
     line-height: 1.75;
   }
@@ -332,14 +535,20 @@ const { page } = Astro.props;
     justify-content: flex-end;
   }
 
+  @media (max-width: 1100px) {
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 920px) {
     .page-hero {
       min-height: auto;
-      padding: 140px 0 46px;
+      padding: 138px 0 58px;
     }
 
-    .cards,
-    .split {
+    .split,
+    .feature-strip__inner {
       grid-template-columns: 1fr;
     }
 
@@ -358,13 +567,22 @@ const { page } = Astro.props;
       padding-top: 118px;
     }
 
-    .page-hero__content {
-      padding: 28px;
-      border-radius: 26px;
+    .page-hero h1 {
+      font-size: clamp(2.35rem, 13vw, 3.7rem);
     }
 
-    .page-hero h1 {
-      font-size: clamp(2.25rem, 13vw, 3.8rem);
+    .page-hero p {
+      font-size: 1rem;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .product-card {
+      min-height: auto;
+      padding: 26px;
+      border-radius: 26px;
     }
 
     .split__image,

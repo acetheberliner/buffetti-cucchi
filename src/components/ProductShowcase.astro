@@ -1,0 +1,186 @@
+---
+import { Check } from '@lucide/astro';
+
+const { showcase } = Astro.props;
+const items = showcase?.items ?? [];
+---
+
+{items.length > 0 && (
+  <section class="product-showcase">
+    <div class="container">
+      <div class="product-showcase__head">
+        <span class="eyebrow">{showcase.label}</span>
+        <h2>{showcase.title}</h2>
+        <p>{showcase.text}</p>
+      </div>
+
+      <div class="product-showcase__grid">
+        {items.map((item: { image: string | null | undefined; title: string; badge: string; text: string; specs: string[]; }) => (
+          <article class="product-showcase__card">
+            <div class="product-showcase__media">
+              <img src={item.image} alt={item.title} loading="lazy" />
+            </div>
+
+            <div class="product-showcase__content">
+              <span>{item.badge}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+
+              <ul>
+                {item.specs.map((spec: string) => (
+                  <li>
+                    <Check />
+                    {spec}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .product-showcase {
+    padding: 92px 0;
+    background: #fff;
+  }
+
+  .product-showcase__head {
+    max-width: 820px;
+    margin: 0 auto 46px;
+    text-align: center;
+  }
+
+  .product-showcase h2 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2rem, 4vw, 3.45rem);
+    line-height: 0.98;
+    letter-spacing: -0.052em;
+  }
+
+  .product-showcase__head p {
+    max-width: 720px;
+    margin: 20px auto 0;
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .product-showcase__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .product-showcase__card {
+    overflow: hidden;
+    border-radius: 34px;
+    background:
+      radial-gradient(circle at 86% 10%, rgba(0, 166, 232, 0.13), transparent 30%),
+      linear-gradient(180deg, #f8fcff, #ffffff);
+    box-shadow: 0 28px 90px rgba(15, 38, 67, 0.1);
+  }
+
+  .product-showcase__media {
+    height: 320px;
+    display: grid;
+    place-items: center;
+    padding: 34px;
+    background:
+      radial-gradient(circle at 50% 42%, rgba(0, 166, 232, 0.12), transparent 36%),
+      #f4f8fc;
+  }
+
+  .product-showcase__media img {
+    width: min(100%, 360px);
+    max-height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 34px rgba(15, 38, 67, 0.16));
+    transition: transform 0.35s ease;
+  }
+
+  .product-showcase__card:hover img {
+    transform: translateY(-6px) scale(1.025);
+  }
+
+  .product-showcase__content {
+    padding: 32px;
+  }
+
+  .product-showcase__content > span {
+    display: inline-flex;
+    margin-bottom: 14px;
+    padding: 7px 11px;
+    border-radius: 999px;
+    color: var(--color-primary);
+    background: rgba(0, 166, 232, 0.12);
+    font-size: 0.76rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .product-showcase h3 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: 1.65rem;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .product-showcase__content p {
+    margin: 16px 0 0;
+    color: var(--color-muted);
+    line-height: 1.75;
+  }
+
+  .product-showcase ul {
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 11px;
+  }
+
+  .product-showcase li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--color-text);
+    font-weight: 750;
+    line-height: 1.45;
+  }
+
+  .product-showcase li svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    margin-top: 2px;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 920px) {
+    .product-showcase__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .product-showcase {
+      padding: 68px 0;
+    }
+
+    .product-showcase__media {
+      height: 250px;
+      padding: 24px;
+    }
+
+    .product-showcase__content {
+      padding: 26px;
+    }
+  }
+</style>
