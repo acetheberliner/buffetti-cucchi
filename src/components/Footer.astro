@@ -1,6 +1,7 @@
 ---
 import { site } from '../data/site';
 import { navItems } from '../data/nav';
+import { Phone, ExternalLink } from '@lucide/astro';
 ---
 
 <footer class="footer">
@@ -49,7 +50,10 @@ import { navItems } from '../data/nav';
     <div class="footer-cta">
       <span>Hai bisogno di informazioni?</span>
       <h2>Chiama il negozio o passa nella sede di Cesena.</h2>
-      <a href={site.phoneHref}>Chiama ora →</a>
+      <a href={site.phoneHref}>
+        <Phone size={18} stroke-width={2.2} class="cta-icon" />
+        Chiama ora
+      </a>
     </div>
   </div>
 
@@ -57,7 +61,8 @@ import { navItems } from '../data/nav';
     <span>© 2026 Buffetti Cucchi s.a.s. Tutti i diritti riservati.</span>
 
     <a href={site.developerUrl} target="_blank" rel="noopener noreferrer">
-      Sito realizzato da Tommaso Bagnolini ↑
+      Sito realizzato da Tommaso Bagnolini
+      <ExternalLink size={18} stroke-width={2.2} class="cta-icon" style={{ marginLeft: "5px" }} />
     </a>
   </div>
 </footer>
@@ -260,5 +265,9 @@ import { navItems } from '../data/nav';
     .footer-cta {
       border-radius: 24px;
     }
+  }
+
+  .cta-icon {
+    margin-right: 5px;
   }
 </style>

@@ -24,11 +24,11 @@ import { Phone, MapPin } from '@lucide/astro';
 
 		<div class="hero__actions">
 			<a class="btn btn--light" href="tel:+390547334488">
-				<Phone size={18} stroke-width={2.2} />
+				<Phone size={18} stroke-width={2.2} class="cta-icon" />
 				Chiama ora
 			</a>
 			<a class="btn btn--light" href="/contatti.html">
-				<MapPin size={18} stroke-width={2.2} />
+				<MapPin size={18} stroke-width={2.2} class="cta-icon" />
 				Come arrivare
 			</a>
 		</div>
@@ -101,7 +101,7 @@ import { Phone, MapPin } from '@lucide/astro';
       <div class="location__info">
         <div>
           <span>Indirizzo</span>
-          <strong>Viale Matteotti, 593 · Cesena</strong>
+          <strong>Viale Matteotti, 593 · Cesena (FC)</strong>
         </div>
 
         <div>
@@ -111,16 +111,18 @@ import { Phone, MapPin } from '@lucide/astro';
 
         <div>
           <span>Orari</span>
-          <strong>Lun - Ven 8:30 - 12:30 / 15:30 - 19:00</strong>
+          <strong>Dal lunedì al venerdì <br/>08:30 - 12:30<br/>15:30 - 19:00</strong>
         </div>
       </div>
 
       <div class="location__actions">
         <a class="btn btn--primary" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+          <MapPin size={18} stroke-width={2.2} class="cta-icon" />
           Apri Google Maps
         </a>
 
         <a class="btn btn--ghost" href={site.phoneHref}>
+          <Phone size={18} stroke-width={2.2} class="cta-icon" />
           Chiama il negozio
         </a>
       </div>
@@ -666,5 +668,9 @@ import { Phone, MapPin } from '@lucide/astro';
     .split__image img {
       min-height: 300px;
     }
+  }
+
+  .cta-icon {
+    margin-right: 5px;
   }
 </style>
