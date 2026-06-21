@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import { Phone, MapPin } from '@lucide/astro';
 ---
 
 <BaseLayout
@@ -8,413 +10,661 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <section class="hero">
 	<div class="hero__media">
-	  <img src="/images/hero-home.webp" alt="Interno della cartoleria Buffetti Cucchi a Cesena" />
+		<img src="/images/hero-home.webp" alt="Esterno della cartoleria Buffetti Cucchi a Cesena" />
 	</div>
 
 	<div class="container hero__inner">
-	  <div class="hero__content">
-		<span class="eyebrow">Buffetti Cucchi a Cesena</span>
+		<div class="hero__content">
 
-		<h1>Cartoleria, articoli per ufficio e servizi digitali a Cesena</h1>
+		<h1>Scuola, ufficio e pratiche: ci pensiamo noi</h1>
 
 		<p>
-		  Dal 1996 un punto di riferimento per scuola, professionisti e aziende:
-		  cancelleria, forniture per ufficio, fotocopie, spedizioni, PEC, firma digitale
-		  e servizi pratici per il lavoro di ogni giorno.
+			Cancelleria, forniture per aziende, fotocopie, spedizioni, PEC e firma digitale tutto in un unico punto, con assistenza diretta in negozio.
 		</p>
 
 		<div class="hero__actions">
-		  <a class="btn btn--primary" href="tel:+390547334488">Chiama ora</a>
-		  <a class="btn btn--ghost" href="/contatti.html">Indicazioni stradali</a>
+			<a class="btn btn--light" href="tel:+390547334488">
+				<Phone size={18} stroke-width={2.2} />
+				Chiama ora
+			</a>
+			<a class="btn btn--light" href="/contatti.html">
+				<MapPin size={18} stroke-width={2.2} />
+				Come arrivare
+			</a>
 		</div>
-	  </div>
+		</div>
+	</div>
 
-	  <aside class="hero__panel" aria-label="Informazioni rapide">
-		<div>
-		  <strong>Orari</strong>
-		  <span>Lun - Ven: 8:30 - 12:30 / 15:30 - 19:00</span>
-		</div>
+	<div class="container hero__dock-wrap">
+		<div class="hero__dock" aria-label="Servizi principali">
+		<a href="/articoli-per-la-scuola.html">
+			<span>Scuola</span>
+			<strong>Zaini, quaderni, astucci e materiale scolastico</strong>
+		</a>
 
-		<div>
-		  <strong>Indirizzo</strong>
-		  <span>Viale Matteotti, 593 - Cesena</span>
-		</div>
+		<a href="/articoli-per-l-ufficio.html">
+			<span>Ufficio</span>
+			<strong>Carta, toner, cartucce e forniture professionali</strong>
+		</a>
 
-		<div>
-		  <strong>Per aziende</strong>
-		  <span>Forniture, consegne e prodotti per ufficio</span>
+		<a href="/servizi.html">
+			<span>Servizi</span>
+			<strong>PEC, firma digitale, fotocopie e spedizioni</strong>
+		</a>
+
+		<a href="/contatti.html">
+			<span>Sede</span>
+			<strong>Viale Matteotti, 593 · Cesena</strong>
+		</a>
 		</div>
-	  </aside>
 	</div>
   </section>
 
   <section class="section section--white">
-	<div class="container intro">
-	  <span class="eyebrow">Negozio locale, servizio vero</span>
-	  <h2>Tutto quello che serve per scuola, ufficio e lavoro quotidiano</h2>
-	  <p>
-		Buffetti Cucchi unisce l’assortimento di una cartoleria specializzata con servizi utili
-		per cittadini, professionisti e aziende: stampa documenti, rilegature, spedizioni,
-		forniture per uffici, prodotti Buffetti e marchi selezionati.
-	  </p>
-	</div>
+    <div class="container split">
+      <div class="split__content">
+        <span class="eyebrow">Per privati e aziende</span>
+        <h2>Un punto unico per acquisti, documenti e servizi</h2>
+        <p>
+          Che tu debba acquistare materiale scolastico, ordinare prodotti per l’ufficio,
+          stampare documenti o richiedere servizi digitali, trovi assistenza diretta in negozio.
+        </p>
+
+        <ul>
+          <li>Cancelleria e prodotti Buffetti</li>
+          <li>Servizi di stampa, fotocopia e rilegatura</li>
+          <li>Spedizioni e ritiro merce con corrieri convenzionati</li>
+          <li>Forniture per uffici, studi professionali e aziende</li>
+        </ul>
+
+        <a class="btn btn--primary" href="/servizi.html">Vedi tutti i servizi</a>
+      </div>
+
+      <div class="split__image">
+        <img src="/images/hero-servizi.webp" alt="Servizi di fotocopia e stampa documenti" loading="lazy" />
+      </div>
+    </div>
   </section>
 
-  <section class="section categories-section">
-	<div class="container">
-	  <div class="section-head">
-		<span class="eyebrow">Cosa trovi in negozio</span>
-		<h2>Prodotti e servizi principali</h2>
-	  </div>
+  <section class="section location-section">
+  <div class="container location">
+    <div class="location__content">
+      <span class="eyebrow">Dove siamo</span>
 
-	  <div class="categories">
-		<article>
-		  <span>01</span>
-		  <h3>Articoli per la scuola</h3>
-		  <p>Zaini, astucci, quaderni, penne, diari e prodotti per affrontare l’anno scolastico.</p>
-		  <a href="/articoli-per-la-scuola.html">Scopri articoli scuola</a>
-		</article>
+      <h2>Passa in negozio a Cesena</h2>
 
-		<article>
-		  <span>02</span>
-		  <h3>Forniture per ufficio</h3>
-		  <p>Carta, raccoglitori, toner, cartucce, macchine per ufficio e materiali professionali.</p>
-		  <a href="/articoli-per-l-ufficio.html">Scopri articoli ufficio</a>
-		</article>
+      <p>
+        Ci trovi in Viale Matteotti, 593, in zona Ippodromo. Puoi raggiungerci facilmente
+        per acquistare prodotti, richiedere servizi o ritirare forniture per il tuo ufficio.
+      </p>
 
-		<article>
-		  <span>03</span>
-		  <h3>Servizi Buffetti</h3>
-		  <p>Fotocopie, rilegature, timbri, spedizioni, PEC, smart card e firma digitale.</p>
-		  <a href="/servizi.html">Scopri i servizi</a>
-		</article>
-	  </div>
-	</div>
-  </section>
+      <div class="location__info">
+        <div>
+          <span>Indirizzo</span>
+          <strong>Viale Matteotti, 593 · Cesena</strong>
+        </div>
 
-  <section class="section section--white">
-	<div class="container split">
-	  <div class="split__content">
-		<span class="eyebrow">Per privati e aziende</span>
-		<h2>Un punto unico per acquisti, documenti e servizi</h2>
-		<p>
-		  Che tu debba acquistare materiale scolastico, ordinare prodotti per l’ufficio,
-		  stampare documenti o richiedere servizi digitali, trovi assistenza diretta in negozio.
-		</p>
+        <div>
+          <span>Telefono</span>
+          <strong>{site.phone}</strong>
+        </div>
 
-		<ul>
-		  <li>Cancelleria e prodotti Buffetti</li>
-		  <li>Servizi di stampa, fotocopia e rilegatura</li>
-		  <li>Spedizioni e ritiro merce con corrieri convenzionati</li>
-		  <li>Forniture per uffici, studi professionali e aziende</li>
-		</ul>
+        <div>
+          <span>Orari</span>
+          <strong>Lun - Ven 8:30 - 12:30 / 15:30 - 19:00</strong>
+        </div>
+      </div>
 
-		<a class="btn btn--primary" href="/servizi.html">Vedi tutti i servizi</a>
-	  </div>
+      <div class="location__actions">
+        <a class="btn btn--primary" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+          Apri Google Maps
+        </a>
 
-	  <div class="split__image">
-		<img src="/images/hero-servizi.webp" alt="Servizi di fotocopia e stampa documenti" loading="lazy" />
-	  </div>
-	</div>
-  </section>
+        <a class="btn btn--ghost" href={site.phoneHref}>
+          Chiama il negozio
+        </a>
+      </div>
+    </div>
+
+    <div class="location__map" aria-label="Mappa Buffetti Cucchi Cesena">
+      <iframe
+        src={site.mapsEmbedUrl}
+        title="Mappa Buffetti Cucchi Cesena"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>
 </BaseLayout>
 
 <style>
   .hero {
-	position: relative;
-	min-height: 680px;
-	display: grid;
-	align-items: center;
-	overflow: hidden;
-	background: var(--color-primary-dark);
-  }
+  position: relative;
+  min-height: 680px;
+  display: grid;
+  align-items: center;
+  overflow: visible;
+  color: #fff;
+  background: var(--color-primary-dark);
+}
 
-  .hero__media {
-	position: absolute;
-	inset: 0;
-  }
+.hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
 
-  .hero__media::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background:
-	  linear-gradient(90deg, rgba(0, 31, 69, 0.9), rgba(0, 31, 69, 0.5), rgba(0, 31, 69, 0.14)),
-	  linear-gradient(0deg, rgba(0, 31, 69, 0.5), transparent 50%);
-  }
+.hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(0, 24, 56, 0.92) 0%, rgba(0, 31, 69, 0.76) 42%, rgba(0, 31, 69, 0.24) 78%),
+    linear-gradient(0deg, rgba(0, 24, 56, 0.74) 0%, rgba(0, 24, 56, 0.12) 55%);
+}
 
-  .hero__media img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 18% 42%, rgba(0, 166, 232, 0.2), transparent 30%),
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.08), transparent 22%);
+  pointer-events: none;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 3;
+  padding: 120px 0 150px;
+}
+
+.hero__content {
+  max-width: 690px;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  margin-bottom: 22px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: #dff5ff;
+  background: rgba(0, 166, 232, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 0.78rem;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+}
+
+.hero h1 {
+  max-width: 680px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.9rem, 5.4vw, 5.15rem);
+  line-height: 0.96;
+  letter-spacing: -0.052em;
+  text-wrap: balance;
+  text-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+}
+
+.hero p {
+  max-width: 590px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(1rem, 1.25vw, 1.13rem);
+  line-height: 1.75;
+}
+
+.hero__actions {
+  margin-top: 34px;
+  display: flex;
+  gap: 13px;
+  flex-wrap: wrap;
+}
+
+.btn--light {
+  color: var(--color-primary-dark);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.hero__dock-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 4;
+  transform: translate(-50%, 50%);
+}
+
+.hero__dock {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(0, 59, 122, 0.12);
+  box-shadow: 0 24px 70px rgba(0, 31, 69, 0.2);
+}
+
+.hero__dock a {
+  min-height: 116px;
+  padding: 24px;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  border-right: 1px solid rgba(0, 59, 122, 0.1);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hero__dock a:last-child {
+  border-right: 0;
+}
+
+.hero__dock a:hover {
+  background: rgba(0, 166, 232, 0.08);
+}
+
+.hero__dock span {
+  color: var(--color-accent);
+  font-size: 0.76rem;
+  font-weight: var(--weight-heavy);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.hero__dock strong {
+  color: var(--color-primary-dark);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+}
+
+.hero + .section {
+  padding-top: 142px;
+}
+
+@media (max-width: 980px) {
+  .hero {
+    min-height: 650px;
   }
 
   .hero__inner {
-	position: relative;
-	z-index: 1;
-	display: grid;
-	grid-template-columns: minmax(0, 1.15fr) 360px;
-	gap: 28px;
-	align-items: end;
+    padding: 110px 0 140px;
   }
 
-  .hero__content {
-	max-width: 760px;
-	padding: 44px;
-	border-radius: 34px;
-	color: #fff;
-	background: rgba(255, 255, 255, 0.13);
-	border: 1px solid rgba(255, 255, 255, 0.18);
-	backdrop-filter: blur(18px);
-	box-shadow: var(--shadow-soft);
+  .hero__dock {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .eyebrow {
-	display: inline-flex;
-	margin-bottom: 16px;
-	color: var(--color-accent);
-	font-weight: var(--weight-bold);
-	font-size: 0.78rem;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
+  .hero__dock a {
+    min-height: 104px;
   }
 
-  .hero .eyebrow {
-	color: #dff5ff;
-	padding: 8px 12px;
-	border-radius: 999px;
-	background: rgba(0, 166, 232, 0.22);
+  .hero__dock a:nth-child(2) {
+    border-right: 0;
+  }
+
+  .hero__dock a:nth-child(1),
+  .hero__dock a:nth-child(2) {
+    border-bottom: 1px solid rgba(0, 59, 122, 0.1);
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    min-height: auto;
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    padding: 92px 0 34px;
   }
 
   .hero h1 {
-	margin: 0;
-	max-width: 720px;
-	font-size: clamp(2.7rem, 5.8vw, 5.6rem);
-	line-height: 0.92;
-	letter-spacing: -0.055em;
+    font-size: clamp(2.45rem, 12vw, 3.7rem);
   }
 
   .hero p {
-	max-width: 620px;
-	margin: 24px 0 0;
-	color: rgba(255, 255, 255, 0.86);
-	font-size: 1.08rem;
-	line-height: 1.75;
+    max-width: 100%;
   }
 
-  .hero__actions {
-	margin-top: 32px;
-	display: flex;
-	gap: 12px;
-	flex-wrap: wrap;
+  .hero__dock-wrap {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin-top: -8px;
+    padding-bottom: 28px;
   }
 
-  .hero__panel {
-	display: grid;
-	gap: 12px;
-	padding: 20px;
-	border-radius: 26px;
-	background: rgba(255, 255, 255, 0.92);
-	box-shadow: var(--shadow-soft);
+  .hero__dock {
+    grid-template-columns: 1fr;
+    border-radius: 22px;
   }
 
-  .hero__panel div {
-	padding: 16px;
-	border-radius: 18px;
-	background: rgba(0, 59, 122, 0.06);
+  .hero__dock a {
+    min-height: auto;
+    padding: 18px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(0, 59, 122, 0.1);
   }
 
-  .hero__panel strong,
-  .hero__panel span {
-	display: block;
+  .hero__dock a:last-child {
+    border-bottom: 0;
   }
 
-  .hero__panel strong {
-	color: var(--color-primary-dark);
-	font-size: 0.95rem;
+  .hero + .section {
+    padding-top: 64px;
   }
-
-  .hero__panel span {
-	margin-top: 4px;
-	color: var(--color-muted);
-	font-size: 0.92rem;
-	line-height: 1.5;
-  }
+}
 
   .intro {
-	max-width: 880px;
-	text-align: center;
+    max-width: 880px;
+    text-align: center;
   }
 
   .intro h2,
   .section-head h2,
   .split h2 {
-	margin: 0;
-	color: var(--color-primary-dark);
-	font-size: clamp(2rem, 4vw, 3.5rem);
-	line-height: 1;
-	letter-spacing: -0.045em;
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
   }
 
   .intro p {
-	margin: 22px auto 0;
-	color: var(--color-muted);
-	font-size: 1.06rem;
-	line-height: 1.8;
+    margin: 22px auto 0;
+    color: var(--color-muted);
+    font-size: 1.06rem;
+    line-height: 1.8;
   }
 
   .section-head {
-	max-width: 760px;
-	margin-bottom: 30px;
+    max-width: 760px;
+    margin-bottom: 30px;
   }
 
   .categories {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
   }
 
   .categories article {
-	position: relative;
-	overflow: hidden;
-	padding: 30px;
-	min-height: 245px;
-	border-radius: var(--radius-md);
-	background: #fff;
-	box-shadow: var(--shadow-card);
-	border: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    min-height: 245px;
+    border-radius: var(--radius-md);
+    background: #fff;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--color-border);
   }
 
   .categories article::after {
-	content: "";
-	position: absolute;
-	right: -40px;
-	bottom: -40px;
-	width: 140px;
-	height: 140px;
-	border-radius: 999px;
-	background: rgba(0, 166, 232, 0.12);
+    content: "";
+    position: absolute;
+    right: -40px;
+    bottom: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 999px;
+    background: rgba(0, 166, 232, 0.12);
   }
 
   .categories span {
-	display: inline-flex;
-	margin-bottom: 34px;
-	color: var(--color-accent);
-	font-weight: var(--weight-bold);
+    display: inline-flex;
+    margin-bottom: 34px;
+    color: var(--color-accent);
+    font-weight: var(--weight-heavy);
   }
 
   .categories h3 {
-	margin: 0;
-	color: var(--color-primary);
-	font-size: 1.45rem;
-	letter-spacing: -0.025em;
+    margin: 0;
+    color: var(--color-primary);
+    font-size: 1.45rem;
+    letter-spacing: -0.025em;
   }
 
   .categories p {
-	margin: 14px 0 22px;
-	color: var(--color-muted);
-	line-height: 1.7;
+    margin: 14px 0 22px;
+    color: var(--color-muted);
+    line-height: 1.7;
   }
 
   .categories a {
-	color: var(--color-primary);
-	font-weight: var(--weight-bold);
+    color: var(--color-primary);
+    font-weight: var(--weight-bold);
   }
 
   .split {
-	display: grid;
-	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-	gap: 42px;
-	align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 42px;
+    align-items: center;
   }
 
   .split__content p {
-	color: var(--color-muted);
-	line-height: 1.8;
-	font-size: 1.04rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    font-size: 1.04rem;
   }
 
   .split__content ul {
-	margin: 26px 0;
-	padding: 0;
-	list-style: none;
-	display: grid;
-	gap: 12px;
+    margin: 26px 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 12px;
   }
 
   .split__content li {
-	position: relative;
-	padding-left: 28px;
-	color: var(--color-text);
-	font-weight: 700;
+    position: relative;
+    padding-left: 28px;
+    color: var(--color-text);
+    font-weight: var(--weight-semibold);
   }
 
   .split__content li::before {
-	content: "✓";
-	position: absolute;
-	left: 0;
-	top: 0;
-	color: var(--color-accent);
-	font-weight: var(--weight-bold);
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-accent);
+    font-weight: var(--weight-heavy);
   }
 
   .split__image {
-	overflow: hidden;
-	border-radius: 34px;
-	box-shadow: var(--shadow-soft);
-	min-height: 440px;
-	background: #dce8f5;
+    overflow: hidden;
+    border-radius: 34px;
+    box-shadow: var(--shadow-soft);
+    min-height: 440px;
+    background: #dce8f5;
   }
 
   .split__image img {
-	width: 100%;
-	height: 100%;
-	min-height: 440px;
-	object-fit: cover;
+    width: 100%;
+    height: 100%;
+    min-height: 440px;
+    object-fit: cover;
   }
 
-  @media (max-width: 960px) {
-	.hero {
-	  min-height: auto;
-	  padding: 150px 0 42px;
-	  align-items: end;
-	}
+  .location-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0, 166, 232, 0.12), transparent 28%),
+    linear-gradient(180deg, #f6f8fb 0%, #ffffff 100%);
+}
 
-	.hero__inner,
-	.split {
-	  grid-template-columns: 1fr;
-	}
+.location {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 42px;
+  align-items: center;
+}
 
-	.hero__panel {
-	  grid-template-columns: repeat(3, 1fr);
-	}
+.location__content {
+  max-width: 560px;
+}
 
-	.categories {
-	  grid-template-columns: 1fr;
-	}
+.location__content h2 {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+}
+
+.location__content p {
+  margin: 22px 0 0;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.location__info {
+  margin: 28px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.location__info div {
+  padding: 15px 17px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(0, 59, 122, 0.1);
+  box-shadow: 0 12px 30px rgba(0, 31, 69, 0.06);
+}
+
+.location__info span,
+.location__info strong {
+  display: block;
+}
+
+.location__info span {
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  font-weight: var(--weight-heavy);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.location__info strong {
+  margin-top: 4px;
+  color: var(--color-primary-dark);
+  font-size: 0.96rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.45;
+}
+
+.location__actions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.location__map {
+  position: relative;
+  overflow: hidden;
+  min-height: 430px;
+  border-radius: 34px;
+  background: #dce8f5;
+  border: 1px solid rgba(0, 59, 122, 0.12);
+  box-shadow: var(--shadow-soft);
+}
+
+.location__map::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 12% 18%, rgba(0, 166, 232, 0.16), transparent 28%);
+}
+
+.location__map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  display: block;
+  border: 0;
+  filter: saturate(0.9) contrast(0.95);
+}
+
+  @media (max-width: 980px) {
+    .hero {
+      min-height: auto;
+      padding-top: 96px;
+    }
+
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: 34px;
+      padding-bottom: 34px;
+    }
+
+    .hero__cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero__strip,
+    .categories,
+    .split {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__strip {
+      border-radius: 24px 24px 0 0;
+    }
+
+    .hero__strip div {
+      border-right: 0;
+      border-bottom: 1px solid rgba(0, 59, 122, 0.1);
+    }
+
+    .hero__strip div:last-child {
+      border-bottom: 0;
+    }
   }
 
   @media (max-width: 680px) {
-	.hero {
-	  padding-top: 120px;
-	}
+    .hero {
+      padding-top: 72px;
+    }
 
-	.hero__content {
-	  padding: 28px;
-	  border-radius: 26px;
-	}
+    .hero h1 {
+      font-size: clamp(2.8rem, 15vw, 4.4rem);
+    }
 
-	.hero h1 {
-	  font-size: clamp(2.3rem, 14vw, 4rem);
-	}
+    .hero p {
+      font-size: 1rem;
+    }
 
-	.hero__panel {
-	  grid-template-columns: 1fr;
-	}
+    .hero__cards {
+      grid-template-columns: 1fr;
+    }
 
-	.split__image,
-	.split__image img {
-	  min-height: 300px;
-	}
+    .split__image,
+    .split__image img {
+      min-height: 300px;
+    }
   }
 </style>

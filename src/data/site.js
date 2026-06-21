@@ -8,6 +8,7 @@ export const site = {
   email: 'cucchisas@gmail.com',
   emailHref: 'mailto:cucchisas@gmail.com',
   mapsUrl: 'https://maps.app.goo.gl/GsiLdDPJrU18BGhi6',
+  mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2307.8286140717787!2d12.226305725357731!3d44.14113759301743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132ca4ebe9aa7941%3A0x859c686253fc76ca!2sBuffetti%20Cucchi%20Sas%20-%20Cartoleria%20e%20articoli%20da%20ufficio!5e1!3m2!1sit!2sit!4v1740477128745!5m2!1sit!2sit',
   facebook: 'https://www.facebook.com/CucchiSas',
   instagram: 'https://www.instagram.com/cucchi_sas_cesena_buffetti_/',
   developerUrl: 'https://tbagnolini.netlify.app/',

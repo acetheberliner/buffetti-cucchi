@@ -1,9 +1,9 @@
 # DA FARE SUBITO
 
 - [x] Cambiare font
-- [ ] Cambiare CTA e buttons
+- [x] Cambiare CTA e buttons
 - [ ] Cambiare Titoli
-- [ ] Cambiare Hero home
+- [x] Cambiare Hero home
 - [ ] Sistemare spacing
 - [ ] Cambiare sezione prodotti e servizi in home
 - [ ] Grande CTA per chiamare
