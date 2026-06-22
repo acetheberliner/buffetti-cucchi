@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import { productCategories } from '../data/catalog';
 import BrandShowcase from './BrandShowcase.astro';
 import ProductShowcase from './ProductShowcase.astro';
 
@@ -32,6 +33,12 @@ import {
 const { page } = Astro.props;
 
 const groups = page.productGroups ?? page.cards ?? [];
+const relatedCategories = productCategories.filter((category) =>
+  page.catalogSlugs?.includes(category.slug)
+);
+const heroVisual =
+  page.heroVisual ?? page.showcase?.items?.[0]?.image ?? page.focusImage ?? page.heroImage;
+const categoryBySlug = new Map(productCategories.map((category) => [category.slug, category]));
 
 const icons = {
   archive: Archive,
@@ -80,6 +87,10 @@ const icons = {
           </a>
         </div>
       </div>
+
+      <div class="page-hero__showcase" aria-hidden="true">
+        <img src={heroVisual} alt="" />
+      </div>
     </div>
   </section>
 
@@ -95,16 +106,30 @@ const icons = {
     <div class="container products-grid">
       {groups.map((group, index) => {
         const Icon = icons[group.icon] ?? BadgeCheck;
+        const groupCategory = categoryBySlug.get(group.slug);
+        const groupImage = group.image ?? groupCategory?.image;
 
         return (
-          <article class="product-card">
-            <div class="product-card__top">
-              <span>{String(index + 1).padStart(2, '0')}</span>
+          <article class="product-card" id={group.slug}>
+            {groupImage ? (
+              <div class="product-card__media">
+                <img src={groupImage} alt={group.title} loading="lazy" />
 
-              <div class="product-card__icon-wrap">
-                <Icon />
+                <div class="product-card__top">
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <div class="product-card__icon-wrap">
+                    <Icon />
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div class="product-card__top product-card__top--plain">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <div class="product-card__icon-wrap">
+                  <Icon />
+                </div>
+              </div>
+            )}
 
             <h3>{group.title}</h3>
             <p>{group.text}</p>
@@ -121,6 +146,35 @@ const icons = {
       })}
     </div>
   </section>
+
+  {relatedCategories.length > 0 ? (
+    <section class="section category-rail-section">
+      <div class="container category-rail">
+        <div class="category-rail__head">
+          <span class="eyebrow">Catalogo Buffetti</span>
+          <h2>Sottocategorie collegate</h2>
+          <p>
+            Una mappa rapida delle famiglie prodotto del gruppo, riadattata alle richieste piu comuni del negozio.
+          </p>
+        </div>
+
+        <div class="category-rail__grid">
+          {relatedCategories.map((category) => (
+            <a class="category-tile" href={category.href}>
+              <img src={category.image} alt={category.label} loading="lazy" />
+              <strong>{category.label}</strong>
+              <span>{category.summary}</span>
+              <ul>
+                {category.items.slice(0, 5).map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : null}
 
   <ProductShowcase showcase={page.showcase} />
 
@@ -218,11 +272,34 @@ const icons = {
   .page-hero__inner {
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.48fr);
+    gap: 42px;
+    align-items: center;
   }
 
   .page-hero__content {
     max-width: 720px;
     color: #fff;
+  }
+
+  .page-hero__showcase {
+    min-height: 330px;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    border: 0;
+    border-radius: 0;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.34) 42%, transparent 68%);
+    box-shadow: none;
+  }
+
+  .page-hero__showcase img {
+    width: min(100%, 340px);
+    max-height: 270px;
+    object-fit: contain;
+    filter: drop-shadow(0 28px 38px rgba(0, 31, 69, 0.24));
   }
 
   .eyebrow {
@@ -307,6 +384,108 @@ const icons = {
       linear-gradient(180deg, #f6fbff, #ffffff);
   }
 
+  .category-rail-section {
+    background: #fff;
+  }
+
+  .category-rail {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.45fr) minmax(0, 1fr);
+    gap: 38px;
+    align-items: start;
+  }
+
+  .category-rail__head {
+    position: sticky;
+    top: 226px;
+  }
+
+  .category-rail h2 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.048em;
+  }
+
+  .category-rail__head p {
+    margin: 18px 0 0;
+    color: var(--color-muted);
+    line-height: 1.75;
+  }
+
+  .category-rail__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .category-tile {
+    min-height: 250px;
+    padding: 22px;
+    border: 1px solid #dce6f1;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 16px 42px rgba(0, 31, 69, 0.07);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+
+  .category-tile > img {
+    width: 100%;
+    height: 132px;
+    object-fit: contain;
+    margin-bottom: 18px;
+    padding: 0;
+    background: transparent;
+  }
+
+  .category-tile:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 0, 232, 0.28);
+  }
+
+  .category-tile strong {
+    display: block;
+    color: #0000e8;
+    font-size: 1.18rem;
+    line-height: 1.15;
+  }
+
+  .category-tile > span {
+    display: block;
+    margin-top: 10px;
+    color: var(--color-muted);
+    line-height: 1.55;
+  }
+
+  .category-tile ul {
+    margin: 18px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .category-tile li {
+    position: relative;
+    padding-left: 16px;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 720;
+    line-height: 1.35;
+  }
+
+  .category-tile li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.58em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: #00a6e8;
+  }
+
   .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -317,11 +496,13 @@ const icons = {
     position: relative;
     overflow: hidden;
     min-height: 370px;
-    padding: 28px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(204, 221, 237, 0.9);
-    box-shadow: 0 22px 65px rgba(15, 38, 67, 0.08);
+    padding: 22px;
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.9)),
+      radial-gradient(circle at 88% 12%, rgba(0, 166, 232, 0.12), transparent 36%);
+    border: 1px solid rgba(204, 221, 237, 0.84);
+    box-shadow: 0 18px 48px rgba(15, 38, 67, 0.075);
     transition:
       transform 0.24s ease,
       box-shadow 0.24s ease,
@@ -333,8 +514,8 @@ const icons = {
     position: absolute;
     right: -58px;
     bottom: -58px;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 999px;
     background: rgba(0, 166, 232, 0.11);
   }
@@ -345,13 +526,41 @@ const icons = {
     box-shadow: 0 32px 90px rgba(15, 38, 67, 0.13);
   }
 
-  .product-card__top {
+  .product-card__media {
     position: relative;
     z-index: 1;
+    height: 164px;
+    display: grid;
+    place-items: center;
+    margin: 0 0 24px;
+    padding: 18px 18px 34px;
+    border-radius: 0;
+    background:
+      radial-gradient(circle at 50% 52%, rgba(0, 166, 232, 0.12), transparent 54%);
+  }
+
+  .product-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 22px rgba(0, 31, 69, 0.1));
+  }
+
+  .product-card__top {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 34px;
+    margin: 0;
+  }
+
+  .product-card__top--plain {
+    position: relative;
+    margin-bottom: 26px;
   }
 
   .product-card__top > span {
@@ -360,15 +569,15 @@ const icons = {
   }
 
   .product-card__icon-wrap {
-    width: 54px;
-    height: 54px;
+    width: 48px;
+    height: 48px;
     display: grid;
     place-items: center;
-    border-radius: 20px;
+    border-radius: 999px;
     color: var(--color-primary);
     background:
       radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.82), transparent 32%),
-      linear-gradient(135deg, rgba(0, 166, 232, 0.24), rgba(0, 75, 141, 0.1));
+      linear-gradient(135deg, rgba(0, 166, 232, 0.2), rgba(0, 75, 141, 0.08));
   }
 
   .product-card__icon-wrap svg {
@@ -551,9 +760,23 @@ const icons = {
       padding: 138px 0 58px;
     }
 
+    .page-hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .page-hero__showcase {
+      min-height: 240px;
+      padding: 24px;
+    }
+
     .split,
+    .category-rail,
     .feature-strip__inner {
       grid-template-columns: 1fr;
+    }
+
+    .category-rail__head {
+      position: static;
     }
 
     .contact-band__inner {
@@ -580,6 +803,10 @@ const icons = {
     }
 
     .products-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .category-rail__grid {
       grid-template-columns: 1fr;
     }
 

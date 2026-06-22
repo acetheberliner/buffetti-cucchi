@@ -1,196 +1,301 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { digitalServices, shopFocusAreas } from '../data/catalog';
 import { site } from '../data/site';
+import { Mail, MapPin, Phone } from '@lucide/astro';
 ---
 
 <BaseLayout
-  title="Contatti Buffetti Cucchi Cesena | Telefono, email e indicazioni"
-  description="Contatta Buffetti Cucchi a Cesena: telefono, email, indirizzo, orari di apertura e indicazioni stradali per raggiungere il negozio."
+  title="Contatti Buffetti Cucchi Cesena | Telefono, email, social e indicazioni"
+  description="Contatta Buffetti Cucchi a Cesena: telefono, email, Facebook, Instagram, indirizzo, orari e indicazioni per raggiungere il negozio."
 >
   <section class="contact-hero">
     <div class="container contact-hero__inner">
-      <span class="eyebrow">Contatti</span>
-      <h1>Vieni a trovarci nella sede di Cesena</h1>
-      <p>
-        La cartoleria si trova in Viale Matteotti, 593, in zona Ippodromo.
-        Puoi chiamare, inviare una email oppure aprire direttamente le indicazioni su Google Maps.
-      </p>
+      <div>
+        <span class="eyebrow">Contatti</span>
+        <h1>Hai bisogno di aiuto o vuoi sapere se un prodotto c'e?</h1>
+        <p>
+          Chiama, scrivi una email, guarda i social o passa in Viale Matteotti.
+          Per prodotti e servizi specifici conviene chiedere prima: risparmi tempo e arrivi gia orientato.
+        </p>
 
-      <div class="contact-hero__actions">
-        <a class="btn btn--primary" href={site.phoneHref}>Chiama ora</a>
-        <a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
-          Apri Google Maps
+        <div class="contact-hero__actions">
+          <a class="btn btn--primary" href={site.phoneHref}>
+            <Phone size={18} stroke-width={2.2} class="cta-icon" />
+            Chiama ora
+          </a>
+          <a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+            <MapPin size={18} stroke-width={2.2} class="cta-icon" />
+            Apri Google Maps
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-panel">
+        <span>Buffetti Cucchi s.a.s.</span>
+        <a href={site.phoneHref}>
+          <Phone size={20} stroke-width={2.3} />
+          <strong>{site.phone}</strong>
+        </a>
+        <a href={site.emailHref}>
+          <Mail size={20} stroke-width={2.3} />
+          <strong>{site.email}</strong>
+        </a>
+        <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+          <MapPin size={20} stroke-width={2.3} />
+          <strong>Viale Matteotti, 593 - Cesena</strong>
         </a>
       </div>
     </div>
   </section>
 
   <section class="section section--white">
-    <div class="container contact-grid">
-      <article>
-        <span>Telefono</span>
-        <h2>{site.phone}</h2>
-        <p>Per informazioni su prodotti, disponibilità, servizi e forniture.</p>
-        <a href={site.phoneHref}>Chiama il negozio</a>
-      </article>
-
-      <article>
-        <span>Email</span>
-        <h2>{site.email}</h2>
-        <p>Per richieste, preventivi e informazioni più dettagliate.</p>
-        <a href={site.emailHref}>Invia una email</a>
-      </article>
-
-      <article>
-        <span>Indirizzo</span>
-        <h2>Viale Matteotti, 593</h2>
-        <p>Zona Ippodromo, 47522 Cesena (FC).</p>
-        <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">Indicazioni stradali</a>
-      </article>
+    <div class="container contact-actions">
+      <a href={site.facebook} target="_blank" rel="noopener noreferrer">
+        <img src="/images/facebook.svg" alt="" loading="lazy" />
+        <strong>Facebook</strong>
+        <span>Pagina del negozio</span>
+      </a>
+      <a href={site.instagram} target="_blank" rel="noopener noreferrer">
+        <img src="/images/instagram.svg" alt="" loading="lazy" />
+        <strong>Instagram</strong>
+        <span>Vetrine, novita e idee</span>
+      </a>
+      <a href={site.emailHref}>
+        <Mail size={26} stroke-width={2.2} />
+        <strong>Email</strong>
+        <span>Richieste e informazioni</span>
+      </a>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container visit">
-      <div>
-        <span class="eyebrow">Orari di apertura</span>
-        <h2>Passa in negozio negli orari di apertura</h2>
+  <section class="section contact-map-section">
+    <div class="container map-layout">
+      <div class="map-copy">
+        <span class="eyebrow">Dove siamo</span>
+        <h2>Passa in negozio a Cesena, zona Ippodromo.</h2>
+        <p>
+          Puoi raggiungere Buffetti Cucchi per acquistare prodotti, chiedere servizi digitali,
+          stampare documenti, ritirare forniture o scegliere articoli per scuola e ufficio.
+        </p>
 
         <div class="hours">
-          <p><strong>Lunedì - Venerdì</strong><span>8:30 - 12:30 / 15:30 - 19:00</span></p>
+          <p><strong>Lunedi - Venerdi</strong><span>8:30 - 12:30 / 15:30 - 19:00</span></p>
           <p><strong>Sabato</strong><span>09:00 - 12:30</span></p>
           <p><strong>Domenica</strong><span>Chiuso</span></p>
         </div>
       </div>
 
-      <div class="map-card">
-        <span>Google Maps</span>
-        <h3>Buffetti Cucchi s.a.s.</h3>
-        <p>Apri le indicazioni stradali per raggiungere rapidamente la sede di Cesena.</p>
-        <a class="btn btn--primary" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
-          Apri indicazioni
-        </a>
+      <div class="map-frame">
+        <iframe
+          src={site.mapsEmbedUrl}
+          title="Mappa Buffetti Cucchi Cesena"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container ask-layout">
+      <div class="section-head">
+        <span class="eyebrow">Cosa puoi chiedere</span>
+        <h2>Prodotti, servizi e supporto pratico</h2>
+      </div>
+
+      <div class="ask-grid">
+        {shopFocusAreas.map((area) => (
+          <article>
+            <img src={area.image} alt="" loading="lazy" />
+            <strong>{area.label}</strong>
+            <p>{area.text}</p>
+          </article>
+        ))}
+        {digitalServices.slice(0, 2).map((service) => (
+          <article>
+            <img src={service.image} alt="" loading="lazy" />
+            <strong>{service.label}</strong>
+            <p>{service.text}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .contact-hero {
-    padding: 150px 0 90px;
-    color: #fff;
-    background:
-      radial-gradient(circle at 85% 20%, rgba(0, 166, 232, 0.28), transparent 30%),
-      linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-  }
-
-  .contact-hero__inner {
-    max-width: 900px;
-  }
-
   .eyebrow {
     display: inline-flex;
     margin-bottom: 16px;
-    color: var(--color-accent);
-    font-weight: var(--weight-bold);
-    font-size: 0.78rem;
+    color: #0000e8;
+    font-size: 0.76rem;
+    font-weight: 840;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
 
-  .contact-hero .eyebrow {
-    color: #dff5ff;
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 96px 0 84px;
+    color: #fff;
+    background: var(--color-primary-dark);
   }
 
-  .contact-hero h1 {
+  .contact-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(0, 25, 58, 0.94), rgba(0, 38, 80, 0.72) 52%, rgba(0, 31, 69, 0.2)),
+      url("/images/hero-contatti.webp") center/cover;
+  }
+
+  .contact-hero__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.52fr);
+    gap: 48px;
+    align-items: center;
+  }
+
+  .contact-hero h1,
+  .map-copy h2,
+  .section-head h2 {
     margin: 0;
-    max-width: 840px;
-    font-size: clamp(2.8rem, 6vw, 5.6rem);
-    line-height: 0.92;
-    letter-spacing: -0.055em;
+    color: var(--color-primary-dark);
+    font-size: clamp(2.45rem, 5vw, 5rem);
+    line-height: 0.94;
+    letter-spacing: -0.052em;
+  }
+
+  .contact-hero p,
+  .map-copy p {
+    max-width: 680px;
+    margin: 22px 0 0;
+    color: var(--color-muted);
+    font-size: 1.06rem;
+    line-height: 1.78;
+  }
+
+  .contact-hero .eyebrow,
+  .contact-hero h1 {
+    color: #fff;
   }
 
   .contact-hero p {
-    max-width: 720px;
-    margin: 24px 0 0;
     color: rgba(255, 255, 255, 0.82);
-    font-size: 1.08rem;
-    line-height: 1.75;
   }
 
   .contact-hero__actions {
-    margin-top: 32px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
   }
 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+  .contact-panel {
+    padding: 28px;
+    border: 1px solid #dfe8f2;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
   }
 
-  .contact-grid article {
-    padding: 30px;
-    border-radius: var(--radius-md);
-    background: #fff;
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-card);
-  }
-
-  .contact-grid span {
-    color: var(--color-accent);
-    font-weight: var(--weight-bold);
+  .contact-panel > span {
+    display: block;
+    margin-bottom: 20px;
+    color: #0000e8;
+    font-weight: 840;
     text-transform: uppercase;
-    font-size: 0.78rem;
     letter-spacing: 0.08em;
   }
 
-  .contact-grid h2 {
-    margin: 18px 0 12px;
+  .contact-panel a {
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     color: var(--color-primary-dark);
-    font-size: 1.35rem;
-    letter-spacing: -0.025em;
+    border-top: 1px solid #eef2f7;
   }
 
-  .contact-grid p {
-    color: var(--color-muted);
-    line-height: 1.7;
+  .contact-panel a:first-of-type {
+    border-top: 0;
   }
 
-  .contact-grid a {
-    color: var(--color-primary);
-    font-weight: var(--weight-bold);
+  .contact-panel svg {
+    color: #0000e8;
+    flex: 0 0 auto;
   }
 
-  .visit {
+  .contact-actions {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 420px;
-    gap: 36px;
-    align-items: stretch;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
   }
 
-  .visit h2 {
-    margin: 0;
+  .contact-actions a {
+    min-height: 120px;
+    padding: 22px;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    align-items: center;
+    gap: 4px 14px;
+    border: 1px solid #dfe8f2;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 16px 44px rgba(0, 31, 69, 0.08);
+  }
+
+  .contact-actions img,
+  .contact-actions svg {
+    width: 26px;
+    height: 26px;
+    grid-row: span 2;
+    color: #0000e8;
+  }
+
+  .contact-actions strong {
     color: var(--color-primary-dark);
-    font-size: clamp(2rem, 4vw, 3.35rem);
-    line-height: 1;
-    letter-spacing: -0.045em;
+    font-size: 1.1rem;
+  }
+
+  .contact-actions span {
+    color: var(--color-muted);
+  }
+
+  .contact-map-section {
+    background: #f5f8fc;
+  }
+
+  .map-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 42px;
+    align-items: center;
+  }
+
+  .map-copy h2,
+  .section-head h2 {
+    font-size: clamp(2rem, 4vw, 3.55rem);
   }
 
   .hours {
-    margin-top: 30px;
+    margin-top: 28px;
     display: grid;
-    gap: 14px;
+    gap: 10px;
   }
 
   .hours p {
     margin: 0;
-    padding: 18px;
-    border-radius: 18px;
+    padding: 16px;
+    border: 1px solid #dfe8f2;
+    border-radius: 8px;
     background: #fff;
-    border: 1px solid var(--color-border);
   }
 
   .hours strong,
@@ -199,52 +304,94 @@ import { site } from '../data/site';
   }
 
   .hours strong {
-    color: var(--color-primary);
+    color: #0000e8;
   }
 
   .hours span {
-    margin-top: 4px;
+    margin-top: 3px;
     color: var(--color-muted);
   }
 
-  .map-card {
-    padding: 34px;
-    border-radius: 34px;
-    color: #fff;
-    background:
-      radial-gradient(circle at 90% 20%, rgba(0, 166, 232, 0.35), transparent 30%),
-      linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    box-shadow: var(--shadow-soft);
+  .map-frame {
+    min-height: 460px;
+    overflow: hidden;
+    border: 1px solid #dfe8f2;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(0, 31, 69, 0.12);
   }
 
-  .map-card span {
-    color: #dff5ff;
-    font-weight: var(--weight-bold);
-    text-transform: uppercase;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
+  .map-frame iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 460px;
+    display: block;
+    border: 0;
   }
 
-  .map-card h3 {
-    margin: 20px 0 12px;
-    font-size: 2rem;
-    letter-spacing: -0.05em;
+  .ask-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.44fr) minmax(0, 1fr);
+    gap: 36px;
+    align-items: start;
   }
 
-  .map-card p {
-    color: rgba(255, 255, 255, 0.78);
-    line-height: 1.7;
-    margin-bottom: 28px;
+  .ask-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
   }
 
-  @media (max-width: 920px) {
-    .contact-grid,
-    .visit {
+  .ask-grid article {
+    min-height: 220px;
+    padding: 22px;
+    border: 1px solid #dfe8f2;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 14px 38px rgba(0, 31, 69, 0.06);
+  }
+
+  .ask-grid img {
+    width: 100%;
+    height: 82px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 14px 18px rgba(0, 31, 69, 0.1));
+  }
+
+  .ask-grid strong {
+    display: block;
+    color: #0000e8;
+    font-size: 1.08rem;
+  }
+
+  .ask-grid p {
+    margin: 10px 0 0;
+    color: var(--color-muted);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 980px) {
+    .contact-hero__inner,
+    .map-layout,
+    .ask-layout {
       grid-template-columns: 1fr;
     }
 
+    .contact-actions,
+    .ask-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
     .contact-hero {
-      padding-top: 125px;
+      padding: 70px 0 58px;
+    }
+
+    .contact-actions,
+    .ask-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
