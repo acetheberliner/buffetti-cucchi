@@ -1,10 +1,11 @@
 ---
 const { brands } = Astro.props;
 const items = brands?.items ?? [];
+const hasImages = items.some((brand: { image?: string }) => brand.image);
 ---
 
 {items.length > 0 && (
-  <section class="brand-showcase">
+  <section class={`brand-showcase ${hasImages ? 'brand-showcase--visual' : ''}`}>
     <div class="container brand-showcase__inner">
       <div class="brand-showcase__head">
         <span class="eyebrow">{brands.label}</span>
@@ -13,14 +14,21 @@ const items = brands?.items ?? [];
       </div>
 
       <div class="brand-showcase__list" aria-label={brands.title}>
-        {items.map((brand: { logo: string | null | undefined; name: string; }) => (
-          <div class="brand-showcase__item">
-            {brand.logo ? (
+        {items.map((brand: { image?: string; logo?: string | null; name: string; alt?: string; }) => (
+          <figure class="brand-showcase__item">
+            {brand.image ? (
+              <>
+                <div class="brand-showcase__image">
+                  <img src={brand.image} alt={brand.alt ?? brand.name} loading="lazy" />
+                </div>
+                <figcaption>{brand.name}</figcaption>
+              </>
+            ) : brand.logo ? (
               <img src={brand.logo} alt={brand.name} loading="lazy" />
             ) : (
               <span>{brand.name}</span>
             )}
-          </div>
+          </figure>
         ))}
       </div>
     </div>
@@ -70,6 +78,7 @@ const items = brands?.items ?? [];
 
   .brand-showcase__item {
     position: relative;
+    margin: 0;
     display: inline-flex;
     align-items: center;
     min-height: 54px;
@@ -103,6 +112,58 @@ const items = brands?.items ?? [];
     object-fit: contain;
   }
 
+  .brand-showcase--visual .brand-showcase__inner {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    align-items: start;
+  }
+
+  .brand-showcase--visual .brand-showcase__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .brand-showcase--visual .brand-showcase__item {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    color: var(--color-primary-dark);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .brand-showcase--visual .brand-showcase__item::after {
+    display: none;
+  }
+
+  .brand-showcase__image {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    padding: 16px;
+    border: 1px solid rgba(0, 54, 110, 0.08);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(0, 31, 69, 0.08);
+  }
+
+  .brand-showcase__image img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .brand-showcase__item figcaption {
+    line-height: 1.25;
+  }
+
   @media (max-width: 920px) {
     .brand-showcase__inner {
       grid-template-columns: 1fr;
@@ -117,6 +178,17 @@ const items = brands?.items ?? [];
 
     .brand-showcase__list {
       gap: 14px 22px;
+    }
+
+    .brand-showcase--visual .brand-showcase__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 460px) {
+    .brand-showcase--visual .brand-showcase__list {
+      grid-template-columns: 1fr;
     }
   }
 </style>

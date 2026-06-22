@@ -23,6 +23,7 @@ import {
   Ruler,
   Scissors,
   ShieldCheck,
+  Phone,
   Stamp,
   Truck,
   Wallet,
@@ -63,7 +64,6 @@ const icons = {
 
     <div class="container page-hero__inner">
       <div class="page-hero__content">
-        <span class="eyebrow">{page.eyebrow}</span>
 
         <h1>{page.heroTitle}</h1>
 
@@ -71,8 +71,8 @@ const icons = {
 
         <div class="page-hero__actions">
           <a class="btn btn--primary" href={site.phoneHref}>
+            <Phone size={18} stroke-width={2.2} class="cta-icon" />
             Chiama ora
-            <ArrowRight />
           </a>
 
           <a class="btn btn--ghost" href="/contatti.html">
@@ -295,6 +295,10 @@ const icons = {
     color: var(--color-muted);
     font-size: 1.06rem;
     line-height: 1.8;
+  }
+
+  .cta-icon {
+    margin-right: 5px;
   }
 
   .products-section {

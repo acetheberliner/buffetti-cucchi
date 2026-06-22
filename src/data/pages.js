@@ -64,41 +64,41 @@ export const pages = {
 
     showcase: {
       label: 'Carta e buste',
-      title: 'Carta per stampare, archiviare e lavorare meglio',
+      title: 'Carta Buffetti per fotocopie e stampe di ogni giorno',
       text:
-        'Tra i prodotti più richiesti trovi carta per uso quotidiano, risme per ufficio, buste per corrispondenza e soluzioni cartacee per attività, studi e professionisti.',
+        'Tra i prodotti più richiesti trovi confezioni da 5 risme Buffetti per fotocopie, stampanti Laser e Ink-Jet, adatte a uffici, studi professionali e attività con esigenze di stampa continuative.',
       items: [
         {
-          image: '/images/cancelleria/carta-buffetti-gialla.webp',
-          badge: 'Uso quotidiano',
-          title: 'Carta copy per ufficio',
+          image: '/images/cancelleria/carta-buffetti-gialla.png',
+          badge: '80 g',
+          title: 'Conf. 5 risme carta per fotocopie Buffetti Gold - A4 - 80 g',
           text:
-            'Ideale per stampe, fotocopie e documenti di ogni giorno. Una soluzione pratica per chi ha bisogno di continuità e affidabilità.',
-          specs: ['Formato A4', 'Per stampanti e fotocopiatrici', 'Adatta a uso domestico e professionale'],
+            'Carta con elevato punto di bianco, pensata per ottenere una resa perfetta su testi, presentazioni, stampe grafiche e immagini. Certificata FSC, prodotta con cellulosa ECF e conforme alla norma ISO 9706 Long Life.',
+          specs: ['Cod. 004907CNF', 'Colore bianco', 'Formato A4 - 21x29,7 cm', '500 fogli per risma', 'Peso 80 g/mq'],
         },
         {
-          image: '/images/cancelleria/carta-buffetti-rosa.webp',
-          badge: 'Alta resa',
-          title: 'Carta premium per documenti',
+          image: '/images/cancelleria/carta-buffetti-rosa.png',
+          badge: '75 g',
+          title: 'Conf. 5 risme carta per fotocopie Buffetti Universal - A4 - 75 g',
           text:
-            'Pensata per presentazioni, documenti curati e stampe più definite, quando serve un risultato più ordinato e professionale.',
-          specs: ['Stampa più pulita', 'Buona resa del colore', 'Perfetta per uffici e studi'],
+            'Carta da 75 g ideale per alti volumi, con ottimo punto di bianco e spessore equivalente ai supporti di grammatura superiore. Certificata FSC, prodotta con cellulosa sbiancata senza cloro e utilizzabile per fotocopie, stampanti Laser e Ink-Jet.',
+          specs: ['Cod. 004918CNF', 'Colore bianco', 'Formato A4 - 21x29,7 cm', '500 fogli per risma', 'Peso 75 g/mq'],
         },
       ],
     },
 
     brands: {
-      label: 'Marchi e linee disponibili',
-      title: 'Prodotti selezionati per qualità, praticità e continuità',
+      label: 'In vetrina',
+      title: 'Categorie utili da vedere e scegliere in negozio',
       text:
-        'In negozio trovi articoli Buffetti e linee dedicate alla scrittura, alla carta, all’archiviazione e all’organizzazione quotidiana.',
+        'Una selezione visiva dei prodotti più richiesti per scrivere, stampare, disegnare, archiviare e organizzare il lavoro quotidiano.',
       items: [
-        { name: 'Buffetti' },
-        { name: 'B4 Disegno' },
-        { name: 'Carta Copy' },
-        { name: 'Archiviazione' },
-        { name: 'Scrittura' },
-        { name: 'Ufficio' },
+        { name: 'Buffetti', image: '/images/logo-buffetti.png' },
+        { name: 'B4 Disegno', image: '/images/cancelleria/brand/b4-disegno.png' },
+        { name: 'Carta Copy', image: '/images/cancelleria/carta-buffetti-gialla.png' },
+        { name: 'Archiviazione', image: '/images/cancelleria/brand/archiviazione.png' },
+        { name: 'Scrittura', image: '/images/cancelleria/brand/scrittura.png' },
+        { name: 'Ufficio', image: '/images/cancelleria/brand/ufficio.png' },
       ],
     },
 
@@ -185,18 +185,43 @@ export const pages = {
       },
     ],
 
-    brands: {
-      label: 'Linee scuola',
-      title: 'Prodotti pensati per accompagnare studio e organizzazione',
+    showcase: {
+      label: 'Scuola in evidenza',
+      title: 'Articoli pratici per preparare zaino, banco e studio',
       text:
-        'La selezione cambia durante l’anno e segue le esigenze più comuni di studenti, famiglie e insegnanti.',
+        'Una selezione pensata per il rientro e per tutto l’anno scolastico, con prodotti utili per organizzare lezioni, compiti, disegno e materiale quotidiano.',
       items: [
-        { name: 'Buffetti' },
-        { name: 'Quaderni' },
-        { name: 'Diari' },
-        { name: 'Astucci' },
-        { name: 'Disegno tecnico' },
-        { name: 'Cartoleria scuola' },
+        {
+          image: '/images/scuola/product/zaini-astucci.svg',
+          badge: 'Organizzazione',
+          title: 'Zaini, astucci e accessori scuola',
+          text:
+            'Soluzioni comode per tenere in ordine penne, colori, quaderni e piccoli strumenti, con proposte adatte a diverse età e abitudini di studio.',
+          specs: ['Zaini e astucci', 'Bustine e portaoggetti', 'Accessori per il rientro', 'Disponibilità stagionale'],
+        },
+        {
+          image: '/images/scuola/product/quaderni-diari.svg',
+          badge: 'Studio quotidiano',
+          title: 'Quaderni, diari e ricambi',
+          text:
+            'Materiale essenziale per appunti, compiti e organizzazione delle giornate, dai quaderni a righe e quadretti fino a diari, copertine e fogli di ricambio.',
+          specs: ['Righe e quadretti', 'Diari e agende scuola', 'Fogli protocollo', 'Copertine ed etichette'],
+        },
+      ],
+    },
+
+    brands: {
+      label: 'In vetrina',
+      title: 'Categorie scuola da scegliere in negozio',
+      text:
+        'Immagini e categorie per orientarsi rapidamente tra gli articoli più richiesti da studenti e famiglie.',
+      items: [
+        { name: 'Zaini e astucci', image: '/images/scuola/product/zaini-astucci.svg' },
+        { name: 'Quaderni', image: '/images/scuola/brand/quaderni.svg' },
+        { name: 'Diari', image: '/images/scuola/brand/diari.svg' },
+        { name: 'Disegno tecnico', image: '/images/scuola/brand/disegno-tecnico.svg' },
+        { name: 'Colori e pennarelli', image: '/images/scuola/brand/colori.svg' },
+        { name: 'Cartoleria scuola', image: '/images/scuola/brand/cartoleria-scuola.svg' },
       ],
     },
 
@@ -283,18 +308,43 @@ export const pages = {
       },
     ],
 
-    brands: {
-      label: 'Forniture e linee ufficio',
-      title: 'Materiali pensati per continuità, ordine e produttività',
+    showcase: {
+      label: 'Ufficio in evidenza',
+      title: 'Forniture essenziali per mantenere il lavoro continuo',
       text:
-        'Dalla gestione documentale ai consumabili, il negozio supporta professionisti e attività con prodotti concreti e facilmente riordinabili.',
+        'Prodotti pensati per chi stampa, archivia, gestisce documenti e vuole avere sempre a portata di mano materiali affidabili per l’operatività quotidiana.',
       items: [
-        { name: 'Buffetti' },
-        { name: 'Carta ufficio' },
-        { name: 'Toner e cartucce' },
-        { name: 'Archiviazione' },
-        { name: 'Macchine ufficio' },
-        { name: 'Accessori scrivania' },
+        {
+          image: '/images/ufficio/product/toner-cartucce.svg',
+          badge: 'Stampa',
+          title: 'Toner, cartucce e carta ufficio',
+          text:
+            'Consumabili per stampanti e materiali per la stampa documentale, utili per studi, aziende, reception e postazioni operative.',
+          specs: ['Toner e cartucce', 'Carta per stampanti', 'Soluzioni originali e compatibili', 'Supporto nella scelta'],
+        },
+        {
+          image: '/images/ufficio/product/archivio-ufficio.svg',
+          badge: 'Archivio',
+          title: 'Raccoglitori, faldoni e scatole archivio',
+          text:
+            'Soluzioni per classificare pratiche, proteggere documenti e ritrovare rapidamente ciò che serve durante il lavoro.',
+          specs: ['Raccoglitori e faldoni', 'Divisori e portalistini', 'Scatole archivio', 'Etichette e buste'],
+        },
+      ],
+    },
+
+    brands: {
+      label: 'In vetrina',
+      title: 'Categorie ufficio pronte per il rifornimento',
+      text:
+        'Una panoramica visiva delle forniture più utili per scrivanie, stampanti, archivi e gestione documentale.',
+      items: [
+        { name: 'Buffetti', image: '/images/logo-buffetti.png' },
+        { name: 'Carta ufficio', image: '/images/cancelleria/carta-buffetti-gialla.png' },
+        { name: 'Toner e cartucce', image: '/images/ufficio/product/toner-cartucce.svg' },
+        { name: 'Archiviazione', image: '/images/ufficio/product/archivio-ufficio.svg' },
+        { name: 'Macchine ufficio', image: '/images/ufficio/brand/macchine-ufficio.svg' },
+        { name: 'Accessori scrivania', image: '/images/ufficio/brand/accessori-scrivania.svg' },
       ],
     },
 
@@ -381,18 +431,43 @@ export const pages = {
       },
     ],
 
-    brands: {
-      label: 'Linee arredo e comfort',
-      title: 'Proposte pratiche per rendere migliore ogni postazione',
+    showcase: {
+      label: 'Arredo in evidenza',
+      title: 'Dettagli che rendono la postazione più comoda e ordinata',
       text:
-        'La selezione punta su comfort, funzionalità e semplicità, con articoli adatti sia ad ambienti professionali sia domestici.',
+        'Soluzioni da valutare dal vivo per migliorare comfort, illuminazione, ordine e funzionalità negli ambienti di lavoro.',
       items: [
-        { name: 'Sedute ufficio' },
-        { name: 'Ergonomia' },
-        { name: 'Lampade' },
-        { name: 'Organizer' },
-        { name: 'Accessori scrivania' },
-        { name: 'Postazioni lavoro' },
+        {
+          image: '/images/arredamento/product/sedute-operative.svg',
+          badge: 'Comfort',
+          title: 'Sedute operative per ufficio e studio',
+          text:
+            'Sedie e soluzioni per chi passa molte ore alla scrivania, con attenzione a comfort, postura e praticità d’uso.',
+          specs: ['Sedute operative', 'Modelli per ufficio e casa', 'Soluzioni ergonomiche', 'Valutazione in negozio'],
+        },
+        {
+          image: '/images/arredamento/product/lampade-organizer.svg',
+          badge: 'Ordine',
+          title: 'Lampade, organizer e accessori scrivania',
+          text:
+            'Complementi utili per lavorare meglio, illuminare la postazione e tenere documenti, strumenti e piccoli oggetti sotto controllo.',
+          specs: ['Lampade da lavoro', 'Organizer da scrivania', 'Supporti e contenitori', 'Accessori per documenti'],
+        },
+      ],
+    },
+
+    brands: {
+      label: 'In vetrina',
+      title: 'Soluzioni visive per postazioni più funzionali',
+      text:
+        'Categorie pensate per orientarsi tra sedute, luce, ordine e accessori utili alla postazione di lavoro.',
+      items: [
+        { name: 'Sedute ufficio', image: '/images/arredamento/product/sedute-operative.svg' },
+        { name: 'Ergonomia', image: '/images/arredamento/brand/ergonomia.svg' },
+        { name: 'Lampade', image: '/images/arredamento/brand/lampade.svg' },
+        { name: 'Organizer', image: '/images/arredamento/brand/organizer.svg' },
+        { name: 'Accessori scrivania', image: '/images/ufficio/brand/accessori-scrivania.svg' },
+        { name: 'Postazioni lavoro', image: '/images/arredamento/brand/postazioni-lavoro.svg' },
       ],
     },
 
@@ -479,18 +554,43 @@ export const pages = {
       },
     ],
 
-    brands: {
-      label: 'Marchi selezionati',
-      title: 'Accessori e articoli regalo scelti per stile e utilità',
+    showcase: {
+      label: 'Regali in evidenza',
+      title: 'Accessori scelti per un regalo utile e curato',
       text:
-        'Nel punto vendita trovi linee Buffetti e marchi dedicati alla regalistica, alla scrittura e agli accessori personali.',
+        'Oggetti da vedere dal vivo, pensati per ricorrenze personali, omaggi professionali e piccoli regali che restano utili nel tempo.',
       items: [
-        { name: 'Buffetti' },
-        { name: 'Campo Marzio' },
-        { name: 'Fulltime' },
-        { name: 'Penne regalo' },
-        { name: 'Pelletteria' },
-        { name: 'Idee aziendali' },
+        {
+          image: '/images/pelletteria/product/penne-regalo.svg',
+          badge: 'Scrittura',
+          title: 'Penne regalo e set da scrittura',
+          text:
+            'Penne, set e accessori coordinati per un pensiero elegante, adatto al lavoro, allo studio o a una ricorrenza speciale.',
+          specs: ['Penne regalo', 'Set scrittura', 'Accessori coordinati', 'Idee per privati e aziende'],
+        },
+        {
+          image: '/images/pelletteria/product/pelletteria-accessori.svg',
+          badge: 'Accessori',
+          title: 'Portafogli, borse e accessori personali',
+          text:
+            'Soluzioni pratiche e curate per l’uso quotidiano, da scegliere in base a stile, occasione e budget.',
+          specs: ['Portafogli', 'Borse e tracolle', 'Accessori personali', 'Proposte visionabili in negozio'],
+        },
+      ],
+    },
+
+    brands: {
+      label: 'In vetrina',
+      title: 'Idee regalo da vedere e confrontare dal vivo',
+      text:
+        'Una selezione visuale di linee e categorie per scegliere più facilmente un regalo personale o professionale.',
+      items: [
+        { name: 'Buffetti', image: '/images/logo-buffetti.png' },
+        { name: 'Campo Marzio', image: '/images/pelletteria/brand/campo-marzio.svg' },
+        { name: 'Fulltime', image: '/images/pelletteria/brand/fulltime.svg' },
+        { name: 'Penne regalo', image: '/images/pelletteria/product/penne-regalo.svg' },
+        { name: 'Pelletteria', image: '/images/pelletteria/product/pelletteria-accessori.svg' },
+        { name: 'Idee aziendali', image: '/images/pelletteria/brand/idee-aziendali.svg' },
       ],
     },
 
@@ -577,18 +677,43 @@ export const pages = {
       },
     ],
 
-    brands: {
-      label: 'Servizi e partner',
-      title: 'Un punto pratico per digitale, documenti e spedizioni',
+    showcase: {
+      label: 'Servizi in evidenza',
+      title: 'Supporto concreto per documenti, digitale e spedizioni',
       text:
-        'Dai servizi Buffetti alle spedizioni, trovi soluzioni utili per semplificare operazioni frequenti e necessità professionali.',
+        'Servizi pensati per chi deve completare pratiche, stampare documenti, attivare strumenti digitali o gestire invii e ritiri con un riferimento fisico in negozio.',
       items: [
-        { name: 'Buffetti' },
-        { name: 'PEC' },
-        { name: 'Firma digitale' },
-        { name: 'Smart card' },
-        { name: 'TNT' },
-        { name: 'FedEx' },
+        {
+          image: '/images/servizi/product/pec-firma-digitale.svg',
+          badge: 'Digitale',
+          title: 'PEC, firma digitale e smart card',
+          text:
+            'Assistenza per servizi digitali utili a professionisti, imprese e cittadini che devono gestire comunicazioni e pratiche amministrative.',
+          specs: ['PEC', 'Firma digitale', 'Smart card', 'Supporto attivazione'],
+        },
+        {
+          image: '/images/servizi/product/stampa-spedizioni.svg',
+          badge: 'Documenti',
+          title: 'Fotocopie, rilegature, timbri e spedizioni',
+          text:
+            'Servizi quotidiani per stampare, preparare documenti, creare timbri e gestire spedizioni o ritiri in modo più semplice.',
+          specs: ['Fotocopie e stampa', 'Rilegature e plastificazioni', 'Timbri personalizzati', 'Spedizioni e ritiri'],
+        },
+      ],
+    },
+
+    brands: {
+      label: 'In vetrina',
+      title: 'Servizi riconoscibili e facili da richiedere',
+      text:
+        'Una panoramica visuale dei servizi disponibili per capire subito dove il negozio può aiutarti.',
+      items: [
+        { name: 'PEC', image: '/images/servizi/brand/pec.svg' },
+        { name: 'Firma digitale', image: '/images/servizi/brand/firma-digitale.svg' },
+        { name: 'Smart card', image: '/images/servizi/brand/smart-card.svg' },
+        { name: 'Fotocopie', image: '/images/servizi/brand/fotocopie.svg' },
+        { name: 'Timbri', image: '/images/servizi/brand/timbri.svg' },
+        { name: 'Spedizioni', image: '/images/servizi/brand/spedizioni.svg' },
       ],
     },
 

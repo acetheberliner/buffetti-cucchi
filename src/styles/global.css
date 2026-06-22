@@ -16,7 +16,7 @@
   --shadow-soft: 0 20px 60px rgba(0, 31, 69, 0.12);
   --shadow-card: 0 14px 35px rgba(0, 31, 69, 0.1);
 
-  --font-main: "Plus Jakarta Sans", system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
+  --font-main: "Hanken Grotesk", system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
 
   --weight-regular: 430;
   --weight-medium: 560;
@@ -91,6 +91,10 @@ p {
 
 .section--white {
   background: var(--color-surface);
+}
+
+.cta-icon {
+  margin-right: 5px;
 }
 
 .btn {
