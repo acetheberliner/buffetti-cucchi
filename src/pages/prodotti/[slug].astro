@@ -508,16 +508,45 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
 
   @media (max-width: 620px) {
     .category-hero {
-      padding: 70px 0 58px;
+      padding: 58px 0 46px;
+    }
+
+    .category-hero h1 {
+      font-size: clamp(2.2rem, 14vw, 3.35rem);
+      line-height: 0.96;
+    }
+
+    .category-hero p,
+    .section-head p,
+    .social-cta p {
+      font-size: 1rem;
+      line-height: 1.65;
     }
 
     .category-hero__visual {
-      min-height: 260px;
+      min-height: 190px;
+    }
+
+    .category-hero__visual img {
+      max-height: 180px;
     }
 
     .item-grid,
     .related-grid {
       grid-template-columns: 1fr;
+    }
+
+    .item-grid article,
+    .related-grid a {
+      min-height: auto;
+    }
+
+    .item-card__media {
+      height: 138px;
+    }
+
+    .social-actions {
+      min-width: 0;
     }
   }
 </style>

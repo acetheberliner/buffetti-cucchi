@@ -211,9 +211,10 @@ const searchIndex = [
     suggestionBox.innerHTML = matches
       .map(
         (item) => `
-          <a href="${item.href}">
-            <span>${item.type}</span>
-            <strong>${item.label}</strong>
+          <a class="search-result" href="${item.href}">
+            <span class="search-result__type">${item.type}</span>
+            <strong class="search-result__label">${item.label}</strong>
+            <small class="search-result__hint">Apri ${item.type.toLowerCase()} dedicata</small>
           </a>
         `
       )
@@ -223,6 +224,9 @@ const searchIndex = [
 
   searchInput?.addEventListener('input', renderSuggestions);
   searchInput?.addEventListener('focus', renderSuggestions);
+  searchInput?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') submitBestMatch(event, searchInput);
+  });
   document.addEventListener('click', (event) => {
     if (!searchForm?.contains(event.target)) suggestionBox.hidden = true;
   });
@@ -230,6 +234,9 @@ const searchIndex = [
 
   document.querySelectorAll('.hero-search').forEach((form) => {
     const input = form.querySelector('input[type="search"]');
+    input?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') submitBestMatch(event, input);
+    });
     form.addEventListener('submit', (event) => submitBestMatch(event, input));
   });
 </script>
@@ -312,6 +319,7 @@ const searchIndex = [
     border: 1.5px solid #060a1d;
     border-radius: 999px;
     background: #fff;
+    box-shadow: 0 12px 32px rgba(0, 31, 69, 0.04);
   }
 
   .site-search input {
@@ -335,45 +343,75 @@ const searchIndex = [
   .search-suggestions {
     position: absolute;
     z-index: 100;
-    top: calc(100% + 10px);
-    left: 0;
-    right: 0;
+    top: calc(100% + 12px);
+    left: 50%;
+    width: min(760px, calc(100vw - 32px));
+    max-height: min(520px, calc(100vh - 190px));
     overflow: hidden;
-    border: 1px solid #d7e2ee;
-    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 232, 0.18);
+    border-radius: 12px;
     background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 24px 70px rgba(0, 31, 69, 0.18);
+    box-shadow: 0 30px 90px rgba(0, 31, 69, 0.24);
+    transform: translateX(-50%);
+    backdrop-filter: blur(18px);
   }
 
-  .search-suggestions a {
-    min-height: 62px;
-    padding: 12px 16px;
+  :global(.search-result) {
+    position: relative;
+    min-height: 78px;
+    padding: 15px 54px 15px 18px;
     display: grid;
-    gap: 3px;
-    border-bottom: 1px solid #e8eef5;
+    grid-template-columns: 94px minmax(0, 1fr);
+    gap: 2px 16px;
+    align-items: center;
+    border-bottom: 1px solid #dfe8f2;
+    transition: background 0.16s ease, transform 0.16s ease;
   }
 
-  .search-suggestions a:last-child {
+  :global(.search-result:last-child) {
     border-bottom: 0;
   }
 
-  .search-suggestions a:hover,
-  .search-suggestions a:focus {
-    background: #f2f8ff;
+  :global(.search-result:hover),
+  :global(.search-result:focus) {
+    background:
+      linear-gradient(90deg, rgba(0, 0, 232, 0.08), rgba(0, 166, 232, 0.05));
   }
 
-  .search-suggestions span {
+  :global(.search-result::after) {
+    content: "→";
+    position: absolute;
+    right: 20px;
+    top: 50%;
     color: #0000e8;
+    font-size: 1.35rem;
+    font-weight: 850;
+    transform: translateY(-50%);
+  }
+
+  :global(.search-result__type) {
+    justify-self: start;
+    padding: 7px 9px;
+    border-radius: 999px;
+    color: #0000e8;
+    background: #eef3ff;
     font-size: 0.72rem;
     font-weight: 850;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
-  .search-suggestions strong {
+  :global(.search-result__label) {
     color: var(--color-primary-dark);
-    font-size: 0.95rem;
+    font-size: 1.08rem;
     line-height: 1.2;
+  }
+
+  :global(.search-result__hint) {
+    grid-column: 2;
+    color: var(--color-muted);
+    font-size: 0.86rem;
+    font-weight: 650;
   }
 
   .header-actions {
@@ -593,15 +631,35 @@ const searchIndex = [
     .header-main {
       grid-template-columns: 1fr auto;
       min-height: 88px;
+      padding: 14px 0 12px;
+      gap: 12px 16px;
     }
 
-    .site-search,
     .header-actions,
     .site-nav {
       display: none;
     }
 
+    .brand {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .site-search {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      height: 48px;
+      width: 100%;
+    }
+
+    .search-suggestions {
+      width: min(680px, calc(100vw - 24px));
+      max-height: min(460px, calc(100vh - 170px));
+    }
+
     .menu-button {
+      grid-column: 2;
+      grid-row: 1;
       width: 46px;
       height: 46px;
       display: grid;
@@ -666,6 +724,10 @@ const searchIndex = [
   }
 
   @media (max-width: 680px) {
+    .site-header {
+      position: sticky;
+    }
+
     .header-ribbon__inner {
       justify-content: flex-start;
       overflow-x: auto;
@@ -684,6 +746,43 @@ const searchIndex = [
     .brand small {
       max-width: 190px;
       font-size: 0.76rem;
+    }
+
+    .site-search {
+      height: 46px;
+      grid-template-columns: 1fr 48px;
+    }
+
+    .site-search input {
+      padding: 0 16px;
+      font-size: 0.95rem;
+    }
+
+    .search-suggestions {
+      top: calc(100% + 8px);
+      width: calc(100vw - 20px);
+      max-height: min(420px, calc(100vh - 154px));
+      border-radius: 10px;
+    }
+
+    :global(.search-result) {
+      min-height: 74px;
+      padding: 14px 42px 14px 14px;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: 2px 10px;
+    }
+
+    :global(.search-result__type) {
+      padding: 6px 8px;
+      font-size: 0.66rem;
+    }
+
+    :global(.search-result__label) {
+      font-size: 0.98rem;
+    }
+
+    :global(.search-result__hint) {
+      font-size: 0.8rem;
     }
   }
 </style>

@@ -791,15 +791,26 @@ const icons = {
 
   @media (max-width: 680px) {
     .page-hero {
-      padding-top: 118px;
+      padding: 72px 0 48px;
     }
 
     .page-hero h1 {
-      font-size: clamp(2.35rem, 13vw, 3.7rem);
+      font-size: clamp(2.2rem, 14vw, 3.35rem);
+      line-height: 0.96;
     }
 
     .page-hero p {
       font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .page-hero__showcase {
+      min-height: 190px;
+      padding: 12px;
+    }
+
+    .page-hero__showcase img {
+      max-height: 180px;
     }
 
     .products-grid {
@@ -812,8 +823,19 @@ const icons = {
 
     .product-card {
       min-height: auto;
-      padding: 26px;
-      border-radius: 26px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .product-card__media {
+      height: 138px;
+      margin-bottom: 18px;
+    }
+
+    .category-tile,
+    .contact-band,
+    .feature-strip {
+      overflow: hidden;
     }
 
     .split__image,

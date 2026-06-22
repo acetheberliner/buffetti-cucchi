@@ -32,6 +32,7 @@
 html {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body {
@@ -42,6 +43,7 @@ body {
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 img {
@@ -140,5 +142,16 @@ p {
 
   .container {
     width: min(var(--container), calc(100% - 24px));
+  }
+
+  .btn {
+    min-height: 48px;
+    padding-inline: 18px;
+  }
+}
+
+@media (max-width: 460px) {
+  .btn {
+    width: 100%;
   }
 }

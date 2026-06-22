@@ -26,14 +26,6 @@ const serviceCards = digitalServices.slice(0, 4);
           scegli online cosa ti serve e poi parlane con chi lo conosce davvero.
         </p>
 
-        <form class="hero-search" action="/index.html" role="search" autocomplete="off">
-          <label class="sr-only" for="hero-search-input">Cerca nel sito</label>
-          <input id="hero-search-input" name="q" type="search" placeholder="Cerca carta, toner, PEC, scuola..." />
-          <button type="submit" aria-label="Cerca">
-            <Search size={23} stroke-width={2.3} />
-          </button>
-        </form>
-
         <div class="home-hero__actions">
           <a class="btn btn--primary" href={site.phoneHref}>
             <Phone size={18} stroke-width={2.2} class="cta-icon" />
@@ -681,7 +673,20 @@ const serviceCards = digitalServices.slice(0, 4);
     }
 
     .home-hero__inner {
-      padding: 78px 0 54px;
+      padding: 64px 0 46px;
+    }
+
+    .home-hero h1 {
+      font-size: clamp(2.35rem, 15vw, 3.45rem);
+      line-height: 0.96;
+    }
+
+    .home-hero p,
+    .section-head p,
+    .business-copy p,
+    .visit-copy p {
+      font-size: 1rem;
+      line-height: 1.68;
     }
 
     .category-grid,
@@ -693,6 +698,28 @@ const serviceCards = digitalServices.slice(0, 4);
     .hero-search {
       height: 52px;
       grid-template-columns: 1fr 52px;
+    }
+
+    .catalog-sidebar {
+      margin-inline: -12px;
+      padding-inline: 12px;
+    }
+
+    .category-card,
+    .service-card,
+    .business-list a {
+      min-height: auto;
+      padding: 20px;
+    }
+
+    .social-cards,
+    .visit-facts {
+      grid-template-columns: 1fr;
+    }
+
+    .visit-map,
+    .visit-map iframe {
+      min-height: 320px;
     }
   }
 </style>

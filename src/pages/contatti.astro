@@ -386,12 +386,38 @@ import { Mail, MapPin, Phone } from '@lucide/astro';
 
   @media (max-width: 620px) {
     .contact-hero {
-      padding: 70px 0 58px;
+      padding: 58px 0 46px;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(2.2rem, 14vw, 3.35rem);
+      line-height: 0.96;
+    }
+
+    .contact-hero p,
+    .map-copy p {
+      font-size: 1rem;
+      line-height: 1.65;
     }
 
     .contact-actions,
     .ask-grid {
       grid-template-columns: 1fr;
+    }
+
+    .contact-panel {
+      padding: 20px;
+    }
+
+    .contact-actions a,
+    .ask-grid article {
+      min-height: auto;
+      padding: 18px;
+    }
+
+    .map-frame,
+    .map-frame iframe {
+      min-height: 320px;
     }
   }
 </style>

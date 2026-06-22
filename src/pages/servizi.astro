@@ -419,12 +419,45 @@ import { Check, Mail, MapPin, Phone } from '@lucide/astro';
 
   @media (max-width: 640px) {
     .services-hero {
-      padding: 70px 0 58px;
+      padding: 58px 0 46px;
+    }
+
+    .services-hero h1 {
+      font-size: clamp(2.2rem, 14vw, 3.35rem);
+      line-height: 0.96;
+    }
+
+    .services-hero p,
+    .section-head p,
+    .service-contact p {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .services-hero__visual {
+      min-height: 190px;
+      padding: 12px;
+    }
+
+    .services-hero__visual img {
+      max-height: 180px;
     }
 
     .service-cards,
     .family-grid {
       grid-template-columns: 1fr;
+    }
+
+    .service-card__media {
+      height: 150px;
+    }
+
+    .service-card__media img {
+      height: 112px;
+    }
+
+    .service-contact__actions a {
+      grid-template-columns: 26px 1fr;
     }
   }
 </style>
