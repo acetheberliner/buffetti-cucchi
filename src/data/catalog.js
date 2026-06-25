@@ -214,7 +214,7 @@ export const digitalServices = [
     text: 'Attivazione e supporto per firmare documenti con valore legale.',
     detail:
       'Pensata per professionisti, imprese e cittadini che devono firmare pratiche, contratti, dichiarazioni e documenti ufficiali senza complicazioni.',
-    items: ['Supporto attivazione', 'Uso professionale', 'Documenti con valore legale'],
+    items: ['Supporto attivazione', 'Rinnovo'],
   },
   {
     label: 'SPID',
@@ -224,7 +224,7 @@ export const digitalServices = [
     text: 'Accesso ai servizi della Pubblica Amministrazione.',
     detail:
       'Un unico accesso per dialogare con portali pubblici, servizi online e pratiche digitali. In negozio puoi chiedere informazioni e orientamento.',
-    items: ['Servizi pubblici online', 'Supporto al cittadino', 'Pratiche digitali'],
+    items: ['Supporto attivazione', 'Rinnovo'],
   },
   {
     label: 'PEC',
@@ -244,7 +244,7 @@ export const digitalServices = [
     text: 'Copie, stampe, rilegature, plastificazioni e documenti pronti.',
     detail:
       'Per scuola, ufficio e pratiche quotidiane: stampa documenti, copie, rilegature e plastificazioni con un riferimento fisico vicino.',
-    items: ['Fotocopie', 'Rilegature', 'Plastificazioni'],
+    items: ['Fotocopie', 'Rilegature'],
   },
   {
     label: 'Timbri',
@@ -257,7 +257,7 @@ export const digitalServices = [
     items: ['Timbri personalizzati', 'Cuscinetti', 'Accessori'],
   },
   {
-    label: 'Spedizioni',
+    label: 'Spedizioni BRT - FedEx - GLS',
     href: '/servizi.html#spedizioni',
     image: '/images/servizi/brand/spedizioni.svg',
     badge: 'Invii e ritiri',
