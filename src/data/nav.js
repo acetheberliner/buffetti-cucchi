@@ -1,34 +1,23 @@
+import { digitalServices, productCategories, shopFocusAreas } from './catalog';
+
 export const navItems = [
+  { label: 'Home', href: '/index.html' },
   {
-    label: 'Home',
-    href: '/index.html',
+    label: 'Catalogo prodotti',
+    href: '/prodotti/cancelleria.html',
+    featured: productCategories,
   },
   {
-    label: 'Cancelleria',
-    href: '/cancelleria.html',
-  },
-  {
-    label: 'Articoli per la scuola',
-    href: '/articoli-per-la-scuola.html',
-  },
-  {
-    label: "Articoli per l'ufficio",
-    href: '/articoli-per-l-ufficio.html',
-  },
-  {
-    label: 'Arredamento',
-    href: '/arredamento.html',
-  },
-  {
-    label: 'Pelletteria e regalistica',
-    href: '/pelletteria-e-regalistica.html',
-  },
-  {
-    label: 'Servizi',
+    label: 'Servizi in negozio',
     href: '/servizi.html',
+    featured: digitalServices,
   },
   {
-    label: 'Contatti',
-    href: '/contatti.html',
+    label: 'Scuola e ufficio',
+    href: '/articoli-per-l-ufficio.html',
+    featured: shopFocusAreas,
   },
+  { label: 'Arredo ufficio', href: '/arredamento.html' },
+  { label: 'Idee regalo', href: '/pelletteria-e-regalistica.html' },
+  { label: 'Contatti', href: '/contatti.html' },
 ];

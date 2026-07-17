@@ -9,6 +9,7 @@ export const pages = {
     heroText:
       'Un assortimento completo di articoli per scrivere, stampare, archiviare e organizzare ogni giornata con più ordine e semplicità.',
     heroImage: '/images/hero-cancelleria.webp',
+    catalogSlugs: ['cancelleria', 'carta-modulistica', 'archiviazione', 'ecosostenibili'],
 
     introLabel: 'Cosa trovi',
     introTitle: 'Tutto il necessario, scelto per essere utile davvero',
@@ -17,6 +18,7 @@ export const pages = {
 
     productGroups: [
       {
+        slug: 'cancelleria',
         icon: 'pen',
         title: 'Scrittura',
         text: 'Strumenti essenziali per appunti, studio, lavoro e uso quotidiano.',
@@ -28,6 +30,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'carta-modulistica',
         icon: 'paper',
         title: 'Carta e quaderni',
         text: 'Supporti pratici per scuola, stampa, ufficio e organizzazione.',
@@ -39,6 +42,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'archiviazione',
         icon: 'archive',
         title: 'Archivio e ordine',
         text: 'Soluzioni per tenere documenti, pratiche e materiali sempre sotto controllo.',
@@ -50,6 +54,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'ecosostenibili',
         icon: 'tools',
         title: 'Accessori pratici',
         text: 'Piccoli strumenti da ufficio che semplificano le attività di ogni giorno.',
@@ -132,6 +137,7 @@ export const pages = {
     heroText:
       'Zaini, astucci, quaderni, penne, diari e materiale tecnico: una selezione comoda per prepararsi al meglio durante tutto l’anno scolastico.',
     heroImage: '/images/hero-scuola.webp',
+    catalogSlugs: ['disegno-didattica', 'cancelleria', 'carta-modulistica'],
 
     introLabel: 'Per studenti e famiglie',
     introTitle: 'Materiale scolastico pratico, resistente e facile da scegliere',
@@ -140,6 +146,7 @@ export const pages = {
 
     productGroups: [
       {
+        slug: 'disegno-didattica',
         icon: 'school',
         title: 'Zaini e astucci',
         text: 'Soluzioni comode, resistenti e colorate per affrontare ogni giornata di scuola.',
@@ -151,6 +158,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'carta-modulistica',
         icon: 'book',
         title: 'Quaderni e diari',
         text: 'Tutto il necessario per scrivere, prendere appunti e organizzare lo studio.',
@@ -162,6 +170,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'disegno-didattica',
         icon: 'ruler',
         title: 'Disegno e tecnica',
         text: 'Strumenti utili per matematica, disegno tecnico, arte e laboratorio.',
@@ -173,6 +182,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'cancelleria',
         icon: 'paper',
         title: 'Ricambi e accessori',
         text: 'Materiale di supporto per tenere lo zaino completo e ordinato.',
@@ -255,6 +265,7 @@ export const pages = {
     heroText:
       'Carta, toner, cartucce, raccoglitori, accessori da scrivania e materiali professionali per uffici, studi, aziende e attività locali.',
     heroImage: '/images/hero-ufficio.webp',
+    catalogSlugs: ['cartucce-toner', 'archiviazione', 'informatica-elettronica', 'macchine-ufficio', 'visual-comunicazione'],
 
     introLabel: 'Per professionisti e aziende',
     introTitle: 'Soluzioni pratiche per il lavoro quotidiano',
@@ -263,6 +274,7 @@ export const pages = {
 
     productGroups: [
       {
+        slug: 'cancelleria',
         icon: 'office',
         title: 'Cancelleria professionale',
         text: 'Articoli indispensabili per scrivanie, reception, studi e postazioni operative.',
@@ -274,6 +286,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'cartucce-toner',
         icon: 'printer',
         title: 'Stampa e consumabili',
         text: 'Prodotti per mantenere attive stampanti e dispositivi da ufficio.',
@@ -285,6 +298,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'archiviazione',
         icon: 'archive',
         title: 'Archivio documenti',
         text: 'Soluzioni per classificare, proteggere e recuperare rapidamente pratiche e documenti.',
@@ -296,6 +310,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'macchine-ufficio',
         icon: 'machines',
         title: 'Macchine per ufficio',
         text: 'Strumenti utili per gestire documenti, presentazioni e materiali interni.',
@@ -378,6 +393,7 @@ export const pages = {
     heroText:
       'Sedute, lampade e accessori per migliorare la qualità della postazione di lavoro in ufficio, in studio o a casa.',
     heroImage: '/images/hero-arredamento.webp',
+    catalogSlugs: ['arredo-complementi'],
 
     introLabel: 'Comfort e funzionalità',
     introTitle: 'Lavorare bene parte anche dallo spazio',
@@ -386,6 +402,7 @@ export const pages = {
 
     productGroups: [
       {
+        slug: 'arredo-complementi',
         icon: 'chair',
         title: 'Sedute operative',
         text: 'Sedie comode e funzionali per chi passa molte ore alla scrivania.',
@@ -397,6 +414,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'arredo-complementi',
         icon: 'desk',
         title: 'Accessori da scrivania',
         text: 'Elementi utili per rendere la postazione più ordinata e piacevole.',
@@ -408,6 +426,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'arredo-complementi',
         icon: 'office',
         title: 'Soluzioni per ambienti',
         text: 'Prodotti pensati per uffici, studi professionali e spazi domestici.',
@@ -419,6 +438,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'arredo-complementi',
         icon: 'box',
         title: 'Organizzazione spazio',
         text: 'Dettagli pratici per ridurre disordine e migliorare l’uso dell’ambiente.',
@@ -624,6 +644,7 @@ export const pages = {
     heroText:
       'Fotocopie, rilegature, timbri, PEC, firma digitale, smart card e spedizioni: un punto unico per gestire pratiche e necessità quotidiane.',
     heroImage: '/images/hero-servizi.webp',
+    catalogSlugs: ['comunita-servizi', 'spedizione-imballaggi'],
 
     introLabel: 'Supporto veloce',
     introTitle: 'Meno complicazioni per pratiche e documenti',
@@ -632,6 +653,7 @@ export const pages = {
 
     productGroups: [
       {
+        slug: 'pec',
         icon: 'digital',
         title: 'PEC e firma digitale',
         text: 'Strumenti digitali per professionisti, imprese e pratiche amministrative.',
@@ -643,6 +665,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'fotocopie-stampa',
         icon: 'copy',
         title: 'Fotocopie e stampa',
         text: 'Servizi documentali per uso personale, scolastico e professionale.',
@@ -654,6 +677,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'timbri',
         icon: 'stamp',
         title: 'Timbri e documenti',
         text: 'Soluzioni utili per attività, uffici e professionisti.',
@@ -665,6 +689,7 @@ export const pages = {
         ],
       },
       {
+        slug: 'spedizione-imballaggi',
         icon: 'shipping',
         title: 'Spedizioni e ritiri',
         text: 'Servizi per inviare, ricevere e gestire spedizioni in modo pratico.',

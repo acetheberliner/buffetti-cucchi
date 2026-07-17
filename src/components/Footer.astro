@@ -1,59 +1,95 @@
 ---
 import { site } from '../data/site';
-import { navItems } from '../data/nav';
-import { Phone, ExternalLink } from '@lucide/astro';
+import { digitalServices, productCategories } from '../data/catalog';
+import { ExternalLink, Mail, MapPin, Phone } from '@lucide/astro';
+
+const footerProducts = productCategories.slice(0, 7);
+const footerServices = digitalServices.slice(0, 5);
 ---
 
 <footer class="footer">
+  <div class="footer-topline"></div>
+
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="footer-logo-row">
         <img src="/images/logo-buffetti.png" alt="Logo Buffetti Cucchi" width="104" height="66" />
         <div>
           <strong>Buffetti Cucchi</strong>
-          <span>Cartoleria e servizi a Cesena</span>
+          <span>Cartoleria, ufficio e servizi a Cesena</span>
         </div>
       </div>
 
       <p>
-        Prodotti per scuola, ufficio e lavoro quotidiano. Cancelleria, servizi digitali,
-        fotocopie, spedizioni e forniture per aziende.
+        Un negozio Buffetti locale: prodotti per scuola e ufficio, servizi digitali,
+        stampa, timbri, spedizioni, pelletteria e supporto diretto al banco.
       </p>
 
-      <small>
-        {site.fullName}<br />
-        {site.vat}<br />
-        {site.address}
-      </small>
+      <div class="footer-social">
+        <a href={site.facebook} target="_blank" rel="noopener noreferrer">
+          <img src="/images/facebook.svg" alt="" />
+          Facebook
+        </a>
+        <a href={site.instagram} target="_blank" rel="noopener noreferrer">
+          <img src="/images/instagram.svg" alt="" />
+          Instagram
+        </a>
+      </div>
     </div>
 
     <div class="footer-col">
-      <h2>Navigazione</h2>
-      <nav aria-label="Navigazione footer">
-        {navItems.map((item) => (
+      <h2>Catalogo</h2>
+      <nav aria-label="Categorie prodotto footer">
+        {footerProducts.map((item) => (
           <a href={item.href}>{item.label}</a>
         ))}
       </nav>
     </div>
 
     <div class="footer-col">
-      <h2>Contatti</h2>
-      <nav aria-label="Contatti footer">
-        <a href={site.phoneHref}>Telefono</a>
-        <a href={site.emailHref}>Email</a>
-        <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">Indicazioni stradali</a>
-        <a href={site.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+      <h2>Servizi</h2>
+      <nav aria-label="Servizi footer">
+        {footerServices.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))}
+        <a href="/servizi.html">Tutti i servizi</a>
       </nav>
     </div>
 
-    <div class="footer-cta">
-      <span>Hai bisogno di informazioni?</span>
-      <h2>Chiama subito o vieni a trovarci a Cesena!</h2>
+    <div class="footer-contact-card">
+      <span>Contatto rapido</span>
+      <h2>Chiedi prima di passare</h2>
       <a href={site.phoneHref}>
-        <Phone size={18} stroke-width={2.2} class="cta-icon" />
-        Chiama ora
+        <Phone size={18} stroke-width={2.2} />
+        {site.phone}
       </a>
+      <a href={site.emailHref}>
+        <Mail size={18} stroke-width={2.2} />
+        {site.email}
+      </a>
+      <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+        <MapPin size={18} stroke-width={2.2} />
+        Viale Matteotti, 593
+      </a>
+    </div>
+  </div>
+
+  <div class="container footer-hours">
+    <div>
+      <span>Orari</span>
+      <strong>Lun-Ven 8:30-12:30 / 15:30-19:00</strong>
+    </div>
+    <div>
+      <span>Sabato</span>
+      <strong>09:00-12:30</strong>
+    </div>
+    <div>
+      <span>Domenica</span>
+      <strong>Chiuso</strong>
+    </div>
+    <div>
+      <span>Ragione sociale</span>
+      <strong>{site.fullName}</strong>
     </div>
   </div>
 
@@ -71,27 +107,34 @@ import { Phone, ExternalLink } from '@lucide/astro';
   .footer {
     position: relative;
     overflow: hidden;
-    padding: 92px 0 34px;
+    padding: 0 0 34px;
     color: rgba(255, 255, 255, 0.78);
     background:
-      radial-gradient(circle at 14% 0%, rgba(0, 166, 232, 0.14), transparent 30%),
-      radial-gradient(circle at 84% 8%, rgba(0, 59, 122, 0.34), transparent 34%),
-      linear-gradient(135deg, #05070b, #0a111c 52%, #020409);
+      radial-gradient(circle at 10% 8%, rgba(0, 166, 232, 0.2), transparent 28%),
+      linear-gradient(135deg, #020716, #06142d 54%, #0000e8);
   }
 
   .footer::before {
     content: "";
     position: absolute;
     inset: 0;
-    opacity: 0.18;
+    opacity: 0.16;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 22px 22px;
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 26px 26px;
     pointer-events: none;
   }
 
+  .footer-topline {
+    position: relative;
+    z-index: 1;
+    height: 8px;
+    background: #0000e8;
+  }
+
   .footer-inner,
+  .footer-hours,
   .footer-bottom {
     position: relative;
     z-index: 1;
@@ -99,9 +142,9 @@ import { Phone, ExternalLink } from '@lucide/astro';
 
   .footer-inner {
     display: grid;
-    grid-template-columns: 1.35fr 0.75fr 0.75fr 1fr;
-    gap: 64px;
-    padding-bottom: 70px;
+    grid-template-columns: 1.35fr 0.78fr 0.78fr 1fr;
+    gap: 48px;
+    padding: 76px 0 42px;
   }
 
   .footer-logo-row {
@@ -111,7 +154,7 @@ import { Phone, ExternalLink } from '@lucide/astro';
   }
 
   .footer-logo-row img {
-    width: 96px;
+    width: 92px;
     height: auto;
     filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35));
   }
@@ -125,47 +168,66 @@ import { Phone, ExternalLink } from '@lucide/astro';
   .footer-col h2 {
     color: #fff;
     font-size: 1.02rem;
-    font-weight: var(--weight-heavy);
+    font-weight: 840;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
-  .footer-logo-row span {
-    color: var(--color-accent);
-    font-size: 0.82rem;
-    font-weight: var(--weight-bold);
+  .footer-logo-row span,
+  .footer-contact-card > span,
+  .footer-hours span {
+    color: #9fe9ff;
+    font-size: 0.76rem;
+    font-weight: 840;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.09em;
   }
 
   .footer-brand p {
-    max-width: 420px;
-    margin: 34px 0 26px;
-    color: rgba(255, 255, 255, 0.68);
-    font-size: 1.03rem;
-    line-height: 1.75;
+    max-width: 440px;
+    margin: 30px 0 24px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.02rem;
+    line-height: 1.72;
   }
 
-  .footer-brand small {
-    color: rgba(255, 255, 255, 0.54);
-    font-size: 0.88rem;
-    line-height: 1.7;
+  .footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-social a {
+    min-height: 42px;
+    padding: 0 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #001f45;
+    background: #fff;
+    border-radius: 4px;
+    font-weight: 840;
+  }
+
+  .footer-social img {
+    width: 18px;
+    height: 18px;
   }
 
   .footer-col h2 {
-    margin: 0 0 24px;
+    margin: 0 0 22px;
   }
 
   .footer-col nav {
     display: grid;
-    gap: 14px;
+    gap: 12px;
   }
 
   .footer-col a {
     width: fit-content;
-    color: rgba(255, 255, 255, 0.64);
-    font-size: 1rem;
-    font-weight: var(--weight-bold);
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.96rem;
+    font-weight: 760;
     transition: color 0.2s ease, transform 0.2s ease;
   }
 
@@ -174,52 +236,59 @@ import { Phone, ExternalLink } from '@lucide/astro';
     transform: translateX(4px);
   }
 
-  .footer-cta {
-    align-self: start;
-    padding: 30px;
-    border-radius: 28px;
-    background: rgba(255, 255, 255, 0.055);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  .footer-contact-card {
+    padding: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
   }
 
-  .footer-cta span {
-    color: var(--color-accent);
-    font-size: 0.82rem;
-    font-weight: var(--weight-heavy);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .footer-cta h2 {
-    margin: 20px 0 28px;
+  .footer-contact-card h2 {
+    margin: 16px 0 22px;
     color: #fff;
-    font-size: 1.65rem;
-    line-height: 1.08;
-    letter-spacing: -0.055em;
+    font-size: 1.7rem;
+    line-height: 1.05;
+    letter-spacing: -0.045em;
   }
 
-  .footer-cta a {
-    min-height: 48px;
-    padding: 0 22px;
-    width: fit-content;
-    display: inline-flex;
+  .footer-contact-card a {
+    min-height: 42px;
+    display: flex;
     align-items: center;
-    border-radius: 999px;
-    color: #001f45;
-    background: #fff;
-    font-weight: var(--weight-heavy);
-    box-shadow: 0 18px 38px rgba(255, 255, 255, 0.12);
-    transition: transform 0.2s ease, background 0.2s ease;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: 760;
   }
 
-  .footer-cta a:hover {
-    transform: translateY(-2px);
-    background: #dff5ff;
+  .footer-contact-card svg {
+    color: #9fe9ff;
+  }
+
+  .footer-hours {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr 0.6fr 1.2fr;
+    gap: 1px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .footer-hours div {
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .footer-hours strong {
+    display: block;
+    margin-top: 6px;
+    color: #fff;
+    line-height: 1.3;
   }
 
   .footer-bottom {
-    padding-top: 30px;
+    margin-top: 34px;
+    padding-top: 28px;
     display: flex;
     justify-content: space-between;
     gap: 24px;
@@ -228,12 +297,12 @@ import { Phone, ExternalLink } from '@lucide/astro';
 
   .footer-bottom span,
   .footer-bottom a {
-    color: rgba(255, 255, 255, 0.58);
+    color: rgba(255, 255, 255, 0.62);
     font-size: 0.92rem;
   }
 
   .footer-bottom a {
-    font-weight: var(--weight-semibold);
+    font-weight: 760;
   }
 
   .footer-bottom a:hover {
@@ -241,33 +310,24 @@ import { Phone, ExternalLink } from '@lucide/astro';
   }
 
   @media (max-width: 1050px) {
-    .footer-inner {
+    .footer-inner,
+    .footer-hours {
       grid-template-columns: 1fr 1fr;
-      gap: 46px;
     }
   }
 
   @media (max-width: 680px) {
-    .footer {
-      padding-top: 68px;
+    .footer-inner,
+    .footer-hours {
+      grid-template-columns: 1fr;
     }
 
     .footer-inner {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      padding-bottom: 48px;
+      padding-top: 58px;
     }
 
     .footer-bottom {
       flex-direction: column;
     }
-
-    .footer-cta {
-      border-radius: 24px;
-    }
-  }
-
-  .cta-icon {
-    margin-right: 5px;
   }
 </style>
