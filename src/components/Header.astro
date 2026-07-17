@@ -1,6 +1,7 @@
 ---
 import { navItems } from '../data/nav';
-import { digitalServices, productCategories, shopFocusAreas } from '../data/catalog';
+import { digitalServices, productCategories } from '../data/catalog';
+import { categoryCardImages, serviceCardImages } from '../data/card-images';
 import { site } from '../data/site';
 import { ChevronDown, Mail, MapPin, Menu, Phone, Search } from '@lucide/astro';
 
@@ -14,20 +15,23 @@ const isActive = (href: string) => {
   const cleanPath = normalizePath(currentPath);
 
   if (href === '/index.html') return cleanPath === '/';
+  if (href.includes('#catalogo-prodotti')) {
+    return cleanPath.startsWith('/prodotti/') || [
+      '/cancelleria',
+      '/articoli-per-la-scuola',
+      '/articoli-per-l-ufficio',
+      '/arredamento',
+    ].includes(cleanPath);
+  }
   if (href.startsWith('/prodotti/') && cleanPath.startsWith('/prodotti/')) return true;
   return cleanPath === cleanHref;
 };
 
-const previewCategories = productCategories.slice(0, 6);
 const searchIndex = [
   { label: 'Home', href: '/index.html', type: 'Pagina', keywords: 'negozio buffetti cucchi cesena cartoleria' },
   { label: 'Contatti', href: '/contatti.html', type: 'Pagina', keywords: 'telefono email indirizzo orari viale matteotti' },
   { label: 'Servizi in negozio', href: '/servizi.html', type: 'Pagina', keywords: 'pec spid firma digitale stampa fotocopie timbri spedizioni' },
-  { label: 'Cancelleria', href: '/cancelleria.html', type: 'Reparto', keywords: 'penne matite carta quaderni archivio' },
-  { label: 'Articoli per la scuola', href: '/articoli-per-la-scuola.html', type: 'Reparto', keywords: 'zaini astucci diari colori quaderni album' },
-  { label: "Articoli per l'ufficio", href: '/articoli-per-l-ufficio.html', type: 'Reparto', keywords: 'ufficio toner archiviazione macchine carta' },
-  { label: 'Arredo ufficio', href: '/arredamento.html', type: 'Reparto', keywords: 'sedie scrivanie lampade ergonomia' },
-  { label: 'Idee regalo e pelletteria', href: '/pelletteria-e-regalistica.html', type: 'Reparto', keywords: 'regali borse penne pelletteria' },
+  { label: 'Idee regalo e pelletteria', href: '/pelletteria-e-regalistica.html', type: 'Percorso', keywords: 'regali borse penne pelletteria' },
   ...productCategories.map((category) => ({
     label: category.label,
     href: category.href,
@@ -40,13 +44,13 @@ const searchIndex = [
     type: 'Servizio',
     keywords: `${service.badge} ${service.text} ${service.detail} ${service.items.join(' ')}`,
   })),
-  ...shopFocusAreas.map((area) => ({
-    label: area.label,
-    href: area.href,
-    type: 'Area',
-    keywords: `${area.text} ${(area.items ?? []).join(' ')}`,
-  })),
 ];
+
+const getMegaMenuImage = (entry) =>
+  categoryCardImages[entry.slug] ?? serviceCardImages[entry.label] ?? entry.image;
+
+const hasCardImage = (entry) =>
+  Boolean(categoryCardImages[entry.slug] ?? serviceCardImages[entry.label]);
 ---
 
 <header class="site-header">
@@ -119,8 +123,25 @@ const searchIndex = [
           </a>
 
           {item.featured?.length ? (
+            <details class="mobile-nav-group">
+              <summary class="nav-link">
+                <span>{item.label}</span>
+                <ChevronDown size={17} stroke-width={2.4} aria-hidden="true" />
+              </summary>
+              <div class="mobile-nav-submenu">
+                {item.featured.slice(0, 12).map((entry) => (
+                  <a href={entry.href}>{entry.label}</a>
+                ))}
+              </div>
+            </details>
+          ) : null}
+
+          {item.featured?.length ? (
             <div class="mega-menu">
-              <div class="mega-menu__panel">
+              <div class:list={[
+                'mega-menu__panel',
+                item.label === 'Catalogo prodotti' ? 'mega-menu__panel--catalog' : 'mega-menu__panel--services',
+              ]}>
                 <div class="mega-menu__intro">
                   <span>{item.label}</span>
                   <strong>{item.label === 'Catalogo prodotti' ? 'Scegli la famiglia prodotto' : 'Servizi e reparti Cucchi'}</strong>
@@ -134,7 +155,14 @@ const searchIndex = [
                 <div class="mega-menu__grid">
                   {item.featured.slice(0, 12).map((entry) => (
                     <a href={entry.href}>
-                      {entry.image ? <img src={entry.image} alt="" loading="lazy" /> : null}
+                      {getMegaMenuImage(entry) ? (
+                        <img
+                          class:list={['mega-menu__image', hasCardImage(entry) && 'mega-menu__image--photo']}
+                          src={getMegaMenuImage(entry)}
+                          alt=""
+                          loading="lazy"
+                        />
+                      ) : null}
                       <strong>{entry.label}</strong>
                       <span>{entry.summary ?? entry.text}</span>
                     </a>
@@ -148,13 +176,6 @@ const searchIndex = [
     </div>
   </nav>
 
-  <div class="mobile-categories" aria-label="Categorie principali">
-    <div class="container mobile-categories__inner">
-      {previewCategories.map((category) => (
-        <a href={category.href}>{category.label}</a>
-      ))}
-    </div>
-  </div>
 </header>
 
 <script type="application/json" id="site-search-data" set:html={JSON.stringify(searchIndex)} />
@@ -246,6 +267,8 @@ const searchIndex = [
     position: sticky;
     top: 0;
     z-index: 80;
+    width: 100%;
+    isolation: isolate;
     background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid #dde5ef;
     box-shadow: 0 12px 32px rgba(0, 31, 69, 0.06);
@@ -338,6 +361,11 @@ const searchIndex = [
     color: #0000e8;
     background: transparent;
     cursor: pointer;
+  }
+
+  .site-search:focus-within {
+    border-color: #0000e8;
+    box-shadow: 0 0 0 4px rgba(0, 166, 232, 0.2);
   }
 
   .search-suggestions {
@@ -591,6 +619,90 @@ const searchIndex = [
     margin-bottom: 4px;
   }
 
+  .mega-menu__grid .mega-menu__image--photo {
+    width: 62px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  .mega-menu__panel--catalog {
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .mega-menu__panel--catalog .mega-menu__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px 16px;
+  }
+
+  .mega-menu__panel--catalog .mega-menu__grid a,
+  .mega-menu__panel--services .mega-menu__grid a {
+    min-height: 0;
+    padding: 0 0 11px;
+  }
+
+  .mega-menu__panel--catalog .mega-menu__grid img,
+  .mega-menu__panel--services .mega-menu__grid img {
+    width: 100%;
+    height: 66px;
+    float: none;
+    display: block;
+    margin: 0 0 9px;
+    object-fit: contain;
+    border-radius: 3px;
+    background: #f4f7fb;
+  }
+
+  .mega-menu__panel--catalog .mega-menu__grid .mega-menu__image--photo,
+  .mega-menu__panel--services .mega-menu__grid .mega-menu__image--photo {
+    width: 100%;
+    height: 66px;
+    object-fit: cover;
+  }
+
+  .mega-menu__panel--catalog .mega-menu__grid span {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .mega-menu__panel--services .mega-menu__grid {
+    gap: 14px 20px;
+  }
+
+  .mega-menu__panel--services .mega-menu__grid a {
+    min-height: 88px;
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: 12px;
+    align-content: start;
+  }
+
+  .mega-menu__panel--services .mega-menu__grid img,
+  .mega-menu__panel--services .mega-menu__grid .mega-menu__image--photo {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    width: 96px;
+    height: 68px;
+    margin: 0;
+  }
+
+  .mega-menu__panel--services .mega-menu__grid strong,
+  .mega-menu__panel--services .mega-menu__grid span {
+    grid-column: 2;
+  }
+
+  .mega-menu__panel--services .mega-menu__grid span {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
   .mega-menu__grid strong,
   .mega-menu__grid span {
     display: block;
@@ -609,13 +721,25 @@ const searchIndex = [
     line-height: 1.38;
   }
 
-  .mobile-categories {
+  .mobile-nav-group {
     display: none;
   }
 
-  .nav-toggle,
+  .nav-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+  }
+
   .menu-button {
     display: none;
+  }
+
+  .nav-toggle:focus-visible + .menu-button {
+    outline: 3px solid #00a6e8;
+    outline-offset: 3px;
   }
 
   .sr-only {
@@ -672,6 +796,16 @@ const searchIndex = [
 
     .site-header:has(.nav-toggle:checked) .site-nav {
       display: block;
+      max-height: calc(100dvh - 170px);
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+      scrollbar-gutter: stable;
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    :global(body:has(.site-header .nav-toggle:checked)) {
+      overflow: hidden;
     }
 
     .site-header:has(.nav-toggle:checked) .nav-inner {
@@ -689,38 +823,68 @@ const searchIndex = [
       background: #f3f6fb;
     }
 
+    .nav-item--has-menu > .nav-link {
+      display: none;
+    }
+
+    .mobile-nav-group {
+      display: block;
+    }
+
+    .mobile-nav-group summary {
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .mobile-nav-group summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-nav-group summary svg {
+      transition: transform 0.18s ease;
+    }
+
+    .mobile-nav-group[open] summary {
+      color: #0000e8;
+      background: #e9efff;
+    }
+
+    .mobile-nav-group[open] summary svg {
+      transform: rotate(180deg);
+    }
+
+    .mobile-nav-submenu {
+      padding: 6px 0 8px 14px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px;
+      border-left: 2px solid #00a6e8;
+    }
+
+    .mobile-nav-submenu a {
+      min-height: 44px;
+      padding: 9px 10px;
+      display: flex;
+      align-items: center;
+      color: #001f45;
+      border-radius: 4px;
+      background: #f8faff;
+      font-size: 0.84rem;
+      font-weight: 760;
+      line-height: 1.25;
+    }
+
+    .mobile-nav-submenu a:hover,
+    .mobile-nav-submenu a:focus-visible {
+      color: #0000e8;
+      background: #eef3ff;
+    }
+
     .nav-link::after,
     .mega-menu {
       display: none;
     }
 
-    .mobile-categories {
-      display: block;
-      border-top: 1px solid #dde5ef;
-    }
-
-    .mobile-categories__inner {
-      min-height: 44px;
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      align-items: center;
-      scrollbar-width: none;
-    }
-
-    .mobile-categories__inner::-webkit-scrollbar {
-      display: none;
-    }
-
-    .mobile-categories a {
-      flex: 0 0 auto;
-      padding: 7px 10px;
-      color: #0000e8;
-      background: #f3f6fb;
-      border-radius: 4px;
-      font-size: 0.82rem;
-      font-weight: 820;
-    }
   }
 
   @media (max-width: 680px) {
@@ -783,6 +947,10 @@ const searchIndex = [
 
     :global(.search-result__hint) {
       font-size: 0.8rem;
+    }
+
+    .mobile-nav-submenu {
+      grid-template-columns: 1fr;
     }
   }
 </style>

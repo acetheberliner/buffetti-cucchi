@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { digitalServices, productCategories, shopFocusAreas } from '../data/catalog';
+import { categoryCardImages as categoryImages, serviceCardImages as serviceImages } from '../data/card-images';
 import { site } from '../data/site';
-import { ArrowRight, MapPin, Phone, Search } from '@lucide/astro';
+import { ArrowRight, ChevronDown, MapPin, Phone, Search } from '@lucide/astro';
 
 const heroCategories = productCategories;
 const serviceCards = digitalServices.slice(0, 4);
+
 ---
 
 <BaseLayout
@@ -40,11 +42,11 @@ const serviceCards = digitalServices.slice(0, 4);
     </div>
   </section>
 
-  <section class="section catalog-section">
+  <section id="catalogo-prodotti" class="section catalog-section" aria-labelledby="catalog-title">
     <div class="container catalog-layout">
       <aside class="catalog-sidebar" aria-label="Categorie prodotto">
-        {productCategories.map((category, index) => (
-          <a class:list={[index === 0 && 'is-active']} href={category.href}>
+        {productCategories.map((category) => (
+          <a href={category.href}>
             <span>{category.label}</span>
             <ArrowRight size={18} stroke-width={2.2} />
           </a>
@@ -54,7 +56,7 @@ const serviceCards = digitalServices.slice(0, 4);
       <div class="catalog-main">
         <div class="section-head">
           <span class="eyebrow">Prodotti</span>
-          <h2>Prodotti Buffetti, divisi come li cerchi davvero.</h2>
+          <h2 id="catalog-title">Prodotti Buffetti, divisi come li cerchi davvero.</h2>
           <p>
             Ogni categoria apre una pagina propria con prodotti, sottocategorie e immagini:
             niente link finti, niente girotondi, solo percorsi chiari per arrivare al banco preparato.
@@ -64,7 +66,13 @@ const serviceCards = digitalServices.slice(0, 4);
         <div class="category-grid">
           {heroCategories.map((category) => (
             <a class="category-card" href={category.href}>
-              <span>{category.label}</span>
+              <img
+                class="category-card__image"
+                src={categoryImages[category.slug]}
+                alt={`Prodotti Buffetti per ${category.label.toLowerCase()}`}
+                loading="lazy"
+              />
+              <h3>{category.label}</h3>
               <p>{category.summary}</p>
               <ul>
                 {category.items.slice(0, 4).map((item) => <li>{item}</li>)}
@@ -72,15 +80,41 @@ const serviceCards = digitalServices.slice(0, 4);
             </a>
           ))}
         </div>
+
+        <div class="mobile-category-list">
+          {heroCategories.map((category) => (
+            <details class="mobile-category-card" name="product-categories">
+              <summary>
+                <h3>{category.label}</h3>
+                <ChevronDown size={20} stroke-width={2.4} aria-hidden="true" />
+              </summary>
+              <a class="mobile-category-card__content" href={category.href}>
+                <img
+                  src={categoryImages[category.slug]}
+                  alt={`Prodotti Buffetti per ${category.label.toLowerCase()}`}
+                  loading="lazy"
+                />
+                <p>{category.summary}</p>
+                <ul>
+                  {category.items.slice(0, 4).map((item) => <li>{item}</li>)}
+                </ul>
+                <span class="mobile-category-card__action">
+                  Scopri la categoria
+                  <ArrowRight size={18} stroke-width={2.3} aria-hidden="true" />
+                </span>
+              </a>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section departments-section">
+  <section class="section departments-section" aria-labelledby="departments-title">
     <div class="container business-layout">
       <div class="business-copy">
         <span class="eyebrow">Reparti del negozio</span>
-        <h2>Non un portale corporate: un negozio con reparti chiari.</h2>
+        <h2 id="departments-title">Non un portale corporate: un negozio con reparti chiari.</h2>
         <p>
           Scuola, ufficio, servizi al banco e idee regalo restano percorsi autonomi,
           con immagini e contenuti pensati per chi passa fisicamente da Buffetti Cucchi.
@@ -99,11 +133,11 @@ const serviceCards = digitalServices.slice(0, 4);
     </div>
   </section>
 
-  <section class="section social-section">
+  <section class="section social-section" aria-labelledby="social-title">
     <div class="container social-layout">
       <div class="social-copy">
         <span class="eyebrow">Segui il negozio</span>
-        <h2>Novita, vetrine e contatti veloci anche sui social.</h2>
+        <h2 id="social-title">Novità, vetrine e contatti veloci anche sui social.</h2>
         <p>
           Facebook e Instagram servono davvero: per vedere cosa arriva in negozio,
           chiedere informazioni e restare aggiornato su scuola, cartoleria, servizi e idee regalo.
@@ -119,23 +153,29 @@ const serviceCards = digitalServices.slice(0, 4);
         <a href={site.instagram} target="_blank" rel="noopener noreferrer">
           <img src="/images/instagram.svg" alt="" loading="lazy" />
           <strong>Instagram</strong>
-          <span>Vetrine e novita</span>
+          <span>Vetrine e novità</span>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section services-section">
+  <section class="section services-section" aria-labelledby="services-title">
     <div class="container">
       <div class="section-head section-head--center">
         <span class="eyebrow">Servizi digitali e documenti</span>
-        <h2>PEC, firma, stampa e spedizioni senza rimbalzare tra mille sportelli.</h2>
+        <h2 id="services-title">PEC, firma, SPID e stampa senza rimbalzare tra mille sportelli.</h2>
       </div>
 
       <div class="service-grid">
         {serviceCards.map((service) => (
           <a class="service-card" href={service.href}>
-            <span>{service.label}</span>
+            <img
+              class="service-card__image"
+              src={serviceImages[service.label]}
+              alt={`Servizio Buffetti: ${service.label}`}
+              loading="lazy"
+            />
+            <h3>{service.label}</h3>
             <p>{service.text}</p>
           </a>
         ))}
@@ -143,11 +183,11 @@ const serviceCards = digitalServices.slice(0, 4);
     </div>
   </section>
 
-  <section class="section visit-section">
+  <section class="section visit-section" aria-labelledby="visit-title">
     <div class="container visit-layout">
       <div class="visit-copy">
         <span class="eyebrow">Negozio Buffetti a Cesena</span>
-        <h2>Vedi, confronti, chiedi. E torni a casa con la cosa giusta.</h2>
+        <h2 id="visit-title">Vedi, confronti, chiedi. E torni a casa con la cosa giusta.</h2>
         <p>
           Ci trovi in Viale Matteotti, 593, zona Ippodromo. Passa per prodotti Buffetti,
           scuola, ufficio, servizi digitali, fotocopie, timbri, rilegature e spedizioni.
@@ -166,6 +206,17 @@ const serviceCards = digitalServices.slice(0, 4);
             <span>Indirizzo</span>
             <strong>Viale Matteotti, 593 - Cesena</strong>
           </div>
+        </div>
+
+        <div class="visit-actions">
+          <a class="btn btn--primary" href={site.phoneHref}>
+            <Phone size={18} stroke-width={2.2} />
+            Chiama il negozio
+          </a>
+          <a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+            <MapPin size={18} stroke-width={2.2} />
+            Ottieni indicazioni
+          </a>
         </div>
       </div>
 
@@ -204,7 +255,7 @@ const serviceCards = digitalServices.slice(0, 4);
 
   .home-hero {
     position: relative;
-    min-height: 660px;
+    min-height: 620px;
     display: grid;
     align-items: center;
     overflow: hidden;
@@ -302,13 +353,14 @@ const serviceCards = digitalServices.slice(0, 4);
   }
 
   .catalog-section {
+    scroll-margin-top: 184px;
     background: #fff;
   }
 
   .catalog-layout {
     display: grid;
     grid-template-columns: 270px minmax(0, 1fr);
-    gap: 34px;
+    gap: 48px;
     align-items: start;
   }
 
@@ -320,8 +372,8 @@ const serviceCards = digitalServices.slice(0, 4);
   }
 
   .catalog-sidebar a {
-    min-height: 50px;
-    padding: 0 14px 0 12px;
+    min-height: 52px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -332,14 +384,14 @@ const serviceCards = digitalServices.slice(0, 4);
   }
 
   .catalog-sidebar a:hover,
-  .catalog-sidebar .is-active {
+  .catalog-sidebar a:focus-visible {
     color: #0000e8;
     background: #eef3ff;
   }
 
   .section-head {
     max-width: 780px;
-    margin-bottom: 34px;
+    margin-bottom: 40px;
   }
 
   .section-head--center {
@@ -369,7 +421,11 @@ const serviceCards = digitalServices.slice(0, 4);
   .category-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    gap: 20px;
+  }
+
+  .mobile-category-list {
+    display: none;
   }
 
   .category-card,
@@ -379,7 +435,7 @@ const serviceCards = digitalServices.slice(0, 4);
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 16px 44px rgba(0, 31, 69, 0.07);
-    transition: transform 0.18s ease, border-color 0.18s ease;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
   }
 
   .category-card:hover,
@@ -387,20 +443,40 @@ const serviceCards = digitalServices.slice(0, 4);
   .business-list a:hover {
     transform: translateY(-4px);
     border-color: rgba(0, 0, 232, 0.3);
+    box-shadow: 0 22px 54px rgba(0, 31, 69, 0.12);
   }
 
   .category-card {
-    min-height: 252px;
-    padding: 24px;
+    min-height: 418px;
+    padding: 0 24px 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
-  .category-card span,
-  .service-card span {
+  .category-card__image,
+  .service-card__image {
+    width: calc(100% + 48px);
+    max-width: none;
+    height: 160px;
+    margin: 0 -24px 22px;
     display: block;
+    object-fit: cover;
+    background: #f4f7fb;
+  }
+
+  .category-card__image {
+    height: 176px;
+  }
+
+  .category-card h3,
+  .service-card h3 {
+    margin: 0;
     color: #0000e8;
     font-size: 1.18rem;
     font-weight: 860;
     line-height: 1.12;
+    letter-spacing: -0.025em;
   }
 
   .category-card p,
@@ -411,8 +487,11 @@ const serviceCards = digitalServices.slice(0, 4);
   }
 
   .category-card ul {
-    margin: 20px 0 0;
-    padding: 0;
+    margin: auto 0 0;
+    padding-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
     display: grid;
     gap: 8px;
     list-style: none;
@@ -444,14 +523,14 @@ const serviceCards = digitalServices.slice(0, 4);
   .business-layout {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 50px;
+    gap: 64px;
     align-items: center;
   }
 
   .business-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
   }
 
   .business-list a {
@@ -485,7 +564,7 @@ const serviceCards = digitalServices.slice(0, 4);
   .social-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
-    gap: 42px;
+    gap: 64px;
     align-items: center;
   }
 
@@ -553,6 +632,11 @@ const serviceCards = digitalServices.slice(0, 4);
     background: #0000e8;
   }
 
+  .services-section .section-head {
+    max-width: 900px;
+    margin-bottom: 44px;
+  }
+
   .services-section .eyebrow,
   .services-section h2 {
     color: #fff;
@@ -561,13 +645,22 @@ const serviceCards = digitalServices.slice(0, 4);
   .service-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 16px;
+    gap: 20px;
   }
 
   .service-card {
-    min-height: 190px;
-    padding: 24px;
+    min-height: 324px;
+    padding: 0 24px 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     background: rgba(255, 255, 255, 0.98);
+  }
+
+  .service-card__image {
+    height: 156px;
+    object-fit: contain;
+    padding: 12px;
   }
 
   .visit-section {
@@ -577,7 +670,7 @@ const serviceCards = digitalServices.slice(0, 4);
   .visit-layout {
     display: grid;
     grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-    gap: 42px;
+    gap: 64px;
     align-items: center;
   }
 
@@ -585,6 +678,21 @@ const serviceCards = digitalServices.slice(0, 4);
     margin-top: 28px;
     display: grid;
     gap: 12px;
+  }
+
+  .visit-actions {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .visit-actions .btn {
+    gap: 8px;
+  }
+
+  .visit-actions .btn--ghost {
+    background: #f1f6fb;
   }
 
   .visit-facts div {
@@ -645,6 +753,7 @@ const serviceCards = digitalServices.slice(0, 4);
       overflow-x: auto;
       border-right: 0;
       scrollbar-width: none;
+      padding-bottom: 4px;
     }
 
     .catalog-sidebar::-webkit-scrollbar {
@@ -655,7 +764,7 @@ const serviceCards = digitalServices.slice(0, 4);
       flex: 0 0 auto;
       border: 1px solid #dfe8f2;
       border-radius: 4px;
-      margin-right: 8px;
+      margin-right: 10px;
     }
   }
 
@@ -664,6 +773,12 @@ const serviceCards = digitalServices.slice(0, 4);
     .social-layout,
     .visit-layout {
       grid-template-columns: 1fr;
+    }
+
+    .business-layout,
+    .social-layout,
+    .visit-layout {
+      gap: 40px;
     }
   }
 
@@ -690,9 +805,127 @@ const serviceCards = digitalServices.slice(0, 4);
     }
 
     .category-grid,
-    .service-grid,
-    .business-list {
-      grid-template-columns: 1fr;
+    .catalog-sidebar {
+      display: none;
+    }
+
+    .mobile-category-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mobile-category-card {
+      overflow: hidden;
+      border: 1px solid #dfe8f2;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(0, 31, 69, 0.06);
+    }
+
+    .mobile-category-card summary {
+      min-height: 58px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: #001f45;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .mobile-category-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-category-card summary h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .mobile-category-card summary svg {
+      flex: 0 0 auto;
+      color: #0000e8;
+      transition: transform 0.18s ease;
+    }
+
+    .mobile-category-card[open] summary {
+      color: #0000e8;
+      border-bottom: 1px solid #dfe8f2;
+      background: #f6f8ff;
+    }
+
+    .mobile-category-card[open] summary svg {
+      transform: rotate(180deg);
+    }
+
+    .mobile-category-card__content {
+      display: block;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-category-card__content > img {
+      width: calc(100% + 32px);
+      max-width: none;
+      height: 178px;
+      margin: 0 -16px 16px;
+      object-fit: cover;
+    }
+
+    .mobile-category-card__content p {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .mobile-category-card__content ul {
+      margin: 16px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 7px;
+      list-style: none;
+    }
+
+    .mobile-category-card__content li {
+      position: relative;
+      padding-left: 15px;
+      color: var(--color-text);
+      font-size: 0.88rem;
+      font-weight: 720;
+      line-height: 1.4;
+    }
+
+    .mobile-category-card__content li::before {
+      content: "";
+      position: absolute;
+      top: 0.55em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #00a6e8;
+    }
+
+    .mobile-category-card__action {
+      min-height: 44px;
+      margin-top: 16px;
+      padding-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: #0000e8;
+      border-top: 1px solid #e7edf5;
+      font-weight: 820;
+    }
+
+    .business-list,
+    .service-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }
 
     .hero-search {
@@ -700,16 +933,68 @@ const serviceCards = digitalServices.slice(0, 4);
       grid-template-columns: 1fr 52px;
     }
 
-    .catalog-sidebar {
-      margin-inline: -12px;
-      padding-inline: 12px;
-    }
-
     .category-card,
     .service-card,
     .business-list a {
       min-height: auto;
-      padding: 20px;
+    }
+
+    .category-card,
+    .service-card {
+      padding: 0 20px 20px;
+    }
+
+    .category-card ul {
+      margin-top: 0;
+    }
+
+    .category-card__image,
+    .service-card__image {
+      width: calc(100% + 40px);
+      max-width: none;
+      margin-inline: -20px;
+    }
+
+    .business-list a {
+      padding: 14px;
+    }
+
+    .business-list img {
+      height: 58px;
+      margin-bottom: 10px;
+    }
+
+    .business-list strong {
+      font-size: 0.94rem;
+      line-height: 1.25;
+    }
+
+    .business-list span {
+      margin-top: 6px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    .service-card {
+      padding: 0 14px 16px;
+    }
+
+    .service-card__image {
+      width: calc(100% + 28px);
+      height: 112px;
+      margin: 0 -14px 14px;
+      padding: 8px;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .service-card p {
+      margin-top: 8px;
+      font-size: 0.86rem;
+      line-height: 1.45;
     }
 
     .social-cards,
@@ -720,6 +1005,19 @@ const serviceCards = digitalServices.slice(0, 4);
     .visit-map,
     .visit-map iframe {
       min-height: 320px;
+    }
+
+    .visit-actions .btn {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .category-card:hover,
+    .service-card:hover,
+    .business-list a:hover,
+    .social-cards a:hover {
+      transform: none;
     }
   }
 </style>
