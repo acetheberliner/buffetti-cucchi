@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { productCategories } from '../../data/catalog';
+import { categoryCardImages } from '../../data/card-images';
+import { categoryPageImages } from '../../data/category-page-images';
 import { site } from '../../data/site';
 import { ArrowRight, MapPin, Phone } from '@lucide/astro';
 
@@ -12,6 +14,7 @@ export function getStaticPaths() {
 }
 
 const { category } = Astro.props;
+const pageImages = categoryPageImages[category.slug];
 const relatedCategories = productCategories.filter((item) => item.slug !== category.slug).slice(0, 4);
 const visualPools = {
   'arredo-complementi': [
@@ -88,7 +91,7 @@ const itemTone = {
 };
 const itemCards = category.items.map((item, index) => ({
   title: item,
-  image: imagePool[index % imagePool.length],
+  image: pageImages?.items?.[item] ?? imagePool[index % imagePool.length],
   text: `${item} ${itemTone[category.slug] ?? 'per le esigenze quotidiane di scuola, casa e ufficio'}. In negozio puoi verificare formati, modelli e disponibilita.`,
   meta: [
     index % 2 === 0 ? 'Disponibilita da verificare' : 'Scelta guidata',
@@ -100,7 +103,15 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="category-hero" style={`--category-accent: ${category.accent ?? '#0000e8'}`}>
+  <section
+    class:list={['category-hero', pageImages?.heroBackground && 'category-hero--has-background']}
+    style={`--category-accent: ${category.accent ?? '#0000e8'}`}
+  >
+    {pageImages?.heroBackground ? (
+      <div class="category-hero__background" aria-hidden="true">
+        <img src={pageImages.heroBackground} alt="" />
+      </div>
+    ) : null}
     <div class="category-hero__pattern" aria-hidden="true">
       <svg viewBox="0 0 640 420" role="img">
         <path d="M88 80h120v74H88z" />
@@ -132,7 +143,10 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
       </div>
 
       <div class="category-hero__visual">
-        <img src={category.image} alt={category.label} />
+        <img
+          src={pageImages?.heroForeground ?? category.image}
+          alt={pageImages?.heroForeground ? `Arredo Buffetti: ${category.label}` : category.label}
+        />
       </div>
     </div>
   </section>
@@ -149,11 +163,14 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
       </div>
 
       <div class="item-grid">
-        {itemCards.map((item, index) => (
+        {itemCards.map((item) => (
           <article>
-            <div class="item-card__media">
-              <img src={item.image} alt={item.title} loading="lazy" />
-              <span>{String(index + 1).padStart(2, '0')}</span>
+            <div class:list={['item-card__media', item.title === 'Scrivanie e accessori' && 'item-card__media--scene']}>
+              <img
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+              />
             </div>
             <div class="item-card__body">
               <strong>{item.title}</strong>
@@ -206,7 +223,7 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
       <div class="related-grid">
         {relatedCategories.map((item) => (
           <a href={item.href}>
-            <img src={item.image} alt={item.label} loading="lazy" />
+            <img src={categoryCardImages[item.slug] ?? item.image} alt={item.label} loading="lazy" />
             <strong>{item.label}</strong>
             <span>{item.summary}</span>
             <ArrowRight size={18} stroke-width={2.2} />
@@ -236,6 +253,38 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
       radial-gradient(circle at 82% 32%, color-mix(in srgb, var(--category-accent, #0000e8) 18%, transparent), transparent 28%),
       linear-gradient(135deg, rgba(0, 0, 232, 0.08), rgba(0, 166, 232, 0.08)),
       #fff;
+  }
+
+  .category-hero__background {
+    position: absolute;
+    inset: 0;
+  }
+
+  .category-hero__background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 18, 48, 0.92) 0%, rgba(0, 31, 69, 0.78) 48%, rgba(0, 31, 69, 0.45) 100%);
+  }
+
+  .category-hero__background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 52%;
+  }
+
+  .category-hero--has-background .category-hero__pattern {
+    display: none;
+  }
+
+  .category-hero.category-hero--has-background h1,
+  .category-hero.category-hero--has-background .eyebrow {
+    color: #fff;
+  }
+
+  .category-hero.category-hero--has-background p {
+    color: rgba(255, 255, 255, 0.84);
   }
 
   .category-hero__pattern {
@@ -304,6 +353,25 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
     box-shadow: none;
   }
 
+  .category-hero--has-background .category-hero__visual {
+    min-height: 330px;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.46);
+    border-radius: 12px;
+    background: rgba(0, 31, 69, 0.32);
+    box-shadow: 0 30px 70px rgba(0, 18, 48, 0.28);
+  }
+
+  .category-hero--has-background .category-hero__visual img {
+    width: 100%;
+    height: 330px;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    filter: none;
+  }
+
   .category-hero__visual img {
     width: min(100%, 360px);
     max-height: 290px;
@@ -328,8 +396,10 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
   }
 
   .item-grid article {
-    min-height: 360px;
+    min-height: 390px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     border: 1px solid rgba(204, 221, 237, 0.84);
     border-radius: 8px;
     background:
@@ -340,31 +410,42 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
 
   .item-card__media {
     position: relative;
-    height: 160px;
+    width: 100%;
+    height: 174px;
+    min-height: 174px;
+    max-height: 174px;
+    flex: 0 0 174px;
+    overflow: hidden;
     display: grid;
     place-items: center;
-    padding: 20px 20px 34px;
-    background:
-      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--category-accent, #0000e8) 12%, transparent), transparent 54%);
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(204, 221, 237, 0.7);
+    background: #f7f9fc;
   }
 
   .item-card__media img {
-    width: 100%;
-    height: 118px;
+    width: min(88%, 250px);
+    height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 18px 22px rgba(0, 31, 69, 0.1));
+    object-position: center;
+    filter: none;
   }
 
-  .item-card__media span {
-    position: absolute;
-    left: 16px;
-    bottom: 12px;
-    color: var(--category-accent, #0000e8);
-    font-weight: 840;
+  .item-card__media--scene {
+    padding: 0;
+  }
+
+  .item-card__media--scene img {
+    width: 100%;
+    max-width: none;
+    object-fit: cover;
   }
 
   .item-card__body {
-    padding: 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
   }
 
   .item-grid strong {
@@ -381,7 +462,8 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
   }
 
   .item-card__body div {
-    margin-top: 18px;
+    margin-top: auto;
+    padding-top: 18px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -471,7 +553,8 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
   .related-grid img {
     width: 100%;
     height: 105px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 4px;
     margin-bottom: 4px;
     filter: drop-shadow(0 14px 18px rgba(0, 31, 69, 0.1));
   }
@@ -531,6 +614,15 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
       max-height: 180px;
     }
 
+    .category-hero--has-background .category-hero__visual {
+      min-height: 220px;
+    }
+
+    .category-hero--has-background .category-hero__visual img {
+      height: 220px;
+      max-height: 220px;
+    }
+
     .item-grid,
     .related-grid {
       grid-template-columns: 1fr;
@@ -542,7 +634,10 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
     }
 
     .item-card__media {
-      height: 138px;
+      height: 180px;
+      min-height: 180px;
+      max-height: 180px;
+      flex-basis: 180px;
     }
 
     .social-actions {
