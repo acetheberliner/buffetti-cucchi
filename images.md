@@ -55,3 +55,18 @@ Le immagini elencate qui sotto sono usate in `src/pages/index.astro`. Provengono
 | Continua nel catalogo - Cartucce e toner | Cartucce e toner Buffetti | https://buffetti.it/cdn/shop/collections/cartucce-e-toner-compatibili-buffetti.webp?v=1777281289 | https://buffetti.it/collections/cartucce-e-toner |
 | Continua nel catalogo - Archiviazione | Sistemi di archiviazione Buffetti | https://buffetti.it/cdn/shop/collections/archiviazione-schedari-raccoglitori-cartelline-buffetti.webp?v=1777279257 | https://buffetti.it/collections/archiviazione |
 | Continua nel catalogo - Cancelleria | Penne, matite e cancelleria Buffetti | https://buffetti.it/cdn/shop/collections/cancelleria-penne-matite-buffetti.webp?v=1777281058 | https://buffetti.it/collections/cancelleria |
+
+## Pagina "Carta e Modulistica"
+
+| Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
+| --- | --- | --- | --- |
+| Sfondo hero | Pila di carta in un ambiente di lavoro | https://buffetti.it/cdn/shop/collections/carta-e-modulistica-buffetti.webp?v=1777280043 | https://buffetti.it/collections/carta-e-modulistica |
+| Foreground hero | Carta colorata Le Cirque distribuita da Buffetti | https://buffetti.it/cdn/shop/files/87728_87728_Le_Cirque-colori_forti_18.jpg?v=1782459184 | https://buffetti.it/products/carta-colorata-le-cirque-favini-colori-forti-160-g-mq-assortiti-5-colori |
+| Card 1 - Carta per stampanti | Risma Buffetti Green A4 | https://buffetti.it/cdn/shop/files/96802_96802_004910GR0.jpg?v=1782715756 | https://buffetti.it/products/carta-buffetti-green-100-riciclabile-a4-21x29-7-cm-80-g |
+| Card 2 - Carta in rotolo | Rotoli di etichette in carta termica Buffetti | https://buffetti.it/cdn/shop/files/112598_013L1325R_c811459b-c682-4dcd-b87f-af14b01e81d0.jpg?v=1782719609 | https://buffetti.it/products/rotolo-130-etichette-permanenti-in-carta-termica-28x89-mm-indirizzi-standard-compatibili-stampante-lp-e-dymo-lw450 |
+| Card 3 - Carta colorata | Carta Le Cirque in colori assortiti | https://buffetti.it/cdn/shop/files/87728_87728_Le_Cirque-colori_forti_18.jpg?v=1782459184 | https://buffetti.it/products/carta-colorata-le-cirque-favini-colori-forti-160-g-mq-assortiti-5-colori |
+| Card 4 - Carta fotografica | Carta fotografica Premium Buffetti | https://buffetti.it/cdn/shop/files/97363_97363_3D_A4_66555eac-6e32-4b95-bd26-049540a97479.jpg?v=1782715378 | https://buffetti.it/products/carta-fotografica-da-240g-conf-20-fogli-f-to-a4-bianco-lucido |
+| Card 5 - Etichette | Etichette adesive stampabili Buffetti | https://buffetti.it/cdn/shop/files/93616_93616_0689B7042_1_d40224d3-f78e-487e-acfc-954491eeba7e.jpg?v=1783575074 | https://buffetti.it/products/etichette-multifunzione-conf-100-fogli-f-to-105x42-mm-angoli-vivi-senza-margine-n-etichette-per-foglio-14 |
+| Card 6 - Moduli | Modulo Buffetti per buoni di consegna | https://buffetti.it/cdn/shop/files/94393_94393_6413N0000_Int_c95c0cd3-6c21-45a1-8631-229a49f5e489.jpg?v=1782716365 | https://buffetti.it/products/buoni-di-consegna-blocco-100-fogli-21-5x14-8-cm |
+| Card 7 - Registri | Pagina di registro Dare/Avere Buffetti | https://buffetti.it/cdn/shop/files/51618_51618_307101200_e4502272-34b4-4a11-b840-586442ffdfd7.jpg?v=1782716336 | https://buffetti.it/products/registro-banca-dare-avere-e-conto-scalare-96-pagine-24x17-cm |
+| Card 8 - Blocchi note e quaderni | Blocco notes Master | https://buffetti.it/cdn/shop/files/98393_98393_0208521BI.jpg?v=1782714814 | https://buffetti.it/products/blocchi-notes-master |
