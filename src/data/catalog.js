@@ -9,14 +9,10 @@ export const productCategories = [
     items: [
       'Sedie e sgabelli',
       'Scrivanie e accessori',
-      'Appendiabiti',
       'Armadi e cassettiere',
-      'Lampade',
-      'Poltrone e divanetti',
-      'Orologi e mappamondi',
       "Complementi d'arredo",
       'Ergonomia',
-      'Cestini',
+      'Tritacarta e cestini',
     ],
   },
   {
