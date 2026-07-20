@@ -378,6 +378,7 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
     padding: 14px 18px;
     border-bottom: 1px solid rgba(204, 221, 237, 0.7);
     background: #f7f9fc;
+    isolation: isolate;
   }
 
   .item-card__media img {
@@ -386,6 +387,11 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
     object-fit: contain;
     object-position: center;
     filter: none;
+  }
+
+  .item-card__media:not(.item-card__media--scene) img {
+    mix-blend-mode: multiply;
+    filter: contrast(1.025) saturate(1.035);
   }
 
   .item-card__media--scene {
@@ -397,6 +403,8 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary} Di
     max-width: none;
     object-fit: cover;
     object-position: var(--item-position, center);
+    mix-blend-mode: normal;
+    filter: none;
   }
 
   .item-grid--ambient .item-card__media {

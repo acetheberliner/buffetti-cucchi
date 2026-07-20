@@ -24,11 +24,9 @@ export const productCategories = [
     summary: 'Carta A4, etichette, moduli, registri, blocchi e quaderni per casa e ufficio.',
     items: [
       'Carta per stampanti',
-      'Carta in rotolo',
       'Carta colorata',
       'Carta fotografica',
       'Etichette',
-      'Moduli',
       'Registri',
       'Blocchi note e quaderni',
     ],
@@ -44,7 +42,6 @@ export const productCategories = [
       'Cartucce e toner originali',
       'Cartucce e toner compatibili',
       'Toner Laser',
-      'Cartucce Inkjet',
     ],
   },
   {
@@ -56,8 +53,6 @@ export const productCategories = [
     summary: 'Raccoglitori, registratori, faldoni, cartelle, buste e scatole archivio.',
     items: [
       'Raccoglitori',
-      'Registratori',
-      'Scatole e faldoni',
       'Cartelle e cartelline',
       'Classificatori e divisori',
       'Buste in plastica',
@@ -94,7 +89,6 @@ export const productCategories = [
     items: [
       'Album da disegno',
       'Colori e matite colorate',
-      'Prodotti per pittura',
       'Disegno tecnico',
       'Righe e squadre',
       'Astucci e zaini',
@@ -115,7 +109,6 @@ export const productCategories = [
       'Bacheche e pannelli',
       'Espositori',
       'Segnaletica interna',
-      'Cornici e targhe',
     ],
   },
   {
