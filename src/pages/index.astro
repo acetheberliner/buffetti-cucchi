@@ -42,6 +42,50 @@ const serviceCards = digitalServices.slice(0, 4);
     </div>
   </section>
 
+  <section class="anniversary-section" aria-labelledby="anniversary-title">
+    <div class="container anniversary-card">
+      <figure class="anniversary-portrait">
+        <img
+          src="/images/staff.jpeg"
+          alt="Sandra Casadei, Elisabetta Cucchi ed Elena Cucchi nel negozio Buffetti Cucchi"
+          loading="eager"
+        />
+
+        <div class="anniversary-seal" aria-hidden="true">
+          <strong>30</strong>
+          <span>anni insieme</span>
+        </div>
+
+        <figcaption>Due generazioni, la stessa cura per il negozio e per chi entra a farci visita ogni giorno!</figcaption>
+      </figure>
+
+      <div class="anniversary-copy">
+        <span class="eyebrow">30° anniversario · Una storia di famiglia</span>
+        <h2 id="anniversary-title">Da trent’anni a Cesena!</h2>
+        <p class="anniversary-lead">
+          Buffetti Cucchi è prima di tutto una storia familiare: esperienza, presenza quotidiana
+          e un modo diretto di aiutare le persone a trovare ciò che serve davvero.
+        </p>
+
+        <div class="anniversary-family" aria-label="La famiglia Buffetti Cucchi">
+          <div>
+            <strong>Sandra Casadei in Cucchi</strong>
+          </div>
+          <div>
+            <strong>Elisabetta Cucchi</strong>
+          </div>
+          <div>
+            <strong>Elena Cucchi</strong>
+          </div>
+        </div>
+
+        <p class="anniversary-note">
+          Trent’anni di banco, consigli, scuola, ufficio e servizi con la stessa attenzione di sempre!
+        </p>
+      </div>
+    </div>
+  </section>
+
   <section id="catalogo-prodotti" class="section catalog-section" aria-labelledby="catalog-title">
     <div class="container catalog-layout">
       <aside class="catalog-sidebar" aria-label="Categorie prodotto">
@@ -350,6 +394,174 @@ const serviceCards = digitalServices.slice(0, 4);
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+  }
+
+  .anniversary-section {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(72px, 8vw, 118px) 0;
+    background:
+      radial-gradient(circle at 8% 18%, rgba(230, 184, 74, 0.24), transparent 28%),
+      radial-gradient(circle at 94% 82%, rgba(0, 166, 232, 0.16), transparent 30%),
+      linear-gradient(135deg, #f7faff 0%, #fffaf0 100%);
+  }
+
+  .anniversary-section::before {
+    content: "30";
+    position: absolute;
+    right: -0.04em;
+    bottom: -0.28em;
+    color: rgba(0, 31, 69, 0.035);
+    font-size: clamp(15rem, 34vw, 35rem);
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -0.1em;
+    pointer-events: none;
+  }
+
+  .anniversary-card {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+    overflow: hidden;
+    border: 1px solid rgba(0, 31, 69, 0.1);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 36px 110px rgba(0, 31, 69, 0.14);
+  }
+
+  .anniversary-portrait {
+    position: relative;
+    min-height: 540px;
+    margin: 0;
+    overflow: hidden;
+    background: #001f45;
+  }
+
+  .anniversary-portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, rgba(0, 20, 48, 0.84) 100%);
+    pointer-events: none;
+  }
+
+  .anniversary-portrait > img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .anniversary-seal {
+    position: absolute;
+    z-index: 2;
+    bottom: 24px;
+    left: 30px;
+    width: 144px;
+    height: 144px;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    color: #001f45;
+    border: 6px solid rgba(255, 255, 255, 0.76);
+    border-radius: 999px;
+    background: #e6b84a;
+    box-shadow: 0 20px 50px rgba(0, 31, 69, 0.26);
+    transform: rotate(-6deg);
+  }
+
+  .anniversary-seal strong {
+    display: block;
+    font-size: 4.2rem;
+    line-height: 0.78;
+    letter-spacing: -0.08em;
+  }
+
+  .anniversary-seal span {
+    margin-top: 9px;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .anniversary-portrait figcaption {
+    position: absolute;
+    z-index: 2;
+    right: 30px;
+    bottom: 26px;
+    left: 194px;
+    max-width: 560px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 760;
+    line-height: 1.5;
+  }
+
+  .anniversary-copy {
+    padding: clamp(42px, 5vw, 72px);
+    align-self: center;
+  }
+
+  .anniversary-copy .eyebrow {
+    color: #8b6506;
+  }
+
+  .anniversary-copy h2 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2.35rem, 4.2vw, 4.35rem);
+    line-height: 0.96;
+    letter-spacing: -0.052em;
+    text-wrap: balance;
+  }
+
+  .anniversary-lead {
+    margin: 24px 0 0;
+    color: var(--color-muted);
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .anniversary-family {
+    margin-top: 30px;
+    display: grid;
+    gap: 10px;
+  }
+
+  .anniversary-family div {
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    border-left: 4px solid #e6b84a;
+    background: #f4f7fb;
+  }
+
+  .anniversary-family strong {
+    color: #001f45;
+    font-size: 0.98rem;
+  }
+
+  .anniversary-family span {
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .anniversary-note {
+    margin: 28px 0 0;
+    padding-top: 22px;
+    color: #001f45;
+    border-top: 1px solid #dfe7f0;
+    font-size: 1.02rem;
+    font-weight: 820;
+    line-height: 1.55;
   }
 
   .catalog-section {
@@ -769,6 +981,15 @@ const serviceCards = digitalServices.slice(0, 4);
   }
 
   @media (max-width: 860px) {
+    .anniversary-card {
+      grid-template-columns: 1fr;
+    }
+
+    .anniversary-portrait {
+      min-height: 0;
+      aspect-ratio: 5 / 4;
+    }
+
     .business-layout,
     .social-layout,
     .visit-layout {
@@ -802,6 +1023,65 @@ const serviceCards = digitalServices.slice(0, 4);
     .visit-copy p {
       font-size: 1rem;
       line-height: 1.68;
+    }
+
+    .anniversary-section {
+      padding: 54px 0;
+    }
+
+    .anniversary-card {
+      border-radius: 18px;
+    }
+
+    .anniversary-portrait {
+      aspect-ratio: 1 / 1;
+    }
+
+    .anniversary-seal {
+      bottom: 14px;
+      left: 16px;
+      width: 104px;
+      height: 104px;
+      border-width: 4px;
+    }
+
+    .anniversary-seal strong {
+      font-size: 3rem;
+    }
+
+    .anniversary-seal span {
+      margin-top: 6px;
+      font-size: 0.61rem;
+    }
+
+    .anniversary-portrait figcaption {
+      right: 18px;
+      bottom: 16px;
+      left: 132px;
+      font-size: 0.86rem;
+    }
+
+    .anniversary-copy {
+      padding: 30px 22px 34px;
+    }
+
+    .anniversary-copy h2 {
+      font-size: clamp(2.05rem, 11vw, 3rem);
+    }
+
+    .anniversary-lead {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .anniversary-family div {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .anniversary-family span {
+      text-align: left;
     }
 
     .category-grid,

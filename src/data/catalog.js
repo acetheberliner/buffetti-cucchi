@@ -119,7 +119,7 @@ export const productCategories = [
     accent: '#2d7d46',
     summary: 'Igiene, sicurezza, catering e prodotti pratici per ambienti condivisi.',
     items: [
-      'Igiene e pulizia',
+      'Prodotti per pulizia',
       'Carta asciugamani e dispenser',
       'Catering',
       'Sicurezza ambiente',
@@ -151,12 +151,10 @@ export const productCategories = [
     summary: 'Accessori PC, cavi, memorie, borse, periferiche e accessori smartphone.',
     items: [
       'Periferiche per PC',
-      'Accessori PC',
       'Audio video e fotografia',
-      'Cavi, adattatori e multiprese',
+      'Cavetti e adattatori',
       'Memorie digitali',
       'Zaini e borse PC',
-      'Accessori smartphone e tablet',
       'Pile e batterie',
     ],
   },
@@ -186,7 +184,7 @@ export const productCategories = [
     accent: '#2f8f61',
     summary: 'Scelte piu attente per carta, cancelleria e materiali di uso quotidiano.',
     items: [
-      'Carta certificata',
+      'Carta riciclata',
       'Prodotti ricaricabili',
       'Materiali riciclati',
       'Soluzioni a minor impatto',

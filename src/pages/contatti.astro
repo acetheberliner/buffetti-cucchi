@@ -1,8 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { digitalServices, shopFocusAreas } from '../data/catalog';
+import { categoryCardImages, serviceCardImages } from '../data/card-images';
+import { pages } from '../data/pages';
 import { site } from '../data/site';
 import { Mail, MapPin, Phone } from '@lucide/astro';
+
+const askCards = [
+  {
+    ...shopFocusAreas[0],
+    image: categoryCardImages['disegno-didattica'],
+    imageFit: 'cover',
+  },
+  {
+    ...shopFocusAreas[1],
+    image: categoryCardImages.archiviazione,
+    imageFit: 'cover',
+  },
+  {
+    ...shopFocusAreas[2],
+    image: serviceCardImages.PEC,
+    imageFit: 'contain',
+  },
+  {
+    ...shopFocusAreas[3],
+    image: pages.regalistica.productGroups[2].image,
+    imageFit: 'contain',
+  },
+  ...digitalServices.slice(0, 2).map((service) => ({
+    ...service,
+    image: serviceCardImages[service.label] ?? service.image,
+    imageFit: 'contain',
+  })),
+];
 ---
 
 <BaseLayout
@@ -10,10 +40,22 @@ import { Mail, MapPin, Phone } from '@lucide/astro';
   description="Contatta Buffetti Cucchi a Cesena: telefono, email, Facebook, Instagram, indirizzo, orari e indicazioni per raggiungere il negozio."
 >
   <section class="contact-hero">
+    <div
+      class="contact-hero__media"
+      aria-hidden="true"
+      style="position:absolute;inset:0;z-index:0;overflow:hidden;"
+    >
+      <img
+        src="/images/hero-home.png"
+        alt=""
+        style="display:block;width:100%;height:100%;object-fit:cover;object-position:center;"
+      />
+    </div>
+
     <div class="container contact-hero__inner">
       <div>
         <span class="eyebrow">Contatti</span>
-        <h1>Hai bisogno di aiuto o vuoi sapere se un prodotto c'e?</h1>
+        <h1>Hai bisogno di aiuto?</h1>
         <p>
           Chiama, scrivi una email, guarda i social o passa in Viale Matteotti.
           Per prodotti e servizi specifici conviene chiedere prima: risparmi tempo e arrivi gia orientato.
@@ -106,18 +148,11 @@ import { Mail, MapPin, Phone } from '@lucide/astro';
       </div>
 
       <div class="ask-grid">
-        {shopFocusAreas.map((area) => (
-          <article>
-            <img src={area.image} alt="" loading="lazy" />
-            <strong>{area.label}</strong>
-            <p>{area.text}</p>
-          </article>
-        ))}
-        {digitalServices.slice(0, 2).map((service) => (
-          <article>
-            <img src={service.image} alt="" loading="lazy" />
-            <strong>{service.label}</strong>
-            <p>{service.text}</p>
+        {askCards.map((card) => (
+          <article class={`ask-card ask-card--${card.imageFit}`}>
+            <img src={card.image} alt={card.label} loading="lazy" />
+            <strong>{card.label}</strong>
+            <p>{card.text}</p>
           </article>
         ))}
       </div>
@@ -148,14 +183,27 @@ import { Mail, MapPin, Phone } from '@lucide/astro';
     content: "";
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(90deg, rgba(0, 25, 58, 0.94), rgba(0, 38, 80, 0.72) 52%, rgba(0, 31, 69, 0.2)),
-      url("/images/hero-contatti.webp") center/cover;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(0, 25, 58, 0.94), rgba(0, 38, 80, 0.72) 52%, rgba(0, 31, 69, 0.2));
+  }
+
+  .contact-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .contact-hero__media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 56%;
   }
 
   .contact-hero__inner {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(300px, 0.52fr);
     gap: 48px;
@@ -353,10 +401,21 @@ import { Mail, MapPin, Phone } from '@lucide/astro';
 
   .ask-grid img {
     width: 100%;
-    height: 82px;
-    object-fit: contain;
+    height: 116px;
     margin-bottom: 16px;
+    border-radius: 6px;
     filter: drop-shadow(0 14px 18px rgba(0, 31, 69, 0.1));
+  }
+
+  .ask-card--cover img {
+    object-fit: cover;
+  }
+
+  .ask-card--contain img {
+    object-fit: contain;
+    padding: 6px;
+    background: linear-gradient(135deg, #f5fbff, #edf8fc);
+    mix-blend-mode: multiply;
   }
 
   .ask-grid strong {

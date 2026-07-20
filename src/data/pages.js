@@ -521,6 +521,7 @@ export const pages = {
     heroText:
       'Penne, portafogli, borse, accessori e articoli regalo selezionati per chi cerca un pensiero curato, personale o professionale.',
     heroImage: '/images/hero-regalistica.webp',
+    heroVisual: false,
 
     introLabel: 'Regali e accessori',
     introTitle: 'Oggetti belli da scegliere e piacevoli da ricevere',
@@ -530,6 +531,7 @@ export const pages = {
     productGroups: [
       {
         icon: 'gift',
+        image: 'https://buffetti.it/cdn/shop/files/109242_109242_TRA030005109_A.jpg?v=1782720130&width=620',
         title: 'Idee regalo',
         text: 'Proposte curate per compleanni, ricorrenze, omaggi e occasioni speciali.',
         items: [
@@ -541,6 +543,7 @@ export const pages = {
       },
       {
         icon: 'pen',
+        image: 'https://buffetti.it/cdn/shop/files/81672_81672_HERMIN002025_A_689dc409-801a-4762-b1f6-291edd38699f.jpg?v=1782719882&width=620',
         title: 'Penne e scrittura',
         text: 'Strumenti di scrittura eleganti, adatti sia al lavoro sia al regalo.',
         items: [
@@ -552,6 +555,7 @@ export const pages = {
       },
       {
         icon: 'wallet',
+        image: 'https://buffetti.it/cdn/shop/files/101530_101530_OFF038005005_D.jpg?v=1782720143&width=620',
         title: 'Pelletteria',
         text: 'Accessori personali pratici, curati e adatti all’uso quotidiano.',
         items: [
@@ -563,6 +567,7 @@ export const pages = {
       },
       {
         icon: 'office',
+        image: 'https://buffetti.it/cdn/shop/files/102408_102408_DES109005003_C.jpg?v=1782720136&width=620',
         title: 'Regali aziendali',
         text: 'Soluzioni adatte a clienti, collaboratori e occasioni professionali.',
         items: [
@@ -581,7 +586,7 @@ export const pages = {
         'Oggetti da vedere dal vivo, pensati per ricorrenze personali, omaggi professionali e piccoli regali che restano utili nel tempo.',
       items: [
         {
-          image: '/images/pelletteria/product/penne-regalo.svg',
+          image: 'https://buffetti.it/cdn/shop/files/82360_82360_HERACR002003_A.jpg?v=1782719795&width=620',
           badge: 'Scrittura',
           title: 'Penne regalo e set da scrittura',
           text:
@@ -589,28 +594,13 @@ export const pages = {
           specs: ['Penne regalo', 'Set scrittura', 'Accessori coordinati', 'Idee per privati e aziende'],
         },
         {
-          image: '/images/pelletteria/product/pelletteria-accessori.svg',
+          image: 'https://buffetti.it/cdn/shop/files/102832_102832_URB007012001_C.jpg?v=1782719815&width=620',
           badge: 'Accessori',
           title: 'Portafogli, borse e accessori personali',
           text:
             'Soluzioni pratiche e curate per l’uso quotidiano, da scegliere in base a stile, occasione e budget.',
           specs: ['Portafogli', 'Borse e tracolle', 'Accessori personali', 'Proposte visionabili in negozio'],
         },
-      ],
-    },
-
-    brands: {
-      label: 'In vetrina',
-      title: 'Idee regalo da vedere e confrontare dal vivo',
-      text:
-        'Una selezione visuale di linee e categorie per scegliere più facilmente un regalo personale o professionale.',
-      items: [
-        { name: 'Buffetti', image: '/images/logo-buffetti.png' },
-        { name: 'Campo Marzio', image: '/images/pelletteria/brand/campo-marzio.svg' },
-        { name: 'Fulltime', image: '/images/pelletteria/brand/fulltime.svg' },
-        { name: 'Penne regalo', image: '/images/pelletteria/product/penne-regalo.svg' },
-        { name: 'Pelletteria', image: '/images/pelletteria/product/pelletteria-accessori.svg' },
-        { name: 'Idee aziendali', image: '/images/pelletteria/brand/idee-aziendali.svg' },
       ],
     },
 

@@ -144,11 +144,11 @@ const hasCardImage = (entry) =>
               ]}>
                 <div class="mega-menu__intro">
                   <span>{item.label}</span>
-                  <strong>{item.label === 'Catalogo prodotti' ? 'Scegli la famiglia prodotto' : 'Servizi e reparti Cucchi'}</strong>
+                  <strong>{item.label === 'Catalogo prodotti' ? 'Scegli la famiglia prodotto' : 'Servizi al banco'}</strong>
                   <p>
                     {item.label === 'Catalogo prodotti'
                       ? 'Ogni voce apre una pagina dedicata con sottocategorie, immagini e prodotti da chiedere in negozio.'
-                      : 'Percorsi rapidi per scuola, ufficio, pratiche, stampa e supporto al banco.'}
+                      : 'Rapidità e professionalità per qualsiasi ambito, ufficio, pratiche, stampa e supporto generico.'}
                   </p>
                 </div>
 
@@ -260,6 +260,20 @@ const hasCardImage = (entry) =>
     });
     form.addEventListener('submit', (event) => submitBestMatch(event, input));
   });
+
+  const mobileMenuToggle = document.querySelector('.nav-toggle');
+
+  if (mobileMenuToggle instanceof HTMLInputElement) {
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !mobileMenuToggle.checked) return;
+      mobileMenuToggle.checked = false;
+      document.querySelector('.menu-button')?.focus();
+    });
+
+    window.addEventListener('pageshow', () => {
+      if (mobileMenuToggle.checked) mobileMenuToggle.checked = false;
+    });
+  }
 </script>
 
 <style>
@@ -804,8 +818,13 @@ const hasCardImage = (entry) =>
       -webkit-overflow-scrolling: touch;
     }
 
-    :global(body:has(.site-header .nav-toggle:checked)) {
-      overflow: hidden;
+    .site-header:has(.nav-toggle:checked) {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
     }
 
     .site-header:has(.nav-toggle:checked) .nav-inner {
@@ -890,6 +909,10 @@ const hasCardImage = (entry) =>
   @media (max-width: 680px) {
     .site-header {
       position: sticky;
+    }
+
+    .header-ribbon__inner > a:nth-child(-n + 2) {
+      display: none;
     }
 
     .header-ribbon__inner {

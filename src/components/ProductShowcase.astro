@@ -18,7 +18,13 @@ const items = showcase?.items ?? [];
         {items.map((item: { image: string | null | undefined; title: string; badge: string; text: string; specs: string[]; }) => (
           <article class="product-showcase__card">
             <div class="product-showcase__media">
-              <img src={item.image} alt={item.title} loading="lazy" />
+              <img
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+                crossorigin={/^https?:\/\//.test(item.image ?? '') ? 'anonymous' : undefined}
+                data-remove-light-background={/^https?:\/\//.test(item.image ?? '') ? '' : undefined}
+              />
             </div>
 
             <div class="product-showcase__content">
@@ -88,17 +94,26 @@ const items = showcase?.items ?? [];
   .product-showcase__media {
     height: 320px;
     display: grid;
+    grid-template-rows: minmax(0, 1fr);
     place-items: center;
     padding: 34px;
-    background: radial-gradient(circle at 50% 48%, rgba(0, 166, 232, 0.12), transparent 54%);
+    background: linear-gradient(135deg, #f4fbff 0%, #e9f7fc 100%);
   }
 
   .product-showcase__media img {
-    width: min(100%, 360px);
-    max-height: 250px;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(100%, 360px);
+    max-height: min(100%, 250px);
     object-fit: contain;
-    filter: drop-shadow(0 24px 34px rgba(15, 38, 67, 0.16));
+    mix-blend-mode: darken;
+    filter: contrast(1.08) brightness(1.02) saturate(1.045) drop-shadow(0 24px 34px rgba(15, 38, 67, 0.16));
     transition: transform 0.35s ease;
+  }
+
+  .product-showcase__media img[data-background-processed] {
+    mix-blend-mode: normal;
   }
 
   .product-showcase__card:hover img {

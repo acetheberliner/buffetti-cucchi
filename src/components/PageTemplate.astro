@@ -88,9 +88,11 @@ const icons = {
         </div>
       </div>
 
-      <div class="page-hero__showcase" aria-hidden="true">
-        <img src={heroVisual} alt="" />
-      </div>
+      {heroVisual ? (
+        <div class="page-hero__showcase" aria-hidden="true">
+          <img src={heroVisual} alt="" />
+        </div>
+      ) : null}
     </div>
   </section>
 
@@ -108,12 +110,19 @@ const icons = {
         const Icon = icons[group.icon] ?? BadgeCheck;
         const groupCategory = categoryBySlug.get(group.slug);
         const groupImage = group.image ?? groupCategory?.image;
+        const removeLightBackground = /^https?:\/\//.test(groupImage ?? '');
 
         return (
           <article class="product-card" id={group.slug}>
             {groupImage ? (
               <div class="product-card__media">
-                <img src={groupImage} alt={group.title} loading="lazy" />
+                <img
+                  src={groupImage}
+                  alt={group.title}
+                  loading="lazy"
+                  crossorigin={removeLightBackground ? 'anonymous' : undefined}
+                  data-remove-light-background={removeLightBackground ? '' : undefined}
+                />
 
                 <div class="product-card__top">
                   <span>{String(index + 1).padStart(2, '0')}</span>
@@ -238,6 +247,123 @@ const icons = {
   </section>
 </BaseLayout>
 
+<script>
+  const removeConnectedLightBackground = (image: HTMLImageElement) => {
+    if (image.dataset.backgroundProcessed !== undefined || !image.naturalWidth) return;
+
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    if (!context) return;
+
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+    context.drawImage(image, 0, 0);
+
+    let frame: ImageData;
+    try {
+      frame = context.getImageData(0, 0, canvas.width, canvas.height);
+    } catch {
+      return;
+    }
+
+    const { data } = frame;
+    const width = canvas.width;
+    const height = canvas.height;
+    const cornerSize = Math.max(2, Math.min(8, Math.floor(Math.min(width, height) / 40)));
+    const samples: number[] = [];
+
+    const sampleCorner = (startX: number, startY: number) => {
+      for (let y = startY; y < startY + cornerSize; y += 1) {
+        for (let x = startX; x < startX + cornerSize; x += 1) {
+          const offset = (y * width + x) * 4;
+          samples.push(data[offset], data[offset + 1], data[offset + 2]);
+        }
+      }
+    };
+
+    sampleCorner(0, 0);
+    sampleCorner(width - cornerSize, 0);
+    sampleCorner(0, height - cornerSize);
+    sampleCorner(width - cornerSize, height - cornerSize);
+
+    let red = 0;
+    let green = 0;
+    let blue = 0;
+    for (let index = 0; index < samples.length; index += 3) {
+      red += samples[index];
+      green += samples[index + 1];
+      blue += samples[index + 2];
+    }
+    const sampleCount = samples.length / 3;
+    const background = [red / sampleCount, green / sampleCount, blue / sampleCount];
+    const visited = new Uint8Array(width * height);
+    const queue = new Uint32Array(width * height);
+    let head = 0;
+    let tail = 0;
+
+    const distanceFromBackground = (pixel: number) => {
+      const offset = pixel * 4;
+      const redDelta = data[offset] - background[0];
+      const greenDelta = data[offset + 1] - background[1];
+      const blueDelta = data[offset + 2] - background[2];
+      return Math.sqrt(redDelta ** 2 + greenDelta ** 2 + blueDelta ** 2);
+    };
+
+    const canRemove = (pixel: number) => {
+      const offset = pixel * 4;
+      const darkest = Math.min(data[offset], data[offset + 1], data[offset + 2]);
+      const lightest = Math.max(data[offset], data[offset + 1], data[offset + 2]);
+      return distanceFromBackground(pixel) < 48 && darkest > 205 && lightest - darkest < 42;
+    };
+
+    const enqueue = (pixel: number) => {
+      if (visited[pixel] || !canRemove(pixel)) return;
+      visited[pixel] = 1;
+      queue[tail] = pixel;
+      tail += 1;
+    };
+
+    for (let x = 0; x < width; x += 1) {
+      enqueue(x);
+      enqueue((height - 1) * width + x);
+    }
+    for (let y = 1; y < height - 1; y += 1) {
+      enqueue(y * width);
+      enqueue(y * width + width - 1);
+    }
+
+    while (head < tail) {
+      const pixel = queue[head];
+      head += 1;
+      const x = pixel % width;
+      const y = Math.floor(pixel / width);
+      if (x > 0) enqueue(pixel - 1);
+      if (x < width - 1) enqueue(pixel + 1);
+      if (y > 0) enqueue(pixel - width);
+      if (y < height - 1) enqueue(pixel + width);
+    }
+
+    for (let pixel = 0; pixel < visited.length; pixel += 1) {
+      if (!visited[pixel]) continue;
+      const distance = distanceFromBackground(pixel);
+      data[pixel * 4 + 3] = distance < 14 ? 0 : Math.min(210, Math.round((distance - 14) * 6.2));
+    }
+
+    context.putImageData(frame, 0, 0);
+    image.dataset.backgroundProcessed = '';
+    image.removeAttribute('crossorigin');
+    image.src = canvas.toDataURL('image/png');
+  };
+
+  document.querySelectorAll<HTMLImageElement>('img[data-remove-light-background]').forEach((image) => {
+    if (image.complete) {
+      removeConnectedLightBackground(image);
+    } else {
+      image.addEventListener('load', () => removeConnectedLightBackground(image), { once: true });
+    }
+  });
+</script>
+
 <style>
   .page-hero {
     position: relative;
@@ -281,6 +407,10 @@ const icons = {
   .page-hero__content {
     max-width: 720px;
     color: #fff;
+  }
+
+  .page-hero__inner:has(.page-hero__content:only-child) {
+    grid-template-columns: 1fr;
   }
 
   .page-hero__showcase {
@@ -531,19 +661,27 @@ const icons = {
     z-index: 1;
     height: 164px;
     display: grid;
+    grid-template-rows: minmax(0, 1fr);
     place-items: center;
     margin: 0 0 24px;
     padding: 18px 18px 34px;
     border-radius: 0;
-    background:
-      radial-gradient(circle at 50% 52%, rgba(0, 166, 232, 0.12), transparent 54%);
+    background: linear-gradient(135deg, #f4fbff 0%, #e9f7fc 100%);
   }
 
   .product-card__media img {
-    width: 100%;
-    height: 100%;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 18px 22px rgba(0, 31, 69, 0.1));
+    mix-blend-mode: darken;
+    filter: contrast(1.08) brightness(1.02) saturate(1.045) drop-shadow(0 18px 22px rgba(0, 31, 69, 0.1));
+  }
+
+  .product-card__media img[data-background-processed] {
+    mix-blend-mode: normal;
   }
 
   .product-card__top {
@@ -828,8 +966,9 @@ const icons = {
     }
 
     .product-card__media {
-      height: 138px;
+      height: 198px;
       margin-bottom: 18px;
+      padding: 10px 10px 34px;
     }
 
     .category-tile,

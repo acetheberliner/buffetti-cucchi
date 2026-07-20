@@ -35,6 +35,32 @@ Le immagini elencate qui sotto sono usate in `src/pages/index.astro`. Provengono
 | Timbri | Timbro autoinchiostrante Trodat distribuito da Buffetti | https://buffetti.it/cdn/shop/files/99819_99819_04912PR00_9ab0d6d6-5968-48b1-ac1a-956f896b72ba.jpg?v=1782718690 | https://buffetti.it/products/timbri-autoinchiostranti-4912-printy-p-4-0-47x18-mm-5 |
 | Spedizioni BRT - FedEx - GLS | Materiali Buffetti per preparare pacchi e spedizioni | https://buffetti.it/cdn/shop/collections/spedizione-e-imballaggi.webp?v=1777281833 | https://buffetti.it/collections/spedizione-e-imballaggi |
 
+## Pagina "Servizi in negozio"
+
+| Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
+| --- | --- | --- | --- |
+| Card servizio - Firma Digitale | Servizio ufficiale di firma digitale Buffetti | https://buffetti.it/cdn/shop/files/117239_firma-digitale_371e25f4-7ae8-4da2-98a9-5ef8170007bb.jpg?v=1780563905 | https://buffetti.it/collections/firma-digitale |
+| Card servizio - SPID | Visual ufficiale per l'identità digitale SPID Buffetti | https://buffetti.it/cdn/shop/files/spid.png?v=1776430094 | https://buffetti.it/collections/spid |
+| Card servizio - PEC | Visual ufficiale per la Posta Elettronica Certificata Buffetti | https://buffetti.it/cdn/shop/files/pec.png?v=1776430008 | https://buffetti.it/products/posta-elettronica-certificata-standard |
+| Card servizio - Fotocopie e stampa | Carta e modulistica Buffetti per copie e stampa di documenti | https://buffetti.it/cdn/shop/collections/carta-e-modulistica-buffetti.webp?v=1777280043 | https://buffetti.it/collections/carta-e-modulistica |
+| Card servizio - Timbri | Timbro autoinchiostrante professionale Trodat Printy | https://buffetti.it/cdn/shop/files/99819_99819_04912PR00_9ab0d6d6-5968-48b1-ac1a-956f896b72ba.jpg?v=1782718690 | https://buffetti.it/products/timbri-autoinchiostranti-4912-printy-p-4-0-47x18-mm-5 |
+| Card servizio - Spedizioni BRT, FedEx e GLS | Materiali professionali per pacchi e spedizioni | https://buffetti.it/cdn/shop/collections/spedizione-e-imballaggi.webp?v=1777281833 | https://buffetti.it/collections/spedizione-e-imballaggi |
+
+## Pagina "Idee regalo"
+
+| Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
+| --- | --- | --- | --- |
+| Card - Idee regalo | Portagioie Maui Campo Marzio in color malva | https://buffetti.it/cdn/shop/files/109242_109242_TRA030005109_A.jpg?v=1782720130&width=620 | https://buffetti.it/products/portagioie-maui-malva |
+| Card - Penne e scrittura | Penna stilografica Minny Campo Marzio lilla | https://buffetti.it/cdn/shop/files/81672_81672_HERMIN002025_A_689dc409-801a-4762-b1f6-291edd38699f.jpg?v=1782719882&width=620 | https://buffetti.it/products/penna-stilografica-minny-lilla |
+| Card - Pelletteria | Portfolio A5 Albert Campo Marzio arancione | https://buffetti.it/cdn/shop/files/101530_101530_OFF038005005_D.jpg?v=1782720143&width=620 | https://buffetti.it/products/portfolio-a5-albert-arancione |
+| Card - Regali aziendali | Sottomano doppio Aristotle rosso ciliegia | https://buffetti.it/cdn/shop/files/102408_102408_DES109005003_C.jpg?v=1782720136&width=620 | https://buffetti.it/products/sottomano-doppio-aristotle-rosso-ciliegia |
+| Regalo in evidenza - Penne | Penna stilografica Acropolis Campo Marzio | https://buffetti.it/cdn/shop/files/82360_82360_HERACR002003_A.jpg?v=1782719795&width=620 | https://buffetti.it/products/penna-stilografica-acropolis-rosso-ciliegia |
+| Regalo in evidenza - Accessori | Borsa professionale per laptop Antoine | https://buffetti.it/cdn/shop/files/102832_102832_URB007012001_C.jpg?v=1782719815&width=620 | https://buffetti.it/products/borsa-per-laptop-13-antoine-nero |
+| Vetrina - Campo Marzio | Penna stilografica Minny lilla | https://buffetti.it/cdn/shop/files/81672_81672_HERMIN002025_A_689dc409-801a-4762-b1f6-291edd38699f.jpg?v=1782719882&width=620 | https://buffetti.it/products/penna-stilografica-minny-lilla |
+| Vetrina - Penne regalo | Penna stilografica Acropolis | https://buffetti.it/cdn/shop/files/82360_82360_HERACR002003_A.jpg?v=1782719795&width=620 | https://buffetti.it/products/penna-stilografica-acropolis-rosso-ciliegia |
+| Vetrina - Pelletteria | Portfolio A5 Albert | https://buffetti.it/cdn/shop/files/101530_101530_OFF038005005_D.jpg?v=1782720143&width=620 | https://buffetti.it/products/portfolio-a5-albert-arancione |
+| Vetrina - Idee aziendali | Sottomano doppio Aristotle | https://buffetti.it/cdn/shop/files/102408_102408_DES109005003_C.jpg?v=1782720136&width=620 | https://buffetti.it/products/sottomano-doppio-aristotle-rosso-ciliegia |
+
 ## Pagina "Arredo e complementi"
 
 | Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
@@ -135,3 +161,64 @@ Le immagini elencate qui sotto sono usate in `src/pages/index.astro`. Provengono
 | Card 5 - Espositori | Espositore da terra Buffetti a sei scomparti | https://buffetti.it/cdn/shop/files/46127_46127_7788STK13.dett.jpg?v=1782719082 | https://buffetti.it/products/espositore-da-terra-6-scomparti-32x32x130-cm |
 | Card 6 - Segnaletica interna | Pittogramma adesivo per toilette uomo e donna | https://buffetti.it/cdn/shop/files/100502_100502_0D0077206.jpg?v=1782718836 | https://buffetti.it/products/targhetta-adesiva-82x82mm-con-pittogramma-toilette-uomo-donna |
 | Card 7 - Cornici e targhe | Targa professionale Click Sign Durable | https://buffetti.it/cdn/shop/files/100430_100430_0D0067863.jpg?v=1782719417 | https://buffetti.it/products/targa-click-sign-durable-14-9x5-3-cm |
+
+## Pagina "Comunità e servizi"
+
+| Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
+| --- | --- | --- | --- |
+| Sfondo hero | Igiene e gestione professionale degli ambienti condivisi | https://buffetti.it/cdn/shop/collections/comunita-e-servizi-buffetti.webp?v=1777281394 | https://buffetti.it/collections/comunita-e-servizi |
+| Card 1 - Igiene e pulizia | Kit professionale con secchio, strizzatore e mop in microfibra | https://buffetti.it/cdn/shop/files/100163_100163_0D0089423.jpg?v=1782717845 | https://buffetti.it/products/kit-composto-da-secchio-con-strizzatore-rotante-telaio-mop-microfibra |
+| Card 2 - Carta asciugamani e dispenser | Dispenser professionale per carta igienica interfogliata | https://buffetti.it/cdn/shop/files/100310_100310_0D0094888_85a36518-a3a6-42e4-bb4b-c76665b53357.jpg?v=1782715634 | https://buffetti.it/products/dispenser-carta-igienica-interfogliata-capacita-500-fg-a-v-e-400-fg-a-z-f-to-15x13-3x30-7-cm |
+| Card 3 - Catering | Bicchieri in carta per caffè | https://buffetti.it/cdn/shop/files/100289_100289_0D0090263.jpg?v=1782717838 | https://buffetti.it/products/bicchieri-in-carta-115-ml-da-caffe |
+| Card 4 - Sicurezza ambiente | Cartello per uscita di emergenza | https://buffetti.it/cdn/shop/files/100260_100260_0D0076909.jpg?v=1782718855 | https://buffetti.it/products/cartello-in-alluminio-uscita-di-emergenza-f-to-25x31-cm |
+| Card 5 - Sicurezza persona | Gilet professionale ad alta visibilità | https://buffetti.it/cdn/shop/files/100031_100031_0D4000273L_d2ce0bee-9e2c-4bb1-855c-8cbddaa608e3.jpg?v=1783661594 | https://buffetti.it/products/gilet-ad-alta-visibilita-colore-giallo-taglia-l |
+| Card 6 - Gestione rifiuti | Pattumiera basculante professionale da 35 litri | https://buffetti.it/cdn/shop/files/100145_100145_0D0082731.jpg?v=1782715587 | https://buffetti.it/products/pattumiera-basculante-35-litri-colore-bianco-f-to-36x29x55-cm |
+
+## Pagina "Spedizione e imballaggi"
+
+| Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
+| --- | --- | --- | --- |
+| Sfondo hero | Materiali professionali per preparare pacchi e spedizioni | https://buffetti.it/cdn/shop/collections/spedizione-e-imballaggi.webp?v=1777281833 | https://buffetti.it/collections/spedizione-e-imballaggi |
+| Card 1 - Buste spedizione | Buste a sacco bianche con chiusura strip | https://buffetti.it/cdn/shop/files/51729_51729_008817000_eb8fdd0e-1da6-4296-b217-5a4bce3e4229.jpg?v=1782461538 | https://buffetti.it/products/buste-a-sacco-bianche-strip-23x33-cm-conf-10-pz |
+| Card 2 - Buste imbottite | Dettaglio di una busta imbottita in carta avana | https://buffetti.it/cdn/shop/files/50000_50000_007626000-det_24ef6302-1d4d-4456-94e8-31cceea833e1.jpg?v=1782884840 | https://buffetti.it/products/buste-imbottite-in-carta-avana-formato-interno-35x47-cm |
+| Card 3 - Scatole e carta pacco | Scatola da spedizione in cartone a onda doppia | https://buffetti.it/cdn/shop/files/100482_100482_0D0071945.jpg?v=1782457613 | https://buffetti.it/products/scatole-in-cartone-onda-doppia-f-to-40x30x30-cm |
+| Card 4 - Nastri da imballo | Dispenser manuale professionale per nastri da imballo | https://buffetti.it/cdn/shop/files/112233_010700000.jpg?v=1782885025 | https://buffetti.it/products/dispenser-per-nastri-da-imballo |
+| Card 5 - Accessori imballaggio | Rotolo pluriball AirCap per proteggere oggetti fragili | https://buffetti.it/cdn/shop/files/100266_100266_0D0095095_b6be9c41-eed9-4f83-94ed-1522f20c94bd.jpg?v=1782461329 | https://buffetti.it/products/rotolo-a-bolle-daria-aircap-ellrt-miniroll-1-x-10-m |
+
+## Pagina "Informatica e elettronica"
+
+| Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
+| --- | --- | --- | --- |
+| Sfondo hero | Accessori informatici, cavi e memorie della collezione ufficiale Buffetti | https://buffetti.it/cdn/shop/collections/informatica-elettronica-cavi-usb-hardisk-buffetti.webp?v=1777281511 | https://buffetti.it/collections/informatica-e-elettronica |
+| Card 1 - Periferiche per PC | Set professionale con tastiera e mouse wireless ergonomici | https://buffetti.it/cdn/shop/files/111783_0030KKMW4_17b9745f-fdc3-470d-8d03-f87449b69921.jpg?v=1782716197 | https://buffetti.it/products/set-tastiera-e-mouse-wireless-con-tasti-ergonomici-nero |
+| Card 2 - Accessori PC | Supporto multiangolo per il raffreddamento del notebook | https://buffetti.it/cdn/shop/files/113107_0124EW0SV_a_b1dfcc11-68c8-4df4-bcfd-96a206772bfb.jpg?v=1782718268 | https://buffetti.it/products/supporto-di-raffreddamento-multiangolo |
+| Card 3 - Audio video e fotografia | Webcam HD 1080p per postazioni di lavoro | https://buffetti.it/cdn/shop/files/112723_0030WB001_a_dd86530a-ff30-422d-b27d-355de19d0a30.jpg?v=1782718935 | https://buffetti.it/products/webcam-hd-1080p |
+| Card 4 - Cavi, adattatori e multiprese | Multipresa da tavolo con due porte USB | https://buffetti.it/cdn/shop/files/112837_0030PMUSB_a_cde0a97a-25ae-4312-92e0-835599df917c.jpg?v=1782715419 | https://buffetti.it/products/multipresa-da-tavolo-con-2-porte-usb |
+| Card 5 - Memorie digitali | Hard disk portatile USB 3.0 | https://buffetti.it/cdn/shop/files/111870_0610HDN05_2.jpg?v=1782714860 | https://buffetti.it/products/hard-disk-portatile-2-5-usb-3-0 |
+| Card 6 - Zaini e borse PC | Borsa porta laptop professionale da 15,6 pollici | https://buffetti.it/cdn/shop/files/105200_105200_URB015012001_A.jpg?v=1782720278 | https://buffetti.it/products/porta-laptop-15-6-lucian-nero |
+| Card 7 - Accessori smartphone e tablet | Power bank da 10000 mAh con cavo integrato | https://buffetti.it/cdn/shop/files/110447_0030ACRPB_3405f30d-eb71-40b5-b348-deaa3d905b72.jpg?v=1782885006 | https://buffetti.it/products/powerbank-10000-mah-con-cavo-integrato-3in1 |
+| Card 8 - Pile e batterie | Confezione di pile alcaline AA Power Plus | https://buffetti.it/cdn/shop/files/113301_0688PPS0N_B_1e3be0b3-2ae4-4dda-8bbd-7924474e254a.jpg?v=1782716593 | https://buffetti.it/products/pile-alcaline-power-plus-stilo-aa-conf-4-pile |
+
+## Pagina "Macchine per ufficio"
+
+| Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
+| --- | --- | --- | --- |
+| Sfondo hero | Macchine e attrezzature professionali per l'ufficio Buffetti | https://buffetti.it/cdn/shop/collections/macchine-ufficio-distruggidocumenti-plastificatrici-prezzatrici-buffetti.webp?v=1777281613 | https://buffetti.it/collections/macchine-per-ufficio |
+| Card 1 - Distruggi documenti | Distruggidocumenti professionale myShredder B10 Plus | https://buffetti.it/cdn/shop/files/79674_79674_0680MB10_i_4220a809-cd13-43ea-9795-9374f69601fe.jpg?v=1782719220 | https://buffetti.it/products/distruggidocumenti-myshredder-b10-plus-a-frammenti-4-5x30-mm-p4 |
+| Card 2 - Plastificatrici | Plastificatrice da ufficio Speedy My Laminator A3 | https://buffetti.it/cdn/shop/files/113247_0650BL200.jpg?v=1782718177 | https://buffetti.it/products/plastificatrice-speedy-my-laminator-a3 |
+| Card 3 - Rilegatrici | Rilegatrice manuale per dorsi plastici C-10 | https://buffetti.it/cdn/shop/files/111877_0660BRC10.jpg?v=1782719123 | https://buffetti.it/products/rilegatrice-per-dorsi-plastici-c-10-formato-a4-manuale |
+| Card 4 - Etichettatrici | Etichettatrice professionale Dymo LabelWriter 550 | https://buffetti.it/cdn/shop/files/100862_100862_0D0093394.jpg?v=1782718862 | https://buffetti.it/products/etichettatrice-dymo-labelwriter-550 |
+| Card 5 - Taglierine | Taglierina a leva professionale da ufficio A4 | https://buffetti.it/cdn/shop/files/96735_96735_01412B000_8ae12ba5-3850-4ef1-92d6-d4ff5f217b77.jpg?v=1782716996 | https://buffetti.it/products/taglierina-a-leva-da-ufficio-a4-luce-taglio-340-mm |
+| Card 6 - Stampanti | Stampante termica diretta per etichette | https://buffetti.it/cdn/shop/files/112690_0X500TD00.jpg?v=1782719342 | https://buffetti.it/products/stampante-termica-diretta-per-etichette |
+| Card 7 - Lettori barcode | Lettore wireless di codici a barre 1D | https://buffetti.it/cdn/shop/files/112765_0030EA1W1_2aebf5fa-bf68-4d20-88d9-a67f11a64311.jpg?v=1783335997 | https://buffetti.it/products/lettore-di-codici-a-barre-1d-wireless |
+| Card 8 - Registratori di cassa | Registratore telematico GEO | https://buffetti.it/cdn/shop/files/116233_Registratore-telematico-GEO.jpg?v=1782537887 | https://buffetti.it/products/registratore-telematico-geo |
+
+## Pagina "Prodotti Ecosostenibili"
+
+| Posizione nella pagina | Cosa rappresenta | Link immagine | Pagina fonte |
+| --- | --- | --- | --- |
+| Sfondo hero | Selezione di prodotti e materiali ecosostenibili Buffetti | https://buffetti.it/cdn/shop/collections/prodotti-ecosostenibili-buffetti.webp?v=1777281745 | https://buffetti.it/collections/prodotti-ecosostenibili |
+| Card 1 - Carta certificata | Risma Buffetti Green in carta riciclabile | https://buffetti.it/cdn/shop/files/96802_96802_004910GR0.jpg?v=1782715756 | https://buffetti.it/products/carta-buffetti-green-100-riciclabile-a4-21x29-7-cm-80-g |
+| Card 2 - Prodotti ricaricabili | Pile AA ricaricabili per ridurre i prodotti monouso | https://buffetti.it/cdn/shop/files/93760_93760_Recharge_AA_2000.jpg?v=1782716844 | https://buffetti.it/products/pile-ricaricabili-stilo-aa-conf-4-pile |
+| Card 3 - Materiali riciclati | Set da scrivania in plastica rigenerata | https://buffetti.it/cdn/shop/files/104474_104474_02545LG0S_ebf00856-a5f5-4258-8b34-cc440ce023c4.jpg?v=1782716245 | https://buffetti.it/products/set-da-scrivania-plastica-rigenerata-nero |
+| Card 4 - Soluzioni a minor impatto | Cubo per appunti realizzato con carta riciclata | https://buffetti.it/cdn/shop/files/113059_0070EC10C_1.jpg?v=1782718463 | https://buffetti.it/products/cubo-con-fogli-per-appunti-carta-riciclata-10x10-cm |

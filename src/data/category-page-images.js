@@ -94,4 +94,60 @@ export const categoryPageImages = {
       'Cornici e targhe': 'https://buffetti.it/cdn/shop/files/100430_100430_0D0067863.jpg?v=1782719417',
     },
   },
+  'comunita-servizi': {
+    heroBackground: 'https://buffetti.it/cdn/shop/collections/comunita-e-servizi-buffetti.webp?v=1777281394',
+    items: {
+      'Prodotti per pulizia': 'https://buffetti.it/cdn/shop/files/92979_92979_0030CK001_KIT_PULIZIA_img_CAT.jpg?v=1782885320',
+      'Carta asciugamani e dispenser': 'https://buffetti.it/cdn/shop/files/100310_100310_0D0094888_85a36518-a3a6-42e4-bb4b-c76665b53357.jpg?v=1782715634',
+      Catering: 'https://buffetti.it/cdn/shop/files/100302_100302_0D0090272.jpg?v=1782718864&width=810',
+      'Sicurezza ambiente': 'https://buffetti.it/cdn/shop/files/100260_100260_0D0076909.jpg?v=1782718855',
+      'Sicurezza persona': 'https://buffetti.it/cdn/shop/files/100031_100031_0D4000273L_d2ce0bee-9e2c-4bb1-855c-8cbddaa608e3.jpg?v=1783661594',
+      'Gestione rifiuti': 'https://buffetti.it/cdn/shop/files/100145_100145_0D0082731.jpg?v=1782715587',
+    },
+  },
+  'spedizione-imballaggi': {
+    heroBackground: 'https://buffetti.it/cdn/shop/collections/spedizione-e-imballaggi.webp?v=1777281833',
+    items: {
+      'Buste spedizione': 'https://buffetti.it/cdn/shop/files/51729_51729_008817000_eb8fdd0e-1da6-4296-b217-5a4bce3e4229.jpg?v=1782461538',
+      'Buste imbottite': 'https://buffetti.it/cdn/shop/files/50000_50000_007626000-det_24ef6302-1d4d-4456-94e8-31cceea833e1.jpg?v=1782884840',
+      'Scatole e carta pacco': 'https://buffetti.it/cdn/shop/files/100482_100482_0D0071945.jpg?v=1782457613',
+      'Nastri da imballo': 'https://buffetti.it/cdn/shop/files/112233_010700000.jpg?v=1782885025',
+      'Accessori imballaggio': 'https://buffetti.it/cdn/shop/files/100266_100266_0D0095095_b6be9c41-eed9-4f83-94ed-1522f20c94bd.jpg?v=1782461329',
+    },
+  },
+  'informatica-elettronica': {
+    heroBackground: 'https://buffetti.it/cdn/shop/collections/informatica-elettronica-cavi-usb-hardisk-buffetti.webp?v=1777281511',
+    items: {
+      'Periferiche per PC': 'https://buffetti.it/cdn/shop/files/111783_0030KKMW4_17b9745f-fdc3-470d-8d03-f87449b69921.jpg?v=1782716197',
+      'Accessori PC': 'https://buffetti.it/cdn/shop/files/113107_0124EW0SV_a_b1dfcc11-68c8-4df4-bcfd-96a206772bfb.jpg?v=1782718268',
+      'Audio video e fotografia': 'https://buffetti.it/cdn/shop/files/112723_0030WB001_a_dd86530a-ff30-422d-b27d-355de19d0a30.jpg?v=1782718935',
+      'Cavetti e adattatori': 'https://buffetti.it/cdn/shop/files/110402_0030ACR0C_5ef20b60-25e8-4c79-8883-dbaa85e349ba.jpg?v=1782885187&width=810',
+      'Memorie digitali': 'https://buffetti.it/cdn/shop/files/111870_0610HDN05_2.jpg?v=1782714860',
+      'Zaini e borse PC': 'https://buffetti.it/cdn/shop/files/105200_105200_URB015012001_A.jpg?v=1782720278',
+      'Accessori smartphone e tablet': 'https://buffetti.it/cdn/shop/files/110447_0030ACRPB_3405f30d-eb71-40b5-b348-deaa3d905b72.jpg?v=1782885006',
+      'Pile e batterie': 'https://buffetti.it/cdn/shop/files/113301_0688PPS0N_B_1e3be0b3-2ae4-4dda-8bbd-7924474e254a.jpg?v=1782716593',
+    },
+  },
+  'macchine-ufficio': {
+    heroBackground: 'https://buffetti.it/cdn/shop/collections/macchine-ufficio-distruggidocumenti-plastificatrici-prezzatrici-buffetti.webp?v=1777281613',
+    items: {
+      'Distruggi documenti': 'https://buffetti.it/cdn/shop/files/79674_79674_0680MB10_i_4220a809-cd13-43ea-9795-9374f69601fe.jpg?v=1782719220',
+      Plastificatrici: 'https://buffetti.it/cdn/shop/files/113247_0650BL200.jpg?v=1782718177',
+      Rilegatrici: 'https://buffetti.it/cdn/shop/files/111877_0660BRC10.jpg?v=1782719123',
+      Etichettatrici: 'https://buffetti.it/cdn/shop/files/100862_100862_0D0093394.jpg?v=1782718862',
+      Taglierine: 'https://buffetti.it/cdn/shop/files/96735_96735_01412B000_8ae12ba5-3850-4ef1-92d6-d4ff5f217b77.jpg?v=1782716996',
+      Stampanti: 'https://buffetti.it/cdn/shop/files/112690_0X500TD00.jpg?v=1782719342',
+      'Lettori barcode': 'https://buffetti.it/cdn/shop/files/112765_0030EA1W1_2aebf5fa-bf68-4d20-88d9-a67f11a64311.jpg?v=1783335997',
+      'Registratori di cassa': 'https://buffetti.it/cdn/shop/files/116233_Registratore-telematico-GEO.jpg?v=1782537887',
+    },
+  },
+  ecosostenibili: {
+    heroBackground: 'https://buffetti.it/cdn/shop/collections/prodotti-ecosostenibili-buffetti.webp?v=1777281745',
+    items: {
+      'Carta riciclata': 'https://static.wixstatic.com/media/8ef32c_b18bd3b27b7f4b509935f2ce3f05acee~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg',
+      'Prodotti ricaricabili': 'https://buffetti.it/cdn/shop/files/93760_93760_Recharge_AA_2000.jpg?v=1782716844',
+      'Materiali riciclati': 'https://buffetti.it/cdn/shop/files/104474_104474_02545LG0S_ebf00856-a5f5-4258-8b34-cc440ce023c4.jpg?v=1782716245',
+      'Soluzioni a minor impatto': 'https://buffetti.it/cdn/shop/files/113059_0070EC10C_1.jpg?v=1782718463',
+    },
+  },
 };
