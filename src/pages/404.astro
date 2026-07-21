@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Home, Search } from '@lucide/astro';
+---
+
+<BaseLayout
+  title="Pagina non trovata | Buffetti Cucchi"
+  description="La pagina richiesta non è disponibile. Torna alla homepage o consulta il catalogo Buffetti Cucchi."
+  robots="noindex, follow"
+>
+  <section class="not-found">
+    <div class="container not-found__inner">
+      <span class="not-found__code" aria-hidden="true">404</span>
+      <span class="eyebrow">Pagina non trovata</span>
+      <h1>Qui non c’è ciò che stavi cercando.</h1>
+      <p>
+        Il collegamento potrebbe essere cambiato oppure la pagina non esiste più.
+        Puoi tornare alla homepage o ripartire dal catalogo.
+      </p>
+      <div class="not-found__actions">
+        <a class="btn btn--primary" href="/">
+          <Home size={18} aria-hidden="true" /> Homepage
+        </a>
+        <a class="btn btn--ghost" href="/cancelleria.html">
+          <Search size={18} aria-hidden="true" /> Esplora il catalogo
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 68vh;
+    padding: clamp(80px, 12vw, 150px) 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 84% 12%, rgba(0, 166, 232, 0.18), transparent 28%),
+      linear-gradient(145deg, #f7fbff, #fff);
+  }
+
+  .not-found__inner {
+    position: relative;
+    max-width: 780px;
+  }
+
+  .not-found__code {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    right: -8vw;
+    color: rgba(0, 59, 122, 0.055);
+    font-size: clamp(13rem, 30vw, 28rem);
+    font-weight: 900;
+    line-height: 0.7;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .not-found__inner > :not(.not-found__code) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .not-found h1 {
+    max-width: 720px;
+    margin: 12px 0 22px;
+    color: var(--color-primary-dark);
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    line-height: 0.96;
+    letter-spacing: -0.055em;
+  }
+
+  .not-found p {
+    max-width: 650px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .not-found__actions {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .not-found__actions .btn {
+    gap: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .not-found__actions .btn {
+      width: 100%;
+    }
+  }
+</style>

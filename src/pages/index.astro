@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { digitalServices, productCategories, shopFocusAreas } from '../data/catalog';
 import { categoryCardImages as categoryImages, serviceCardImages as serviceImages } from '../data/card-images';
 import { site } from '../data/site';
-import { ArrowRight, ChevronDown, MapPin, Phone, Search } from '@lucide/astro';
+import { ArrowRight, ChevronDown, Clock3, MapPin, Phone, RefreshCw, ShieldCheck, Smartphone } from '@lucide/astro';
 
 const heroCategories = productCategories;
 const serviceCards = digitalServices.slice(0, 4);
@@ -11,18 +11,27 @@ const serviceCards = digitalServices.slice(0, 4);
 ---
 
 <BaseLayout
-  title="Buffetti Cucchi Cesena | Cartoleria, ufficio, scuola e servizi digitali"
-  description="Buffetti Cucchi a Cesena: prodotti Buffetti, cancelleria, articoli scuola, forniture per ufficio, PEC, firma digitale, fotocopie, spedizioni e servizi in negozio."
+  title="Buffetti Cucchi Cesena | Cartoleria e servizi"
+  description="Cartoleria Buffetti a Cesena: prodotti per scuola e ufficio, cancelleria, PEC, firma digitale, fotocopie, spedizioni e assistenza in negozio."
+  preloadImage="/images/hero-home.webp"
 >
   <section class="home-hero">
     <div class="home-hero__media">
-      <img src="/images/hero-home.png" alt="Esterno della cartoleria Buffetti Cucchi a Cesena" />
+      <img
+        src="/images/hero-home.webp"
+        alt="Esterno della cartoleria Buffetti Cucchi a Cesena"
+        width="1920"
+        height="662"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
     </div>
 
     <div class="container home-hero__inner">
       <div class="home-hero__content">
         <span class="eyebrow">Buffetti Cucchi Cesena</span>
-        <h1>Soluzioni che semplificano scuola, ufficio e pratiche.</h1>
+        <h1>Tutto ciò che cerchi per la tua attività</h1>
         <p>
           Prodotti Buffetti, servizi digitali, stampa, spedizioni, scuola e ufficio:
           scegli online cosa ti serve e poi parlane con chi lo conosce davvero.
@@ -46,9 +55,12 @@ const serviceCards = digitalServices.slice(0, 4);
     <div class="container anniversary-card">
       <figure class="anniversary-portrait">
         <img
-          src="/images/staff.jpeg"
+          src="/images/staff.png"
           alt="Sandra Casadei, Elisabetta Cucchi ed Elena Cucchi nel negozio Buffetti Cucchi"
+          width="749"
+          height="609"
           loading="eager"
+          decoding="async"
         />
 
         <div class="anniversary-seal" aria-hidden="true">
@@ -69,7 +81,7 @@ const serviceCards = digitalServices.slice(0, 4);
 
         <div class="anniversary-family" aria-label="La famiglia Buffetti Cucchi">
           <div>
-            <strong>Sandra Casadei in Cucchi</strong>
+            <strong>Sandra Casadei</strong>
           </div>
           <div>
             <strong>Elisabetta Cucchi</strong>
@@ -100,7 +112,7 @@ const serviceCards = digitalServices.slice(0, 4);
       <div class="catalog-main">
         <div class="section-head">
           <span class="eyebrow">Prodotti</span>
-          <h2 id="catalog-title">Prodotti Buffetti, divisi come li cerchi davvero.</h2>
+          <h2 id="catalog-title">La famiglia di prodotti Buffetti</h2>
           <p>
             Ogni categoria apre una pagina propria con prodotti, sottocategorie e immagini:
             niente link finti, niente girotondi, solo percorsi chiari per arrivare al banco preparato.
@@ -154,6 +166,44 @@ const serviceCards = digitalServices.slice(0, 4);
     </div>
   </section>
 
+  <section id="buffetti-rent" class="rent-teaser" aria-labelledby="rent-teaser-title">
+    <div class="container rent-teaser__card">
+      <div class="rent-teaser__copy">
+        <span class="eyebrow">Novità · Buffetti Rent</span>
+        <h2 id="rent-teaser-title">Il prossimo smartphone di lavoro? Noleggialo.</h2>
+        <p>
+          Se hai una Partita IVA puoi accedere a smartphone di ultima generazione con un
+          canone mensile, senza immobilizzare capitale e con assistenza inclusa nelle condizioni del servizio.
+        </p>
+
+        <div class="rent-teaser__benefits" aria-label="Vantaggi di Buffetti Rent">
+          <span><RefreshCw size={18} stroke-width={2.2} /> Tecnologia aggiornata</span>
+          <span><ShieldCheck size={18} stroke-width={2.2} /> Più continuità operativa</span>
+        </div>
+
+        <a class="rent-teaser__cta" href="/servizi.html#buffetti-rent">
+          Scopri Buffetti Rent
+          <ArrowRight size={19} stroke-width={2.3} aria-hidden="true" />
+        </a>
+      </div>
+
+      <div class="rent-teaser__visual" aria-label="Smartphone disponibili con Buffetti Rent">
+        <div class="rent-teaser__price">
+          <span>Smartphone da</span>
+          <strong>27,50 €</strong>
+          <small>al mese</small>
+        </div>
+        <div class="rent-teaser__phone">
+          <img
+            src="https://buffetti.it/cdn/shop/files/IPhone-17-PRO-5G.jpg?v=1778677076&width=1100"
+            alt="iPhone 17 Pro disponibile nella gamma Buffetti Rent"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section departments-section" aria-labelledby="departments-title">
     <div class="container business-layout">
       <div class="business-copy">
@@ -173,32 +223,6 @@ const serviceCards = digitalServices.slice(0, 4);
             <span>{area.text}</span>
           </a>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section social-section" aria-labelledby="social-title">
-    <div class="container social-layout">
-      <div class="social-copy">
-        <span class="eyebrow">Segui il negozio</span>
-        <h2 id="social-title">Novità, vetrine e contatti veloci anche sui social.</h2>
-        <p>
-          Facebook e Instagram servono davvero: per vedere cosa arriva in negozio,
-          chiedere informazioni e restare aggiornato su scuola, cartoleria, servizi e idee regalo.
-        </p>
-      </div>
-
-      <div class="social-cards">
-        <a href={site.facebook} target="_blank" rel="noopener noreferrer">
-          <img src="/images/facebook.svg" alt="" loading="lazy" />
-          <strong>Facebook</strong>
-          <span>Pagina Buffetti Cucchi</span>
-        </a>
-        <a href={site.instagram} target="_blank" rel="noopener noreferrer">
-          <img src="/images/instagram.svg" alt="" loading="lazy" />
-          <strong>Instagram</strong>
-          <span>Vetrine e novità</span>
-        </a>
       </div>
     </div>
   </section>
@@ -227,26 +251,102 @@ const serviceCards = digitalServices.slice(0, 4);
     </div>
   </section>
 
+  <section class="section social-section" aria-labelledby="social-title">
+    <div class="container social-layout">
+      <div class="social-copy">
+        <span class="eyebrow">Segui il negozio</span>
+        <h2 id="social-title">Novità, vetrine e contatti veloci anche sui social.</h2>
+        <p>
+          Facebook e Instagram servono davvero: per vedere cosa arriva in negozio,
+          chiedere informazioni e restare aggiornato su scuola, cartoleria, servizi e idee regalo.
+        </p>
+      </div>
+
+      <div class="social-cards">
+        <a class="social-profile social-profile--facebook" href={site.facebook} target="_blank" rel="noopener noreferrer">
+          <div class="social-profile__info">
+            <span class="social-profile__icon"><img src="/images/facebook.svg" alt="" /></span>
+            <div>
+              <strong>Facebook</strong>
+              <span>@CucchiSas</span>
+            </div>
+            <span class="social-profile__cta">
+              Segui la pagina
+              <ArrowRight size={17} stroke-width={2.3} aria-hidden="true" />
+            </span>
+          </div>
+          <div class="social-profile__gallery" aria-hidden="true">
+            <img src="/images/staff.png" alt="" loading="lazy" />
+            <img src="/images/hero-cancelleria.webp" alt="" loading="lazy" />
+            <img src="/images/hero-scuola.webp" alt="" loading="lazy" />
+            <img src="/images/hero-regalistica.webp" alt="" loading="lazy" />
+          </div>
+        </a>
+        <a class="social-profile social-profile--instagram" href={site.instagram} target="_blank" rel="noopener noreferrer">
+          <div class="social-profile__info">
+            <span class="social-profile__icon"><img src="/images/instagram.svg" alt="" /></span>
+            <div>
+              <strong>Instagram</strong>
+              <span>@cucchi_sas_cesena_buffetti_</span>
+            </div>
+            <span class="social-profile__cta">
+              Segui il profilo
+              <ArrowRight size={17} stroke-width={2.3} aria-hidden="true" />
+            </span>
+          </div>
+          <div class="social-profile__gallery" aria-hidden="true">
+            <img src="/images/index-meta.jpg" alt="" loading="lazy" />
+            <img src="/images/staff.png" alt="" loading="lazy" />
+            <img src="/images/hero-contatti.webp" alt="" loading="lazy" />
+            <img src="/images/hero-arredamento.webp" alt="" loading="lazy" />
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="section visit-section" aria-labelledby="visit-title">
     <div class="container visit-layout">
       <div class="visit-copy">
         <span class="eyebrow">Negozio Buffetti a Cesena</span>
-        <h2 id="visit-title">Vedi, confronti, chiedi. E torni a casa con la cosa giusta.</h2>
+        <h2 id="visit-title">Vieni a farci visita?</h2>
         <p>
           Ci trovi in Viale Matteotti, 593, zona Ippodromo. Passa per prodotti Buffetti,
           scuola, ufficio, servizi digitali, fotocopie, timbri, rilegature e spedizioni.
         </p>
 
         <div class="visit-facts">
-          <div>
+          <div class="visit-fact">
             <span>Telefono</span>
             <strong>{site.phone}</strong>
           </div>
-          <div>
-            <span>Orari</span>
-            <strong>Lun-Ven 8:30-12:30 / 15:30-19:00</strong>
+          <div class="visit-hours">
+            <div class="visit-hours__heading">
+              <span class="visit-hours__icon" aria-hidden="true">
+                <Clock3 size={20} stroke-width={2.2} />
+              </span>
+              <div>
+                <span>Orari aggiornati</span>
+                <strong>Quando trovarci in negozio</strong>
+              </div>
+            </div>
+            <dl class="visit-hours__list">
+              <div>
+                <dt>Lunedì – venerdì</dt>
+                <dd><span>08:30–12:30</span><span>15:30–19:00</span></dd>
+              </div>
+              <div>
+                <dt>Sabato</dt>
+                <dd><strong>Chiuso</strong></dd>
+              </div>
+              <div>
+                <dt>Domenica</dt>
+                <dd><strong>Chiuso</strong></dd>
+              </div>
+            </dl>
+            <p class="visit-hours__note">Il sabato il negozio resta chiuso fino a settembre.</p>
           </div>
-          <div>
+          <div class="visit-fact">
             <span>Indirizzo</span>
             <strong>Viale Matteotti, 593 - Cesena</strong>
           </div>
@@ -732,6 +832,197 @@ const serviceCards = digitalServices.slice(0, 4);
     background: #f5f8fc;
   }
 
+  .rent-teaser {
+    padding: clamp(68px, 8vw, 112px) 0;
+    overflow: hidden;
+    color: #fff;
+    background: #f5f8fc;
+  }
+
+  .rent-teaser__card {
+    position: relative;
+    min-height: 510px;
+    padding: clamp(42px, 6vw, 78px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.72fr);
+    align-items: center;
+    gap: clamp(36px, 7vw, 92px);
+    overflow: hidden;
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at 80% 22%, rgba(0, 166, 232, 0.32), transparent 28%),
+      linear-gradient(132deg, #001f45 0%, #003b7a 56%, #0000e8 130%);
+    box-shadow: 0 34px 90px rgba(0, 31, 69, 0.2);
+  }
+
+  .rent-teaser__card::after {
+    content: "RENT";
+    position: absolute;
+    right: -0.04em;
+    bottom: -0.25em;
+    color: rgba(255, 255, 255, 0.045);
+    font-size: clamp(10rem, 22vw, 21rem);
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -0.09em;
+    pointer-events: none;
+  }
+
+  .rent-teaser__copy,
+  .rent-teaser__visual {
+    position: relative;
+    z-index: 1;
+  }
+
+  .rent-teaser .eyebrow {
+    color: #8be0ff;
+  }
+
+  .rent-teaser h2 {
+    max-width: 720px;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .rent-teaser__copy > p {
+    max-width: 650px;
+    margin: 24px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.06rem;
+    line-height: 1.72;
+  }
+
+  .rent-teaser__benefits {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .rent-teaser__benefits span,
+  .rent-teaser__device-label {
+    min-height: 42px;
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 0.9rem;
+    font-weight: 760;
+  }
+
+  .rent-teaser__benefits svg {
+    color: #8be0ff;
+    flex: 0 0 auto;
+  }
+
+  .rent-teaser__cta {
+    min-height: 52px;
+    width: fit-content;
+    margin-top: 30px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: #001f45;
+    border-radius: 4px;
+    background: #fff;
+    font-weight: 840;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .rent-teaser__cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .rent-teaser__visual {
+    min-height: 370px;
+    display: grid;
+    place-items: center;
+  }
+
+  .rent-teaser__visual::before {
+    content: "";
+    position: absolute;
+    width: min(100%, 390px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: inset 0 0 0 28px rgba(255, 255, 255, 0.025);
+  }
+
+  .rent-teaser__phone {
+    position: relative;
+    width: min(76%, 290px);
+    aspect-ratio: 4 / 5;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 26px;
+    background: #fff;
+    box-shadow: 0 32px 70px rgba(0, 0, 0, 0.28);
+    transform: rotate(4deg);
+  }
+
+  .rent-teaser__phone img {
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    object-fit: contain;
+  }
+
+  .rent-teaser__price {
+    position: absolute;
+    z-index: 2;
+    top: 4px;
+    left: 0;
+    min-width: 148px;
+    padding: 16px 18px;
+    color: #001f45;
+    border-radius: 14px;
+    background: #8be0ff;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.2);
+    transform: rotate(-4deg);
+  }
+
+  .rent-teaser__price span,
+  .rent-teaser__price small,
+  .rent-teaser__price strong {
+    display: block;
+  }
+
+  .rent-teaser__price span,
+  .rent-teaser__price small {
+    font-size: 0.74rem;
+    font-weight: 820;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .rent-teaser__price strong {
+    margin: 4px 0;
+    font-size: 1.75rem;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .rent-teaser__device-label {
+    position: absolute;
+    right: 0;
+    bottom: 14px;
+    color: #fff;
+    background: rgba(0, 20, 48, 0.72);
+    backdrop-filter: blur(10px);
+  }
+
   .business-layout {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -775,7 +1066,7 @@ const serviceCards = digitalServices.slice(0, 4);
 
   .social-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+    grid-template-columns: minmax(0, 0.82fr) minmax(520px, 1.18fr);
     gap: 64px;
     align-items: center;
   }
@@ -797,40 +1088,116 @@ const serviceCards = digitalServices.slice(0, 4);
 
   .social-cards {
     display: grid;
-    gap: 14px;
+    gap: 16px;
   }
 
-  .social-cards a {
-    min-height: 108px;
-    padding: 22px;
+  .social-profile {
+    min-height: 190px;
+    padding: 16px;
     display: grid;
-    grid-template-columns: 46px 1fr;
-    align-items: center;
-    gap: 4px 14px;
+    grid-template-columns: minmax(220px, 1fr) 220px;
+    gap: 20px;
     border: 1px solid #dfe8f2;
-    border-radius: 4px;
+    border-radius: 18px;
     background: #fff;
     box-shadow: 0 16px 44px rgba(0, 31, 69, 0.08);
-    transition: transform 0.18s ease;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
   }
 
-  .social-cards a:hover {
+  .social-profile:hover {
     transform: translateY(-4px);
+    border-color: rgba(0, 0, 232, 0.26);
+    box-shadow: 0 24px 58px rgba(0, 31, 69, 0.13);
   }
 
-  .social-cards img {
-    width: 26px;
-    height: 26px;
+  .social-profile__info {
+    min-width: 0;
+    padding: 8px 4px;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    align-content: start;
+    align-items: center;
+    gap: 4px 14px;
+  }
+
+  .social-profile__icon {
+    width: 48px;
+    height: 48px;
     grid-row: span 2;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
   }
 
-  .social-cards strong {
+  .social-profile--facebook .social-profile__icon {
+    background: #eef2ff;
+  }
+
+  .social-profile--instagram .social-profile__icon {
+    background: linear-gradient(145deg, #7c3aed, #ec4899 55%, #f59e0b);
+  }
+
+  .social-profile__icon img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .social-profile--instagram .social-profile__icon img {
+    filter: brightness(0) invert(1);
+  }
+
+  .social-profile__info strong {
+    display: block;
     color: var(--color-primary-dark);
-    font-size: 1.08rem;
+    font-size: 1.12rem;
+    line-height: 1.2;
   }
 
-  .social-cards span {
+  .social-profile__info > div > span {
+    display: block;
+    margin-top: 4px;
     color: var(--color-muted);
+    font-size: 0.86rem;
+    overflow-wrap: anywhere;
+  }
+
+  .social-profile__cta {
+    min-height: 42px;
+    width: fit-content;
+    margin-top: 24px;
+    padding: 0 15px;
+    grid-column: 1 / -1;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: #fff;
+    border-radius: 999px;
+    background: #0000e8;
+    font-size: 0.88rem;
+    font-weight: 820;
+  }
+
+  .social-profile--instagram .social-profile__cta {
+    background: #001f45;
+  }
+
+  .social-profile__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .social-profile__gallery img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .social-profile__gallery img:nth-child(2) {
+    object-position: center 30%;
   }
 
   .business-list span {
@@ -907,19 +1274,20 @@ const serviceCards = digitalServices.slice(0, 4);
     background: #f1f6fb;
   }
 
-  .visit-facts div {
+  .visit-fact {
     padding: 16px 18px;
     border: 1px solid #dfe8f2;
     border-radius: 4px;
     background: #f8fbff;
   }
 
-  .visit-facts span,
-  .visit-facts strong {
+  .visit-fact span,
+  .visit-fact strong {
     display: block;
   }
 
-  .visit-facts span {
+  .visit-fact span,
+  .visit-hours__heading > div > span {
     color: #0000e8;
     font-size: 0.74rem;
     font-weight: 860;
@@ -927,10 +1295,91 @@ const serviceCards = digitalServices.slice(0, 4);
     letter-spacing: 0.08em;
   }
 
-  .visit-facts strong {
+  .visit-fact strong {
     margin-top: 4px;
     color: var(--color-primary-dark);
     line-height: 1.35;
+  }
+
+  .visit-hours {
+    padding: 20px;
+    border: 1px solid #cddff0;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #f8fbff 0%, #eef6ff 100%);
+  }
+
+  .visit-hours__heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .visit-hours__icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: grid;
+    place-items: center;
+    color: #0000e8;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(0, 31, 69, 0.1);
+  }
+
+  .visit-hours__heading strong {
+    display: block;
+    margin-top: 2px;
+    color: var(--color-primary-dark);
+    font-size: 1rem;
+  }
+
+  .visit-hours__list {
+    margin: 18px 0 0;
+  }
+
+  .visit-hours__list > div {
+    padding: 11px 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: start;
+    border-top: 1px solid rgba(0, 59, 122, 0.12);
+  }
+
+  .visit-hours__list dt,
+  .visit-hours__list dd {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+
+  .visit-hours__list dt {
+    font-weight: 720;
+  }
+
+  .visit-hours__list dd {
+    text-align: right;
+  }
+
+  .visit-hours__list dd span {
+    display: block;
+  }
+
+  .visit-hours__list dd strong {
+    color: #5b6b7e;
+  }
+
+  .visit-hours__note {
+    margin: 5px 0 0;
+    padding: 10px 12px;
+    color: #624900;
+    border-left: 3px solid #f0b92f;
+    border-radius: 0 6px 6px 0;
+    background: rgba(255, 244, 207, 0.72);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.45;
   }
 
   .visit-map {
@@ -947,6 +1396,70 @@ const serviceCards = digitalServices.slice(0, 4);
     min-height: 440px;
     display: block;
     border: 0;
+  }
+
+  @media (min-width: 1081px) {
+    .visit-map,
+    .visit-map iframe {
+      min-height: 620px;
+    }
+
+    .anniversary-card {
+      width: min(1460px, calc(100% - 64px));
+      max-width: none;
+    }
+
+    .rent-teaser__card {
+      width: min(1460px, calc(100% - 64px));
+      max-width: none;
+      min-height: 620px;
+      padding: 72px clamp(72px, 6vw, 104px);
+      grid-template-columns: minmax(0, 1.02fr) minmax(440px, 0.88fr);
+      gap: clamp(72px, 7vw, 118px);
+    }
+
+    .rent-teaser__visual {
+      min-height: clamp(430px, 32vw, 500px);
+    }
+
+    .rent-teaser__visual::before {
+      width: min(100%, 480px);
+      box-shadow: inset 0 0 0 36px rgba(255, 255, 255, 0.025);
+    }
+
+    .rent-teaser__phone {
+      width: min(82%, 370px);
+      border-radius: 32px;
+    }
+
+    .rent-teaser__phone img {
+      padding: 24px;
+    }
+
+    .rent-teaser__price {
+      top: 10px;
+      left: 8px;
+      min-width: 174px;
+      padding: 19px 21px;
+      border-radius: 16px;
+    }
+
+    .rent-teaser__price span,
+    .rent-teaser__price small {
+      font-size: 0.8rem;
+    }
+
+    .rent-teaser__price strong {
+      font-size: 2.05rem;
+    }
+
+    .rent-teaser__device-label {
+      right: 6px;
+      bottom: 18px;
+      min-height: 48px;
+      padding-inline: 18px;
+      font-size: 0.96rem;
+    }
   }
 
   @media (max-width: 1080px) {
@@ -1001,6 +1514,19 @@ const serviceCards = digitalServices.slice(0, 4);
     .visit-layout {
       gap: 40px;
     }
+
+    .rent-teaser__card {
+      grid-template-columns: 1fr;
+    }
+
+    .rent-teaser__copy {
+      max-width: 720px;
+    }
+
+    .rent-teaser__visual {
+      width: min(100%, 520px);
+      margin-inline: auto;
+    }
   }
 
   @media (max-width: 640px) {
@@ -1027,6 +1553,64 @@ const serviceCards = digitalServices.slice(0, 4);
 
     .anniversary-section {
       padding: 54px 0;
+    }
+
+    .rent-teaser {
+      padding: 44px 0;
+    }
+
+    .rent-teaser__card {
+      min-height: 0;
+      padding: 34px 22px 30px;
+      gap: 28px;
+      border-radius: 18px;
+    }
+
+    .rent-teaser h2 {
+      font-size: clamp(2.15rem, 11.5vw, 3.2rem);
+    }
+
+    .rent-teaser__copy > p {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .rent-teaser__benefits {
+      display: grid;
+    }
+
+    .rent-teaser__cta {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .rent-teaser__visual {
+      min-height: 310px;
+    }
+
+    .rent-teaser__visual::before {
+      width: 290px;
+    }
+
+    .rent-teaser__phone {
+      width: 210px;
+    }
+
+    .rent-teaser__price {
+      top: 2px;
+      left: -2px;
+      min-width: 130px;
+      padding: 13px 14px;
+    }
+
+    .rent-teaser__price strong {
+      font-size: 1.45rem;
+    }
+
+    .rent-teaser__device-label {
+      right: -4px;
+      bottom: 4px;
+      font-size: 0.78rem;
     }
 
     .anniversary-card {
@@ -1282,6 +1866,24 @@ const serviceCards = digitalServices.slice(0, 4);
       grid-template-columns: 1fr;
     }
 
+    .social-profile {
+      padding: 14px;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .social-profile__gallery {
+      min-height: 82px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-rows: 82px;
+      gap: 6px;
+    }
+
+    .social-profile__cta {
+      width: 100%;
+      justify-content: space-between;
+    }
+
     .visit-map,
     .visit-map iframe {
       min-height: 320px;
@@ -1296,7 +1898,11 @@ const serviceCards = digitalServices.slice(0, 4);
     .category-card:hover,
     .service-card:hover,
     .business-list a:hover,
-    .social-cards a:hover {
+    .social-profile:hover {
+      transform: none;
+    }
+
+    .rent-teaser__cta:hover {
       transform: none;
     }
   }

@@ -36,8 +36,9 @@ const askCards = [
 ---
 
 <BaseLayout
-  title="Contatti Buffetti Cucchi Cesena | Telefono, email, social e indicazioni"
+  title="Contatti Buffetti Cucchi Cesena | Orari e indicazioni"
   description="Contatta Buffetti Cucchi a Cesena: telefono, email, Facebook, Instagram, indirizzo, orari e indicazioni per raggiungere il negozio."
+  preloadImage="/images/hero-home.webp"
 >
   <section class="contact-hero">
     <div
@@ -46,8 +47,13 @@ const askCards = [
       style="position:absolute;inset:0;z-index:0;overflow:hidden;"
     >
       <img
-        src="/images/hero-home.png"
+        src="/images/hero-home.webp"
         alt=""
+        width="1920"
+        height="662"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
         style="display:block;width:100%;height:100%;object-fit:cover;object-position:center;"
       />
     </div>
@@ -122,8 +128,8 @@ const askCards = [
         </p>
 
         <div class="hours">
-          <p><strong>Lunedi - Venerdi</strong><span>8:30 - 12:30 / 15:30 - 19:00</span></p>
-          <p><strong>Sabato</strong><span>09:00 - 12:30</span></p>
+          <p><strong>Lunedì - Venerdì</strong><span>08:30 - 12:30 / 15:30 - 19:00</span></p>
+          <p><strong>Sabato</strong><span>Chiuso fino a settembre</span></p>
           <p><strong>Domenica</strong><span>Chiuso</span></p>
         </div>
       </div>

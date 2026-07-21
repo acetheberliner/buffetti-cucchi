@@ -12,7 +12,7 @@ export const productCategories = [
       'Armadi e cassettiere',
       "Complementi d'arredo",
       'Ergonomia',
-      'Tritacarta e cestini',
+      'Cestini gettacarta',
     ],
   },
   {
@@ -64,7 +64,7 @@ export const productCategories = [
     slug: 'cancelleria',
     label: 'Cancelleria',
     href: '/prodotti/cancelleria.html',
-    image: '/images/cancelleria/brand/scrittura.png',
+    image: '/images/cancelleria/brand/scrittura.webp',
     accent: '#0000e8',
     summary: 'Scrittura, colle, nastri, cucitrici, perforatori, timbri e accessori quotidiani.',
     items: [
@@ -113,7 +113,7 @@ export const productCategories = [
   },
   {
     slug: 'comunita-servizi',
-    label: 'Comunita e servizi',
+    label: 'Comunità e servizi',
     href: '/prodotti/comunita-servizi.html',
     image: '/images/servizi/product/stampa-spedizioni.svg',
     accent: '#2d7d46',
@@ -180,7 +180,7 @@ export const productCategories = [
     slug: 'ecosostenibili',
     label: 'Prodotti Ecosostenibili',
     href: '/prodotti/ecosostenibili.html',
-    image: '/images/cancelleria/brand/archiviazione.png',
+    image: '/images/cancelleria/brand/archiviazione.webp',
     accent: '#2f8f61',
     summary: 'Scelte piu attente per carta, cancelleria e materiali di uso quotidiano.',
     items: [
@@ -244,7 +244,7 @@ export const digitalServices = [
     items: ['Timbri personalizzati', 'Cuscinetti', 'Accessori'],
   },
   {
-    label: 'Spedizioni BRT - FedEx - GLS',
+    label: 'Spedizioni TNT - FedEx',
     href: '/servizi.html#spedizioni',
     image: '/images/servizi/brand/spedizioni.svg',
     badge: 'Invii e ritiri',

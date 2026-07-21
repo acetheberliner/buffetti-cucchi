@@ -99,11 +99,11 @@ export const pages = {
         'Una selezione visiva dei prodotti più richiesti per scrivere, stampare, disegnare, archiviare e organizzare il lavoro quotidiano.',
       items: [
         { name: 'Buffetti', image: '/images/logo-buffetti.png' },
-        { name: 'B4 Disegno', image: '/images/cancelleria/brand/b4-disegno.png' },
+        { name: 'B4 Disegno', image: '/images/cancelleria/brand/b4-disegno.webp' },
         { name: 'Carta Copy', image: '/images/cancelleria/carta-buffetti-gialla.png' },
-        { name: 'Archiviazione', image: '/images/cancelleria/brand/archiviazione.png' },
-        { name: 'Scrittura', image: '/images/cancelleria/brand/scrittura.png' },
-        { name: 'Ufficio', image: '/images/cancelleria/brand/ufficio.png' },
+        { name: 'Archiviazione', image: '/images/cancelleria/brand/archiviazione.webp' },
+        { name: 'Scrittura', image: '/images/cancelleria/brand/scrittura.webp' },
+        { name: 'Ufficio', image: '/images/cancelleria/brand/ufficio.webp' },
       ],
     },
 

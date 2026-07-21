@@ -3,18 +3,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { digitalServices } from '../data/catalog';
 import { serviceCardImages } from '../data/card-images';
 import { site } from '../data/site';
-import { Check, Mail, MapPin, Phone } from '@lucide/astro';
+import { ArrowRight, Check, Mail, MapPin, Phone, RefreshCw, ShieldCheck, Smartphone } from '@lucide/astro';
 
 const serviceCards = digitalServices.map((service) => ({
   ...service,
   image: serviceCardImages[service.label] ?? service.image,
 }));
 
+const rentSmartphones = [
+  {
+    name: 'Samsung Galaxy S25 Ultra',
+    detail: '256 GB · 5G',
+    image: 'https://buffetti.it/cdn/shop/files/SAMSUNG-GALAXY-S25-ULTRA-256GB.jpg?v=1778677228&width=1100',
+  },
+  {
+    name: 'Samsung Galaxy Z Fold 7',
+    detail: '256 GB · 5G',
+    image: 'https://buffetti.it/cdn/shop/files/SAMSUNG-Z-FOLD-7-256-GB-5G.jpg?v=1778677190&width=1100',
+  },
+  {
+    name: 'iPhone 17 Pro',
+    detail: '5G',
+    image: 'https://buffetti.it/cdn/shop/files/IPhone-17-PRO-5G.jpg?v=1778677076&width=1100',
+  },
+];
+
 ---
 
 <BaseLayout
-  title="Servizi Buffetti Cucchi Cesena | PEC, SPID, firma digitale, stampa e spedizioni"
+  title="Servizi Buffetti a Cesena | PEC, SPID e stampa"
   description="Servizi Buffetti Cucchi a Cesena: PEC, SPID, firma digitale, fotocopie, rilegature, timbri, spedizioni e supporto al banco."
+  preloadImage="/images/hero-servizi.webp"
 >
   <section class="services-hero">
     <div class="container services-hero__inner">
@@ -73,6 +92,81 @@ const serviceCards = digitalServices.map((service) => ({
           </article>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section id="buffetti-rent" class="section rent-section" aria-labelledby="rent-title">
+    <div class="container">
+      <div class="rent-intro">
+        <div class="rent-intro__copy">
+          <span class="eyebrow">Buffetti Rent · Noleggio operativo</span>
+          <h2 id="rent-title">Smartphone professionali, senza acquisto iniziale.</h2>
+          <p>
+            Se hai una Partita IVA scegli la tecnologia che serve alla tua attività e la utilizzi
+            con un unico canone mensile. In negozio puoi verificare modelli, offerte e condizioni disponibili.
+          </p>
+        </div>
+
+        <aside class="rent-price" aria-label="Prezzo di partenza Buffetti Rent">
+          <Smartphone size={28} stroke-width={2} aria-hidden="true" />
+          <span>Tablet e smartphone da</span>
+          <strong>27,50 €</strong>
+          <small>al mese</small>
+          <p>Prezzo di partenza pubblicato da Buffetti. Modello, durata e condizioni da verificare.</p>
+        </aside>
+      </div>
+
+      <div class="rent-benefits" aria-label="Vantaggi del noleggio Buffetti Rent">
+        <article>
+          <RefreshCw size={23} stroke-width={2.1} aria-hidden="true" />
+          <div>
+            <h3>Tecnologia sempre aggiornata</h3>
+            <p>A fine contratto puoi rinnovare i dispositivi e continuare a lavorare con strumenti attuali.</p>
+          </div>
+        </article>
+        <article>
+          <ShieldCheck size={23} stroke-width={2.1} aria-hidden="true" />
+          <div>
+            <h3>Continuità anche negli imprevisti</h3>
+            <p>Il servizio prevede assistenza anche in caso di furto o rottura accidentale.</p>
+          </div>
+        </article>
+        <article>
+          <Check size={23} stroke-width={2.3} aria-hidden="true" />
+          <div>
+            <h3>Un unico canone</h3>
+            <p>Costi programmabili senza impegnare subito il capitale destinato all’attività.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="rent-devices-head">
+        <div>
+          <span class="eyebrow">Esempi dalla gamma attuale</span>
+          <h3>Smartphone disponibili con Buffetti Rent</h3>
+        </div>
+        <p>La disponibilità dei singoli modelli può cambiare: chiamaci prima di passare.</p>
+      </div>
+
+      <div class="rent-devices">
+        {rentSmartphones.map((device) => (
+          <article>
+            <div class="rent-device__media">
+              <img src={device.image} alt={device.name} loading="lazy" />
+            </div>
+            <div class="rent-device__body">
+              <span>Smartphone</span>
+              <h4>{device.name}</h4>
+              <p>{device.detail}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="rent-disclaimer">
+        Servizio rivolto ai titolari di Partita IVA nei punti vendita aderenti. Prezzi, disponibilità,
+        coperture, durata e condizioni contrattuali sono soggetti a verifica prima dell’adesione.
+      </p>
     </div>
   </section>
 
@@ -272,6 +366,246 @@ const serviceCards = digitalServices.map((service) => ({
     margin-top: 2px;
   }
 
+  .rent-section {
+    --rent-css-version: 2;
+    scroll-margin-top: 180px;
+    background:
+      radial-gradient(circle at 92% 8%, rgba(0, 166, 232, 0.13), transparent 28%),
+      linear-gradient(180deg, #f5f8fc 0%, #fff 72%);
+  }
+
+  .rent-intro {
+    padding: clamp(34px, 5vw, 64px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(270px, 0.38fr);
+    gap: clamp(36px, 6vw, 76px);
+    align-items: center;
+    color: #fff;
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at 78% 10%, rgba(0, 166, 232, 0.32), transparent 26%),
+      linear-gradient(132deg, #001f45, #003b7a 62%, #0000e8 140%);
+    box-shadow: 0 28px 80px rgba(0, 31, 69, 0.18);
+  }
+
+  .rent-intro .eyebrow {
+    color: #8be0ff;
+  }
+
+  .rent-intro h2 {
+    max-width: 760px;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.3rem, 4.5vw, 4.5rem);
+    line-height: 0.96;
+    letter-spacing: -0.052em;
+    text-wrap: balance;
+  }
+
+  .rent-intro__copy > p {
+    max-width: 690px;
+    margin: 22px 0 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.04rem;
+    line-height: 1.72;
+  }
+
+  .rent-intro__actions {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .rent-official-link {
+    min-height: 48px;
+    padding: 0 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-weight: 780;
+  }
+
+  .rent-official-link:hover {
+    color: #8be0ff;
+  }
+
+  .rent-price {
+    padding: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+  }
+
+  .rent-price > svg {
+    color: #8be0ff;
+    margin-bottom: 28px;
+  }
+
+  .rent-price span,
+  .rent-price strong,
+  .rent-price small {
+    display: block;
+  }
+
+  .rent-price span,
+  .rent-price small {
+    font-size: 0.76rem;
+    font-weight: 820;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .rent-price strong {
+    margin: 8px 0 4px;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  .rent-price p {
+    margin: 22px 0 0;
+    padding-top: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .rent-benefits {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .rent-benefits article {
+    min-height: 172px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 15px;
+    border: 1px solid #dfe8f2;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 14px 42px rgba(0, 31, 69, 0.07);
+  }
+
+  .rent-benefits article > svg {
+    color: #0000e8;
+    margin-top: 2px;
+  }
+
+  .rent-benefits h3,
+  .rent-benefits p {
+    margin: 0;
+  }
+
+  .rent-benefits h3 {
+    color: var(--color-primary-dark);
+    font-size: 1.08rem;
+    line-height: 1.2;
+  }
+
+  .rent-benefits p {
+    margin-top: 9px;
+    color: var(--color-muted);
+    line-height: 1.55;
+  }
+
+  .rent-devices-head {
+    margin: clamp(62px, 8vw, 100px) 0 28px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .rent-devices-head .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .rent-devices-head h3 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2rem, 3.8vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: -0.048em;
+  }
+
+  .rent-devices-head > p {
+    max-width: 370px;
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .rent-devices {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .rent-devices > article {
+    overflow: hidden;
+    border: 1px solid #dfe8f2;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 18px 52px rgba(0, 31, 69, 0.08);
+  }
+
+  .rent-device__media {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #f5f8fc;
+  }
+
+  .rent-device__media img {
+    width: 100%;
+    height: 100%;
+    padding: 22px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+
+  .rent-device__body {
+    padding: 22px 24px 25px;
+    border-top: 1px solid #e4ebf3;
+  }
+
+  .rent-device__body span {
+    color: #0000e8;
+    font-size: 0.72rem;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .rent-device__body h4 {
+    margin: 8px 0 0;
+    color: var(--color-primary-dark);
+    font-size: 1.28rem;
+    line-height: 1.15;
+  }
+
+  .rent-device__body p {
+    margin: 8px 0 0;
+    color: var(--color-muted);
+  }
+
+  .rent-disclaimer {
+    max-width: 920px;
+    margin: 24px 0 0;
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
   .service-contact {
     color: #fff;
     background: #0000e8;
@@ -335,6 +669,18 @@ const serviceCards = digitalServices.map((service) => ({
     .service-cards {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .rent-intro {
+      grid-template-columns: 1fr;
+    }
+
+    .rent-price {
+      max-width: 440px;
+    }
+
+    .rent-benefits {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 640px) {
@@ -360,6 +706,58 @@ const serviceCards = digitalServices.map((service) => ({
 
     .service-card__media {
       height: 190px;
+    }
+
+    .rent-section {
+      scroll-margin-top: 150px;
+    }
+
+    .rent-intro {
+      padding: 32px 22px;
+      border-radius: 18px;
+    }
+
+    .rent-intro h2 {
+      font-size: clamp(2.1rem, 11vw, 3.1rem);
+    }
+
+    .rent-intro__copy > p {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .rent-intro__actions,
+    .rent-intro__actions .btn,
+    .rent-official-link {
+      width: 100%;
+    }
+
+    .rent-intro__actions .btn,
+    .rent-official-link {
+      justify-content: center;
+    }
+
+    .rent-price {
+      padding: 22px;
+    }
+
+    .rent-benefits article {
+      min-height: 0;
+      padding: 20px;
+    }
+
+    .rent-devices-head {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .rent-devices {
+      grid-template-columns: 1fr;
+    }
+
+    .rent-device__media {
+      aspect-ratio: 16 / 11;
     }
 
     .service-contact__actions a {

@@ -1,7 +1,7 @@
 ---
 import { site } from '../data/site';
 import { digitalServices, productCategories } from '../data/catalog';
-import { ExternalLink, Mail, MapPin, Phone } from '@lucide/astro';
+import { ArrowUp, ExternalLink, Mail, MapPin, Phone } from '@lucide/astro';
 
 const footerProducts = productCategories.slice(0, 7);
 const footerServices = digitalServices.slice(0, 5);
@@ -19,6 +19,8 @@ const footerServices = digitalServices.slice(0, 5);
           <span>Cartoleria, ufficio e servizi a Cesena</span>
         </div>
       </div>
+
+      <span class="footer-vat">{site.vat}</span>
 
       <p>
         Un negozio Buffetti locale: prodotti per scuola e ufficio, servizi digitali,
@@ -81,7 +83,7 @@ const footerServices = digitalServices.slice(0, 5);
     </div>
     <div>
       <span>Sabato</span>
-      <strong>09:00-12:30</strong>
+      <strong>Chiuso fino a settembre</strong>
     </div>
     <div>
       <span>Domenica</span>
@@ -96,15 +98,19 @@ const footerServices = digitalServices.slice(0, 5);
   <div class="container footer-bottom">
     <span>© 2026 Buffetti Cucchi s.a.s. Tutti i diritti riservati.</span>
 
+    <div class="footer-legal-links">
+      <a href="/privacy-policy.html">Privacy e Cookie Policy</a>
+    </div>
+
     <a
       class="footer-credit"
       href="https://avely.me/tmsbgn"
       target="_blank"
       rel="noopener noreferrer"
-      title="visita il portfolio di bagnolini tommaso"
-      aria-label="visita il portfolio di bagnolini tommaso"
+      title="Visita il mio portfolio"
+      aria-label="Visita il mio portfolio"
     >
-      <img class="footer-credit-avatar" src="../public/images/pfp.jpeg" alt="Bagnolini Tommaso">
+      <img class="footer-credit-avatar" src="/images/pfp-96.webp" alt="" width="38" height="38" loading="lazy" />
 
       <span class="footer-credit-content">
         <span class="footer-credit-kicker">Sito sviluppato da</span>
@@ -119,7 +125,26 @@ const footerServices = digitalServices.slice(0, 5);
       </span>
     </a>
   </div>
+  <span class="footer-end-sentinel" aria-hidden="true"></span>
 </footer>
+
+<a class="footer-back-top" href="#top" data-back-to-top hidden>
+  Torna su
+  <ArrowUp size={17} stroke-width={2.5} aria-hidden="true" />
+</a>
+
+<script>
+  const backToTop = document.querySelector('[data-back-to-top]');
+  const footerEnd = document.querySelector('.footer-end-sentinel');
+
+  if (backToTop instanceof HTMLElement && footerEnd) {
+    const observer = new IntersectionObserver(([entry]) => {
+      backToTop.hidden = !entry.isIntersecting;
+    }, { threshold: 0.1 });
+
+    observer.observe(footerEnd);
+  }
+</script>
 
 <style>
   .footer {
@@ -203,10 +228,19 @@ const footerServices = digitalServices.slice(0, 5);
 
   .footer-brand p {
     max-width: 440px;
-    margin: 30px 0 24px;
+    margin: 18px 0 24px;
     color: rgba(255, 255, 255, 0.72);
     font-size: 1.02rem;
     line-height: 1.72;
+  }
+
+  .footer-vat {
+    margin-top: 14px;
+    display: block;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.8rem;
+    font-weight: 760;
+    letter-spacing: 0.04em;
   }
 
   .footer-social {
@@ -428,6 +462,56 @@ const footerServices = digitalServices.slice(0, 5);
     color: #fff;
   }
 
+  .footer-legal-links {
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px 16px;
+  }
+
+  .footer-back-top {
+    position: fixed;
+    right: max(18px, env(safe-area-inset-right));
+    bottom: max(18px, env(safe-area-inset-bottom));
+    z-index: 30;
+    min-height: 46px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(0, 31, 69, 0.9);
+    box-shadow: 0 14px 36px rgba(0, 18, 44, 0.28);
+    backdrop-filter: blur(12px);
+    font-size: 0.88rem;
+    font-weight: 820;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .footer-back-top[hidden] {
+    display: none;
+  }
+
+  .footer-back-top:hover {
+    color: #fff;
+    background: #003b7a;
+    box-shadow: 0 18px 42px rgba(0, 18, 44, 0.36);
+    transform: translateY(-2px);
+  }
+
+  .footer-end-sentinel {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    height: 80px;
+    pointer-events: none;
+  }
+
   @media (max-width: 1050px) {
     .footer-inner,
     .footer-hours {
@@ -447,6 +531,23 @@ const footerServices = digitalServices.slice(0, 5);
 
     .footer-bottom {
       flex-direction: column;
+    }
+
+    .footer-legal-links {
+      width: 100%;
+      margin-left: 0;
+      justify-content: flex-start;
+    }
+
+    .footer-back-top {
+      right: max(12px, env(safe-area-inset-right));
+      bottom: max(12px, env(safe-area-inset-bottom));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-back-top {
+      transition: none;
     }
   }
 </style>

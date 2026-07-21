@@ -1,4 +1,5 @@
 export const site = {
+  url: 'https://www.cucchisascesena.it',
   name: 'Buffetti Cucchi',
   fullName: 'Buffetti Cucchi s.a.s. di Cucchi Elisabetta & C.',
   vat: 'P. IVA 00625300553',
@@ -12,4 +13,7 @@ export const site = {
   facebook: 'https://www.facebook.com/CucchiSas',
   instagram: 'https://www.instagram.com/cucchi_sas_cesena_buffetti_/',
   developerUrl: 'https://avely.me/tmsbgn',
+  defaultSocialImage: '/images/og-buffetti-cucchi.jpg',
+  latitude: 44.1411376,
+  longitude: 12.2263057,
 };

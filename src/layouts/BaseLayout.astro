@@ -2,11 +2,93 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
 
 const {
   title = 'Buffetti Cucchi Cesena',
   description = 'Cartoleria Buffetti Cucchi a Cesena: cancelleria, articoli per scuola e ufficio, servizi digitali, fotocopie, spedizioni e forniture per aziende.',
+  image = site.defaultSocialImage,
+  imageAlt = 'Buffetti Cucchi, cartoleria e servizi a Cesena',
+  type = 'website',
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  preloadImage,
 } = Astro.props;
+
+const canonicalPath = Astro.url.pathname === '/index.html' ? '/' : Astro.url.pathname;
+const canonicalUrl = new URL(canonicalPath, Astro.site ?? site.url);
+const socialImageUrl = new URL(image, Astro.site ?? site.url);
+const logoUrl = new URL('/images/logo-buffetti.png', Astro.site ?? site.url);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['Store', 'LocalBusiness'],
+      '@id': `${site.url}/#business`,
+      name: site.fullName,
+      alternateName: site.name,
+      url: site.url,
+      logo: logoUrl.href,
+      image: socialImageUrl.href,
+      telephone: site.phone,
+      email: site.email,
+      vatID: site.vat.replace('P. IVA ', ''),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Viale Matteotti, 593',
+        addressLocality: 'Cesena',
+        addressRegion: 'FC',
+        postalCode: '47522',
+        addressCountry: 'IT',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: site.latitude,
+        longitude: site.longitude,
+      },
+      hasMap: site.mapsUrl,
+      sameAs: [site.facebook, site.instagram],
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '08:30',
+          closes: '12:30',
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '15:30',
+          closes: '19:00',
+        },
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: 'it-IT',
+      publisher: { '@id': `${site.url}/#business` },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl.href}#webpage`,
+      url: canonicalUrl.href,
+      name: title,
+      description,
+      inLanguage: 'it-IT',
+      isPartOf: { '@id': `${site.url}/#website` },
+      about: { '@id': `${site.url}/#business` },
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: socialImageUrl.href,
+        width: 1200,
+        height: 630,
+      },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -14,26 +96,50 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#003b7a" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content={robots} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap"
-      rel="stylesheet"
-    /> -->
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+
+    {preloadImage ? <link rel="preload" as="image" href={preloadImage} fetchpriority="high" /> : null}
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="it-IT" href={canonicalUrl} />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:secure_url" content={socialImageUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
 
-    <link rel="icon" href="../../public/favicon.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/images/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
 
-  <body>
+  <body id="top">
     <a class="skip-link" href="#main-content">Vai al contenuto principale</a>
     <Header />
     <main id="main-content">

@@ -7,9 +7,9 @@ export const categoryPageImages = {
       'Sedie e sgabelli': 'https://www.mondoufficiobg.it/wp/wp-content/uploads/2020/02/come-regolare-sedia-da-ufficio-e1704967919389.jpg',
       'Scrivanie e accessori': 'https://buffetti.it/cdn/shop/collections/arredo-e-complementi.jpg?v=1776932174',
       'Armadi e cassettiere': 'https://buffetti.it/cdn/shop/files/113147_0220A3000_new.jpg?v=1782716410',
-      "Complementi d'arredo": 'https://www.ideaufficio.bg.it/wp-content/uploads/2020/07/3-3.jpg',
-      Ergonomia: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Home_office_%28Unsplash%29.jpg',
-      'Tritacarta e cestini': 'https://buffetti.it/cdn/shop/files/113255_0680MB002_f.jpg?v=1782884792&width=700',
+      "Complementi d'arredo": 'https://buffetti.it/cdn/shop/files/113180_0220B1100_new.jpg?v=1782717545&width=810',
+      Ergonomia: 'https://buffetti.it/cdn/shop/files/92956_92956_0030KKMW4_img2_CAT_fe77f456-7c0f-4233-b3a1-1cd1163e3005.jpg?v=1782716197&width=810',
+      'Cestini gettacarta': 'https://buffetti.it/cdn/shop/files/98807_98807_0226B1400.jpg?v=1782716967&width=810',
     },
     itemPositions: {
       'Sedie e sgabelli': 'center 68%',

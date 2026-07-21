@@ -19,5 +19,5 @@ export const serviceCardImages = {
   PEC: 'https://buffetti.it/cdn/shop/files/pec.png?v=1776430008',
   'Fotocopie e stampa': 'https://buffetti.it/cdn/shop/collections/carta-e-modulistica-buffetti.webp?v=1777280043',
   Timbri: 'https://buffetti.it/cdn/shop/files/99819_99819_04912PR00_9ab0d6d6-5968-48b1-ac1a-956f896b72ba.jpg?v=1782718690',
-  'Spedizioni BRT - FedEx - GLS': 'https://buffetti.it/cdn/shop/collections/spedizione-e-imballaggi.webp?v=1777281833',
+  'Spedizioni TNT - FedEx': 'https://cdn.motor1.com/images/mgl/nyprY/s1/2543_fedex-via-libera-all-acquisizione-di-tnt.jpg',
 };

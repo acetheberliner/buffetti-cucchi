@@ -63,10 +63,10 @@ const icons = {
 };
 ---
 
-<BaseLayout title={page.title} description={page.description}>
+<BaseLayout title={page.title} description={page.description} preloadImage={page.heroImage}>
   <section class="page-hero">
     <div class="page-hero__media">
-      <img src={page.heroImage} alt={page.heroTitle} />
+      <img src={page.heroImage} alt={page.heroTitle} loading="eager" fetchpriority="high" decoding="async" />
     </div>
 
     <div class="container page-hero__inner">
