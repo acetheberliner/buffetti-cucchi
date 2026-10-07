@@ -2,8 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { digitalServices, shopFocusAreas } from '../data/catalog';
 import { categoryCardImages, serviceCardImages } from '../data/card-images';
+import { getImageDimensions } from '../data/image-dimensions';
 import { pages } from '../data/pages';
-import { site } from '../data/site';
+import { openingHours, site } from '../data/site';
 import { Mail, MapPin, Phone } from '@lucide/astro';
 
 const askCards = [
@@ -50,7 +51,7 @@ const askCards = [
         src="/images/hero-home.webp"
         alt=""
         width="1920"
-        height="662"
+        height="1080"
         loading="eager"
         fetchpriority="high"
         decoding="async"
@@ -100,14 +101,14 @@ const askCards = [
   <section class="section section--white">
     <div class="container contact-actions">
       <a href={site.facebook} target="_blank" rel="noopener noreferrer">
-        <img src="/images/facebook.svg" alt="" loading="lazy" />
+        <img src="/images/facebook.svg" alt="" {...getImageDimensions('/images/facebook.svg')} loading="lazy" />
         <strong>Facebook</strong>
         <span>Pagina del negozio</span>
       </a>
       <a href={site.instagram} target="_blank" rel="noopener noreferrer">
-        <img src="/images/instagram.svg" alt="" loading="lazy" />
+        <img src="/images/instagram.svg" alt="" {...getImageDimensions('/images/instagram.svg')} loading="lazy" />
         <strong>Instagram</strong>
-        <span>Vetrine, novita e idee</span>
+        <span>Vetrine, novità e idee</span>
       </a>
       <a href={site.emailHref}>
         <Mail size={26} stroke-width={2.2} />
@@ -128,9 +129,9 @@ const askCards = [
         </p>
 
         <div class="hours">
-          <p><strong>Lunedì - Venerdì</strong><span>08:30 - 12:30 / 15:30 - 19:00</span></p>
-          <p><strong>Sabato</strong><span>Chiuso fino a settembre</span></p>
-          <p><strong>Domenica</strong><span>Chiuso</span></p>
+          <p><strong>{openingHours.weekdays.label}</strong><span>{openingHours.weekdays.contactText}</span></p>
+          <p><strong>{openingHours.saturday.label}</strong><span>{openingHours.saturday.contactStatus}</span></p>
+          <p><strong>{openingHours.sunday.label}</strong><span>{openingHours.sunday.status}</span></p>
         </div>
       </div>
 
@@ -156,7 +157,7 @@ const askCards = [
       <div class="ask-grid">
         {askCards.map((card) => (
           <article class={`ask-card ask-card--${card.imageFit}`}>
-            <img src={card.image} alt={card.label} loading="lazy" />
+            <img src={card.image} alt={card.label} {...getImageDimensions(card.image)} loading="lazy" />
             <strong>{card.label}</strong>
             <p>{card.text}</p>
           </article>

@@ -1,4 +1,5 @@
 import { productCategories } from '../data/catalog';
+import { siteUrl } from '../data/site-config.js';
 
 const staticPaths = [
   '/',
@@ -22,7 +23,7 @@ const escapeXml = (value) =>
   })[character]);
 
 export function GET({ site }) {
-  const baseUrl = site ?? new URL('https://www.cucchisascesena.it');
+  const baseUrl = site ?? new URL(siteUrl);
   const paths = [...staticPaths, ...productCategories.map((category) => category.href)];
   const urls = [...new Set(paths)]
     .map((path) => `  <url><loc>${escapeXml(new URL(path, baseUrl).href)}</loc></url>`)

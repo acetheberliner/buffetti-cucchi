@@ -5,7 +5,8 @@ export const productCategories = [
     href: '/prodotti/arredo-complementi.html',
     image: '/images/arredamento/product/sedute-operative.svg',
     accent: '#0000e8',
-    summary: 'Sedute, scrivanie, lampade, ergonomia e accessori per postazioni piu comode.',
+    summary: 'Sedute, scrivanie, lampade, ergonomia e accessori per postazioni più comode.',
+    metaSummary: 'Sedute, scrivanie, lampade, ergonomia e accessori per postazioni piu comode.',
     items: [
       'Sedie e sgabelli',
       'Scrivanie e accessori',
@@ -182,7 +183,8 @@ export const productCategories = [
     href: '/prodotti/ecosostenibili.html',
     image: '/images/cancelleria/brand/archiviazione.webp',
     accent: '#2f8f61',
-    summary: 'Scelte piu attente per carta, cancelleria e materiali di uso quotidiano.',
+    summary: 'Scelte più attente per carta, cancelleria e materiali di uso quotidiano.',
+    metaSummary: 'Scelte piu attente per carta, cancelleria e materiali di uso quotidiano.',
     items: [
       'Carta riciclata',
       'Prodotti ricaricabili',
@@ -238,7 +240,7 @@ export const digitalServices = [
     href: '/servizi.html#timbri',
     image: '/images/servizi/brand/timbri.svg',
     badge: 'Personalizzati',
-    text: 'Timbri personalizzati e materiali per uffici e attivita.',
+    text: 'Timbri personalizzati e materiali per uffici e attività.',
     detail:
       'Soluzioni per negozi, studi professionali e uffici che hanno bisogno di timbri, cuscinetti e accessori pratici per il lavoro quotidiano.',
     items: ['Timbri personalizzati', 'Cuscinetti', 'Accessori'],
@@ -259,7 +261,7 @@ export const serviceFamilies = [
   {
     label: 'Identita digitale',
     image: '/images/servizi/digital/firma-digitale.svg',
-    text: 'Firma digitale, SPID, PEC e lettori per gestire pratiche online con piu sicurezza.',
+    text: 'Firma digitale, SPID, PEC e lettori per gestire pratiche online con più sicurezza.',
   },
   {
     label: 'Stampa e documenti',
@@ -269,7 +271,7 @@ export const serviceFamilies = [
   {
     label: 'Timbri e ufficio',
     image: '/images/servizi/brand/timbri.svg',
-    text: 'Timbri personalizzati, accessori e supporto per studi, negozi e attivita.',
+    text: 'Timbri personalizzati, accessori e supporto per studi, negozi e attività.',
   },
   {
     label: 'Spedizioni e imballo',

@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { productCategories } from '../../data/catalog';
 import { categoryCardImages } from '../../data/card-images';
 import { categoryPageImages } from '../../data/category-page-images';
+import { getImageDimensions } from '../../data/image-dimensions';
 import { site } from '../../data/site';
 import { ArrowRight, MapPin, Phone } from '@lucide/astro';
 
@@ -80,7 +81,7 @@ const itemCards = category.items.map((item, index) => ({
   image: pageImages?.items?.[item] ?? imagePool[index % imagePool.length],
 }));
 const title = `${category.label} a Cesena | Catalogo Buffetti`;
-const description = `${category.label} Buffetti a Cesena: ${category.summary}`;
+const description = `${category.label} Buffetti a Cesena: ${category.metaSummary ?? category.summary}`;
 ---
 
 <BaseLayout title={title} description={description} preloadImage={pageImages?.heroBackground}>
@@ -90,7 +91,7 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary}`;
   >
     {pageImages?.heroBackground ? (
       <div class="category-hero__background" aria-hidden="true">
-        <img src={pageImages.heroBackground} alt="" loading="eager" fetchpriority="high" decoding="async" />
+        <img src={pageImages.heroBackground} alt="" {...getImageDimensions(pageImages.heroBackground)} loading="eager" fetchpriority="high" decoding="async" />
       </div>
     ) : null}
     <div class="category-hero__pattern" aria-hidden="true">
@@ -131,7 +132,7 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary}`;
         <span class="eyebrow">Cosa puoi cercare</span>
         <h2>Prodotti collegati</h2>
         <p>
-          Questa pagina raccoglie la famiglia prodotto in modo piu specifico: puoi usarla
+          Questa pagina raccoglie la famiglia prodotto in modo più specifico: puoi usarla
           come promemoria prima di chiamare o passare in negozio.
         </p>
       </div>
@@ -149,6 +150,7 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary}`;
               <img
                 src={item.image}
                 alt={item.title}
+                {...getImageDimensions(item.image)}
                 loading="lazy"
               />
             </div>
@@ -164,7 +166,7 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary}`;
           <span class="eyebrow">E c'è molto altro</span>
           <h3 id="catalog-invite-title">Il catalogo continua in negozio.</h3>
           <p>
-            Vieni a trovarc e ti aiuteremo a confrontare soluzioni, misure e disponibilità
+            Vieni a trovarci e ti aiuteremo a confrontare soluzioni, misure e disponibilità
             per scegliere ciò che ti serve davvero
           </p>
         </div>
@@ -180,9 +182,9 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary}`;
     <div class="container social-cta__inner">
       <div>
         <span class="eyebrow">Negozio reale, risposta reale</span>
-        <h2>Vuoi sapere se c'e in negozio?</h2>
+        <h2>Vuoi sapere se c'è in negozio?</h2>
         <p>
-          Chiama, scrivi o guarda i canali social: per prodotti specifici e disponibilita
+          Chiama, scrivi o guarda i canali social: per prodotti specifici e disponibilità
           conviene sempre parlare direttamente con Buffetti Cucchi.
         </p>
       </div>
@@ -193,11 +195,11 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary}`;
           <span>Chiama</span>
         </a>
         <a href={site.facebook} target="_blank" rel="noopener noreferrer">
-          <img src="/images/facebook.svg" alt="" loading="lazy" />
+          <img src="/images/facebook.svg" alt="" {...getImageDimensions('/images/facebook.svg')} loading="lazy" />
           <span>Facebook</span>
         </a>
         <a href={site.instagram} target="_blank" rel="noopener noreferrer">
-          <img src="/images/instagram.svg" alt="" loading="lazy" />
+          <img src="/images/instagram.svg" alt="" {...getImageDimensions('/images/instagram.svg')} loading="lazy" />
           <span>Instagram</span>
         </a>
       </div>
@@ -214,7 +216,7 @@ const description = `${category.label} Buffetti a Cesena: ${category.summary}`;
       <div class="related-grid">
         {relatedCategories.map((item) => (
           <a href={item.href}>
-            <img src={categoryCardImages[item.slug] ?? item.image} alt={item.label} loading="lazy" />
+            <img src={categoryCardImages[item.slug] ?? item.image} alt={item.label} {...getImageDimensions(categoryCardImages[item.slug] ?? item.image)} loading="lazy" />
             <strong>{item.label}</strong>
             <span>{item.summary}</span>
             <ArrowRight size={18} stroke-width={2.2} />

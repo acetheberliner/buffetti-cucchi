@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { digitalServices, productCategories, shopFocusAreas } from '../data/catalog';
 import { categoryCardImages as categoryImages, serviceCardImages as serviceImages } from '../data/card-images';
-import { site } from '../data/site';
+import { getImageDimensions } from '../data/image-dimensions';
+import { openingHours, site } from '../data/site';
 import { ArrowRight, ChevronDown, Clock3, MapPin, Phone, RefreshCw, ShieldCheck, Smartphone } from '@lucide/astro';
 
 const heroCategories = productCategories;
@@ -21,7 +22,7 @@ const serviceCards = digitalServices.slice(0, 4);
         src="/images/hero-home.webp"
         alt="Esterno della cartoleria Buffetti Cucchi a Cesena"
         width="1920"
-        height="662"
+        height="1080"
         loading="eager"
         fetchpriority="high"
         decoding="async"
@@ -55,11 +56,11 @@ const serviceCards = digitalServices.slice(0, 4);
     <div class="container anniversary-card">
       <figure class="anniversary-portrait">
         <img
-          src="/images/staff.png"
+          src="/images/staff.webp"
           alt="Sandra Casadei, Elisabetta Cucchi ed Elena Cucchi nel negozio Buffetti Cucchi"
-          width="749"
-          height="609"
-          loading="eager"
+          width="1496"
+          height="1216"
+          loading="lazy"
           decoding="async"
         />
 
@@ -126,6 +127,7 @@ const serviceCards = digitalServices.slice(0, 4);
                 class="category-card__image"
                 src={categoryImages[category.slug]}
                 alt={`Prodotti Buffetti per ${category.label.toLowerCase()}`}
+                {...getImageDimensions(categoryImages[category.slug])}
                 loading="lazy"
               />
               <h3>{category.label}</h3>
@@ -148,6 +150,7 @@ const serviceCards = digitalServices.slice(0, 4);
                 <img
                   src={categoryImages[category.slug]}
                   alt={`Prodotti Buffetti per ${category.label.toLowerCase()}`}
+                  {...getImageDimensions(categoryImages[category.slug])}
                   loading="lazy"
                 />
                 <p>{category.summary}</p>
@@ -217,7 +220,7 @@ const serviceCards = digitalServices.slice(0, 4);
       <div class="business-list">
         {shopFocusAreas.map((area) => (
           <a href={area.href}>
-            <img src={area.image} alt="" loading="lazy" />
+            <img src={area.image} alt="" {...getImageDimensions(area.image)} loading="lazy" />
             <strong>{area.label}</strong>
             <span>{area.text}</span>
           </a>
@@ -240,6 +243,7 @@ const serviceCards = digitalServices.slice(0, 4);
               class="service-card__image"
               src={serviceImages[service.label]}
               alt={`Servizio Buffetti: ${service.label}`}
+              {...getImageDimensions(serviceImages[service.label])}
               loading="lazy"
             />
             <h3>{service.label}</h3>
@@ -263,7 +267,7 @@ const serviceCards = digitalServices.slice(0, 4);
       <div class="social-cards">
         <a class="social-profile social-profile--facebook" href={site.facebook} target="_blank" rel="noopener noreferrer">
           <div class="social-profile__info">
-            <span class="social-profile__icon"><img src="/images/facebook.svg" alt="" /></span>
+            <span class="social-profile__icon"><img src="/images/facebook.svg" alt="" {...getImageDimensions('/images/facebook.svg')} /></span>
             <div>
               <strong>Facebook</strong>
               <span>@CucchiSas</span>
@@ -274,15 +278,15 @@ const serviceCards = digitalServices.slice(0, 4);
             </span>
           </div>
           <div class="social-profile__gallery" aria-hidden="true">
-            <img src="/images/staff.png" alt="" loading="lazy" />
-            <img src="/images/hero-cancelleria.webp" alt="" loading="lazy" />
-            <img src="/images/hero-scuola.webp" alt="" loading="lazy" />
-            <img src="/images/hero-regalistica.webp" alt="" loading="lazy" />
+            <img src="/images/staff.webp" alt="" {...getImageDimensions('/images/staff.webp')} loading="lazy" />
+            <img src="/images/hero-cancelleria.webp" alt="" {...getImageDimensions('/images/hero-cancelleria.webp')} loading="lazy" />
+            <img src="/images/hero-scuola.webp" alt="" {...getImageDimensions('/images/hero-scuola.webp')} loading="lazy" />
+            <img src="/images/hero-regalistica.webp" alt="" {...getImageDimensions('/images/hero-regalistica.webp')} loading="lazy" />
           </div>
         </a>
         <a class="social-profile social-profile--instagram" href={site.instagram} target="_blank" rel="noopener noreferrer">
           <div class="social-profile__info">
-            <span class="social-profile__icon"><img src="/images/instagram.svg" alt="" /></span>
+            <span class="social-profile__icon"><img src="/images/instagram.svg" alt="" {...getImageDimensions('/images/instagram.svg')} /></span>
             <div>
               <strong>Instagram</strong>
               <span>@cucchi_sas_cesena_buffetti_</span>
@@ -293,10 +297,10 @@ const serviceCards = digitalServices.slice(0, 4);
             </span>
           </div>
           <div class="social-profile__gallery" aria-hidden="true">
-            <img src="/images/index-meta.jpg" alt="" loading="lazy" />
-            <img src="/images/staff.png" alt="" loading="lazy" />
-            <img src="/images/hero-contatti.webp" alt="" loading="lazy" />
-            <img src="/images/hero-arredamento.webp" alt="" loading="lazy" />
+            <img src="/images/index-meta.jpg" alt="" {...getImageDimensions('/images/index-meta.jpg')} loading="lazy" />
+            <img src="/images/staff.webp" alt="" {...getImageDimensions('/images/staff.webp')} loading="lazy" />
+            <img src="/images/hero-contatti.webp" alt="" {...getImageDimensions('/images/hero-contatti.webp')} loading="lazy" />
+            <img src="/images/hero-arredamento.webp" alt="" {...getImageDimensions('/images/hero-arredamento.webp')} loading="lazy" />
           </div>
         </a>
       </div>
@@ -330,19 +334,25 @@ const serviceCards = digitalServices.slice(0, 4);
             </div>
             <dl class="visit-hours__list">
               <div>
-                <dt>Lunedì – venerdì</dt>
-                <dd><span>08:30–12:30</span><span>15:30–19:00</span></dd>
+                <dt>{openingHours.weekdays.homeLabel}</dt>
+                <dd>
+                  {openingHours.weekdays.slots.map((slot) => (
+                    <span>{slot.opens}–{slot.closes}</span>
+                  ))}
+                </dd>
               </div>
               <div>
-                <dt>Sabato</dt>
-                <dd><strong>Chiuso</strong></dd>
+                <dt>{openingHours.saturday.label}</dt>
+                <dd><strong>{openingHours.saturday.status}</strong></dd>
               </div>
               <div>
-                <dt>Domenica</dt>
-                <dd><strong>Chiuso</strong></dd>
+                <dt>{openingHours.sunday.label}</dt>
+                <dd><strong>{openingHours.sunday.status}</strong></dd>
               </div>
             </dl>
-            <p class="visit-hours__note">Il sabato il negozio resta chiuso per orario estivo</p>
+            {openingHours.saturday.homeNote ? (
+              <p class="visit-hours__note">{openingHours.saturday.homeNote}</p>
+            ) : null}
           </div>
           <div class="visit-fact">
             <span>Indirizzo</span>

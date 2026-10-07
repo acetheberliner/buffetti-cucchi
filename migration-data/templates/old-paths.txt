@@ -1,0 +1,3 @@
+# Usare --origin quando il file contiene path relativi.
+/
+/pagina-esempio.html

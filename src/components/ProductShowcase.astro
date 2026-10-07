@@ -1,5 +1,6 @@
 ---
 import { Check } from '@lucide/astro';
+import { getImageDimensions } from '../data/image-dimensions';
 
 const { showcase } = Astro.props;
 const items = showcase?.items ?? [];
@@ -21,6 +22,7 @@ const items = showcase?.items ?? [];
               <img
                 src={item.image}
                 alt={item.title}
+                {...getImageDimensions(item.image)}
                 loading="lazy"
                 crossorigin={/^https?:\/\//.test(item.image ?? '') ? 'anonymous' : undefined}
                 data-remove-light-background={/^https?:\/\//.test(item.image ?? '') ? '' : undefined}

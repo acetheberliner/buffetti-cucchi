@@ -1,8 +1,38 @@
+import { siteUrl } from './site-config.js';
+
+export const openingHours = {
+  weekdays: {
+    schemaDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    label: 'Lunedì - Venerdì',
+    homeLabel: 'Lunedì – venerdì',
+    shortLabel: 'Lun-Ven',
+    slots: [
+      { opens: '08:30', closes: '12:30' },
+      { opens: '15:30', closes: '19:00' },
+    ],
+    contactText: '08:30 - 12:30 / 15:30 - 19:00',
+    footerText: '8:30-12:30 / 15:30-19:00',
+  },
+  saturday: {
+    schemaDays: ['Saturday'],
+    label: 'Sabato',
+    slots: [{ opens: '09:00', closes: '12:30' }],
+    status: '09:00–12:30',
+    contactStatus: '09:00 - 12:30',
+    footerStatus: '9:00-12:30',
+    homeNote: '',
+  },
+  sunday: {
+    label: 'Domenica',
+    status: 'Chiuso',
+  },
+};
+
 export const site = {
-  url: 'https://www.cucchisascesena.it',
+  url: siteUrl,
   name: 'Buffetti Cucchi',
   fullName: 'Buffetti Cucchi s.a.s. di Cucchi Elisabetta & C.',
-  vat: 'P. IVA 00625300553',
+  vat: 'P. IVA 02412130409',
   address: 'Viale Matteotti, 593 - Zona Ippodromo, 47522 Cesena (FC)',
   phone: '+39 0547 334488',
   phoneHref: 'tel:+390547334488',

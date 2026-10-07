@@ -2,6 +2,7 @@
 import { navItems } from '../data/nav';
 import { digitalServices, productCategories } from '../data/catalog';
 import { categoryCardImages, serviceCardImages } from '../data/card-images';
+import { getImageDimensions } from '../data/image-dimensions';
 import { site } from '../data/site';
 import { ChevronDown, Mail, MapPin, Menu, Phone, Search } from '@lucide/astro';
 
@@ -69,7 +70,7 @@ const hasCardImage = (entry) =>
 
   <div class="container header-main">
     <a class="brand" href="/index.html" aria-label="Torna alla home">
-      <img src="/images/logo-buffetti.png" alt="Logo Buffetti Cucchi" width="120" height="76" />
+      <img src="/images/logo-buffetti.png" alt="Logo Buffetti Cucchi" width="221" height="113" />
       <span>
         <strong>Buffetti Cucchi</strong>
         <small>s.a.s. di Cucchi Elisabetta & C.</small>
@@ -160,6 +161,7 @@ const hasCardImage = (entry) =>
                           class:list={['mega-menu__image', hasCardImage(entry) && 'mega-menu__image--photo']}
                           src={getMegaMenuImage(entry)}
                           alt=""
+                          {...getImageDimensions(getMegaMenuImage(entry))}
                           loading="lazy"
                         />
                       ) : null}

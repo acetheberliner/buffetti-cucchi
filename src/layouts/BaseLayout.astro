@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { site } from '../data/site';
+import { openingHours, site } from '../data/site';
 
 const {
   title = 'Buffetti Cucchi Cesena',
@@ -48,20 +48,14 @@ const structuredData = {
       },
       hasMap: site.mapsUrl,
       sameAs: [site.facebook, site.instagram],
-      openingHoursSpecification: [
-        {
+      openingHoursSpecification: [openingHours.weekdays, openingHours.saturday].flatMap((schedule) =>
+        schedule.slots.map((slot) => ({
           '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          opens: '08:30',
-          closes: '12:30',
-        },
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          opens: '15:30',
-          closes: '19:00',
-        },
-      ],
+          dayOfWeek: schedule.schemaDays,
+          opens: slot.opens,
+          closes: slot.closes,
+        })),
+      ),
     },
     {
       '@type': 'WebSite',

@@ -1,6 +1,7 @@
 ---
-import { site } from '../data/site';
+import { openingHours, site } from '../data/site';
 import { digitalServices, productCategories } from '../data/catalog';
+import { getImageDimensions } from '../data/image-dimensions';
 import { ArrowUp, ExternalLink, Mail, MapPin, Phone } from '@lucide/astro';
 
 const footerProducts = productCategories.slice(0, 7);
@@ -13,7 +14,7 @@ const footerServices = digitalServices.slice(0, 5);
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="footer-logo-row">
-        <img src="/images/logo-buffetti.png" alt="Logo Buffetti Cucchi" width="104" height="66" />
+        <img src="/images/logo-buffetti.png" alt="Logo Buffetti Cucchi" width="221" height="113" />
         <div>
           <strong>Buffetti Cucchi</strong>
           <span>Cartoleria, ufficio e servizi a Cesena</span>
@@ -29,11 +30,11 @@ const footerServices = digitalServices.slice(0, 5);
 
       <div class="footer-social">
         <a href={site.facebook} target="_blank" rel="noopener noreferrer">
-          <img src="/images/facebook.svg" alt="" />
+          <img src="/images/facebook.svg" alt="" {...getImageDimensions('/images/facebook.svg')} />
           Facebook
         </a>
         <a href={site.instagram} target="_blank" rel="noopener noreferrer">
-          <img src="/images/instagram.svg" alt="" />
+          <img src="/images/instagram.svg" alt="" {...getImageDimensions('/images/instagram.svg')} />
           Instagram
         </a>
       </div>
@@ -79,15 +80,15 @@ const footerServices = digitalServices.slice(0, 5);
   <div class="container footer-hours">
     <div>
       <span>Orari</span>
-      <strong>Lun-Ven 8:30-12:30 / 15:30-19:00</strong>
+      <strong>{openingHours.weekdays.shortLabel} {openingHours.weekdays.footerText}</strong>
     </div>
     <div>
-      <span>Sabato</span>
-      <strong>Chiuso per orario estivo</strong>
+      <span>{openingHours.saturday.label}</span>
+      <strong>{openingHours.saturday.footerStatus}</strong>
     </div>
     <div>
-      <span>Domenica</span>
-      <strong>Chiuso</strong>
+      <span>{openingHours.sunday.label}</span>
+      <strong>{openingHours.sunday.status}</strong>
     </div>
     <div>
       <span>Ragione sociale</span>

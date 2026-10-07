@@ -1,4 +1,6 @@
 ---
+import { getImageDimensions } from '../data/image-dimensions';
+
 const { brands } = Astro.props;
 const items = brands?.items ?? [];
 const hasImages = items.some((brand: { image?: string }) => brand.image);
@@ -22,6 +24,7 @@ const hasImages = items.some((brand: { image?: string }) => brand.image);
                   <img
                     src={brand.image}
                     alt={brand.alt ?? brand.name}
+                    {...getImageDimensions(brand.image)}
                     loading="lazy"
                     crossorigin={/^https?:\/\//.test(brand.image) ? 'anonymous' : undefined}
                     data-remove-light-background={/^https?:\/\//.test(brand.image) ? '' : undefined}
@@ -30,7 +33,7 @@ const hasImages = items.some((brand: { image?: string }) => brand.image);
                 <figcaption>{brand.name}</figcaption>
               </>
             ) : brand.logo ? (
-              <img src={brand.logo} alt={brand.name} loading="lazy" />
+              <img src={brand.logo} alt={brand.name} {...getImageDimensions(brand.logo)} loading="lazy" />
             ) : (
               <span>{brand.name}</span>
             )}

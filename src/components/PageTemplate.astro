@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 import { productCategories } from '../data/catalog';
+import { getImageDimensions } from '../data/image-dimensions';
 import BrandShowcase from './BrandShowcase.astro';
 import ProductShowcase from './ProductShowcase.astro';
 
@@ -39,6 +40,14 @@ const relatedCategories = productCategories.filter((category) =>
 const heroVisual =
   page.heroVisual ?? page.showcase?.items?.[0]?.image ?? page.focusImage ?? page.heroImage;
 const categoryBySlug = new Map(productCategories.map((category) => [category.slug, category]));
+const groupIdCounts = new Map();
+
+const getUniqueGroupId = (slug) => {
+  if (!slug) return undefined;
+  const occurrence = (groupIdCounts.get(slug) ?? 0) + 1;
+  groupIdCounts.set(slug, occurrence);
+  return occurrence === 1 ? slug : `${slug}-${occurrence}`;
+};
 
 const icons = {
   archive: Archive,
@@ -66,7 +75,7 @@ const icons = {
 <BaseLayout title={page.title} description={page.description} preloadImage={page.heroImage}>
   <section class="page-hero">
     <div class="page-hero__media">
-      <img src={page.heroImage} alt={page.heroTitle} loading="eager" fetchpriority="high" decoding="async" />
+      <img src={page.heroImage} alt={page.heroTitle} {...getImageDimensions(page.heroImage)} loading="eager" fetchpriority="high" decoding="async" />
     </div>
 
     <div class="container page-hero__inner">
@@ -90,7 +99,7 @@ const icons = {
 
       {heroVisual ? (
         <div class="page-hero__showcase" aria-hidden="true">
-          <img src={heroVisual} alt="" />
+          <img src={heroVisual} alt="" {...getImageDimensions(heroVisual)} />
         </div>
       ) : null}
     </div>
@@ -113,12 +122,13 @@ const icons = {
         const removeLightBackground = /^https?:\/\//.test(groupImage ?? '');
 
         return (
-          <article class="product-card" id={group.slug}>
+          <article class="product-card" id={getUniqueGroupId(group.slug)}>
             {groupImage ? (
               <div class="product-card__media">
                 <img
                   src={groupImage}
                   alt={group.title}
+                  {...getImageDimensions(groupImage)}
                   loading="lazy"
                   crossorigin={removeLightBackground ? 'anonymous' : undefined}
                   data-remove-light-background={removeLightBackground ? '' : undefined}
@@ -163,14 +173,14 @@ const icons = {
           <span class="eyebrow">Catalogo Buffetti</span>
           <h2>Sottocategorie collegate</h2>
           <p>
-            Una mappa rapida delle famiglie prodotto del gruppo, riadattata alle richieste piu comuni del negozio.
+            Una mappa rapida delle famiglie prodotto del gruppo, riadattata alle richieste più comuni del negozio.
           </p>
         </div>
 
         <div class="category-rail__grid">
           {relatedCategories.map((category) => (
             <a class="category-tile" href={category.href}>
-              <img src={category.image} alt={category.label} loading="lazy" />
+              <img src={category.image} alt={category.label} {...getImageDimensions(category.image)} loading="lazy" />
               <strong>{category.label}</strong>
               <span>{category.summary}</span>
               <ul>
@@ -209,7 +219,7 @@ const icons = {
       </div>
 
       <div class="split__image">
-        <img src={page.focusImage} alt={page.focusTitle} loading="lazy" />
+        <img src={page.focusImage} alt={page.focusTitle} {...getImageDimensions(page.focusImage)} loading="lazy" />
       </div>
     </div>
   </section>

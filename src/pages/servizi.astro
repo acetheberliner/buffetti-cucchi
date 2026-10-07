@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { digitalServices } from '../data/catalog';
 import { serviceCardImages } from '../data/card-images';
+import { getImageDimensions } from '../data/image-dimensions';
 import { site } from '../data/site';
 import { ArrowRight, Check, Mail, MapPin, Phone, RefreshCw, ShieldCheck, Smartphone } from '@lucide/astro';
 
@@ -41,7 +42,7 @@ const rentSmartphones = [
         <span class="eyebrow">Servizi in negozio</span>
         <h1>Pratiche digitali, documenti e spedizioni, ti aiutiamo noi</h1>
         <p>
-          Buffetti Group mette al centro PEC, Firma e SPID; Buffetti Cucchi li rende piu vicini:
+          Buffetti Group mette al centro PEC, Firma e SPID; Buffetti Cucchi li rende più vicini:
           passi in negozio, chiedi cosa ti serve e trovi supporto per documenti, stampa, timbri e invii.
         </p>
         <div class="services-hero__actions">
@@ -74,7 +75,7 @@ const rentSmartphones = [
         {serviceCards.map((service) => (
           <article id={service.href.split('#')[1]}>
             <div class="service-card__media">
-              <img src={service.image} alt={service.label} loading="lazy" />
+              <img src={service.image} alt={service.label} {...getImageDimensions(service.image)} loading="lazy" />
               <span>{service.badge}</span>
             </div>
             <div class="service-card__body">
@@ -152,7 +153,7 @@ const rentSmartphones = [
         {rentSmartphones.map((device) => (
           <article>
             <div class="rent-device__media">
-              <img src={device.image} alt={device.name} loading="lazy" />
+              <img src={device.image} alt={device.name} {...getImageDimensions(device.image)} loading="lazy" />
             </div>
             <div class="rent-device__body">
               <span>Smartphone</span>
@@ -177,7 +178,7 @@ const rentSmartphones = [
         <h2>Hai una pratica specifica?<br/> Chiedi cosa portare.</h2>
         <p>
           Per servizi digitali, timbri o spedizioni puo essere utile chiamare prima:
-          ti aiutano a capire disponibilita, tempi e documenti necessari.
+          ti aiutano a capire disponibilità, tempi e documenti necessari.
         </p>
       </div>
       <div class="service-contact__actions">
