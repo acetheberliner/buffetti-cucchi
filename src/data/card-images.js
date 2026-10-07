@@ -14,7 +14,7 @@ export const categoryCardImages = {
 };
 
 export const serviceCardImages = {
-  'Firma Digitale': 'https://buffetti.it/cdn/shop/files/117239_firma-digitale_371e25f4-7ae8-4da2-98a9-5ef8170007bb.jpg?v=1780563905',
+  'Firma Digitale': '/images/servizi/digital/firma-digitale.svg',
   SPID: 'https://buffetti.it/cdn/shop/files/spid.png?v=1776430094',
   PEC: 'https://buffetti.it/cdn/shop/files/pec.png?v=1776430008',
   'Fotocopie e stampa': 'https://buffetti.it/cdn/shop/collections/carta-e-modulistica-buffetti.webp?v=1777280043',

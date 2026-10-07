@@ -8,7 +8,9 @@ import { ArrowRight, Check, Mail, MapPin, Phone, RefreshCw, ShieldCheck, Smartph
 
 const serviceCards = digitalServices.map((service) => ({
   ...service,
-  image: serviceCardImages[service.label] ?? service.image,
+  image: service.label === 'Firma Digitale'
+    ? service.image
+    : serviceCardImages[service.label] ?? service.image,
 }));
 
 const rentSmartphones = [

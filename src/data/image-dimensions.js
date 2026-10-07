@@ -40,6 +40,7 @@ const dimensions = {
   '/images/servizi/brand/spedizioni.svg': [400, 300],
   '/images/servizi/brand/timbri.svg': [400, 300],
   '/images/servizi/digital/firma-digitale.svg': [360, 260],
+  '/images/servizi/digital/firma-digitale-card.png': [355, 309],
   '/images/servizi/digital/pec.svg': [360, 260],
   '/images/servizi/digital/spid.svg': [360, 260],
   '/images/servizi/product/pec-firma-digitale.svg': [400, 300],

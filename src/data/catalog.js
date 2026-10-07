@@ -198,7 +198,7 @@ export const digitalServices = [
   {
     label: 'Firma Digitale',
     href: '/servizi.html#firma-digitale',
-    image: '/images/servizi/digital/firma-digitale.svg',
+    image: '/images/servizi/digital/firma-digitale-card.png',
     badge: 'Identita digitale',
     text: 'Attivazione e supporto per firmare documenti con valore legale.',
     detail:
